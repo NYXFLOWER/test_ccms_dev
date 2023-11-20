@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<flow name="msgf-plus-ambiguity">
+	<!-- User-provided input files -->
+	<collection	name="spectrum"/>
+	<collection	name="sequence"/>
+	<!-- ProteoSAFe params.xml -->
+	<object		name="parameters"/>
+	<!-- Intermediate workflow output files -->
+	<object		name="mergedSequence"/>
+	<object	    name="preparedSequence"/>
+	<collection	name="mzidResult"/>
+	<collection	name="msgfPlusResult"/>
+	<object		name="mergedResult"/>
+
+
+
+	<action name="begin">
+		<output port="spec"   collection="spectrum"/>
+		<output port="fasta"  collection="sequence"/>
+		<output port="params" object="parameters"/>
+	</action>
+
+	<action name="mergeSequences">
+		<input  port="fasta" collection="sequence"/>
+		<output port="out"   object="mergedSequence"/>
+	</action>
+
+	<action name="buildSA">
+		<input  port="fasta" object="mergedSequence"/>
+		<output port="out"   object="preparedSequence"/>
+	</action>
+
+	<action name="msgfPlus" multiplicity="multiple" type="parallel">
+		<input  port="spec"   collection="spectrum" transformation="unfolding"/>
+		<input  port="fasta"  object="mergedSequence"/>
+		<input  port="seq"    object="preparedSequence"/>
+		<input  port="params" object="parameters"/>
+		<output port="out"    collection="mzidResult"/>
+	</action>
+
+	<action name="msgfPlusConvert" multiplicity="multiple" type="parallel">
+		<input  port="in"  collection="mzidResult" transformation="unfolding"/>
+		<output port="out" collection="msgfPlusResult"/>
+	</action>
+
+	<action name="merge">
+		<input  port="result"       collection="msgfPlusResult"/>
+		<output port="mergedResult" object="mergedResult"/>
+	</action>
+
+    <!-- KL Code -->
+    <!-- KL Divergence -->
+    <object     name="kl_output"/>
+    <collection name="kl_scratch"/>
+
+    <action name="generate_kl_divergence">
+        <input  port="parameters" object="parameters"/>
+		<input  port="spectrum"   collection="spectrum"/>
+		<output port="kl_scratch" object="kl_scratch"/>
+        <output port="kl_output"  object="kl_output"/>
+	</action>
+
+    <!-- Merging KL -->
+    <object		name="merged_result_with_kl"/>
+    <action name="add_kl_to_psms">
+        <input  port="parameters"            object="parameters"/>
+		<input  port="mergedResult"          object="mergedResult"/>
+        <input  port="kl_output"             object="kl_output"/>
+        <output port="merged_result_with_kl" object="merged_result_with_kl"/>
+    </action>
+
+    <!-- Calculating Ambiguity -->
+	<object		name="merged_result_with_kl_with_ambiguity"/>
+    <action name="add_ambiguity_to_psms">
+		<input  port="merged_result_with_kl"                object="merged_result_with_kl"/>
+        <input  port="spectrum"                             collection="spectrum"/>
+        <output port="merged_result_with_kl_with_ambiguity" object="merged_result_with_kl_with_ambiguity"/>
+    </action>
+
+	<object		name="merged_result_with_kl_with_ambiguity_filtered"/>
+    <action name="filter">
+		<input  port="merged_result_with_kl_with_ambiguity"          object="merged_result_with_kl_with_ambiguity"/>
+        <output port="merged_result_with_kl_with_ambiguity_filtered" object="merged_result_with_kl_with_ambiguity_filtered"/>
+    </action>
+
+	<!-- FDR and mzTab Conversion -->
+	<object     name="convertParameters"/>
+	<collection name="convertedMzTab"/>
+	<collection name="validatedMzTab"/>
+	<!-- Final workflow result files -->
+	<object		name="tsvResult"/>
+	<collection name="cleanedMzTab"/>
+	<object     name="statistics"/>
+
+	<action name="fdr">
+        <input  port="parameters"  object="parameters"/>
+        <input  port="sequence"  object="mergedSequence"/>
+		<input  port="in"  object="mergedResult"/>
+		<output port="out" object="tsvResult"/>
+	</action>
+
+	<action name="createConvertConfig">
+		<input  port="input"  object="tsvResult"/>
+		<input  port="params" object="parameters"/>
+		<output port="output" object="convertParameters"/>
+	</action>
+
+	<action name="convertTSVToMzTab">
+		<input  port="tsv"            object="tsvResult"/>
+		<input  port="convertParams"  object="convertParameters"/>
+		<output port="mzTab"          collection="convertedMzTab"/>
+	</action>
+
+	<action name="validateMzTab">
+		<input  port="params" object="parameters"/>
+		<input  port="mzTab"  collection="convertedMzTab"/>
+		<input  port="peak"   collection="spectrum"/>
+		<output port="out"    collection="validatedMzTab"/>
+	</action>
+
+	<action name="cleanMzTab">
+		<input  port="params" object="parameters"/>
+		<input  port="mzTab"  collection="validatedMzTab"/>
+		<input  port="peak"   collection="spectrum"/>
+		<output port="out"    collection="cleanedMzTab"/>
+	</action>
+
+	<action name="summarizeMzTab">
+		<input  port="params" object="parameters"/>
+		<input  port="mzTab"  collection="cleanedMzTab"/>
+		<output port="out"    object="statistics"/>
+	</action>
+
+	<action name="end">
+        <input port="kl_output"                            object="kl_output"/>
+        <input port="mergedResult"                         object="mergedResult"/>
+        <input port="merged_result_with_kl_with_ambiguity" object="merged_result_with_kl_with_ambiguity_filtered"/>
+		<input port="mzTab"                                collection="cleanedMzTab"/>
+		<input port="statistics"                           object="statistics"/>
+	</action>
+</flow>

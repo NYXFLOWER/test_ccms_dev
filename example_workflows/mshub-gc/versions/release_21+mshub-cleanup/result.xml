@@ -1,0 +1,101 @@
+<interface id="mshub-gc" version="release_21+mshub-cleanup">
+    <download>
+        <source name="clusterinfo/" type="folder" />
+        <source name="clustersummary/" type="folder" />
+        <source name="clustered_mgf/" type="folder" />
+        <source name="quantification_output/" type="folder" />
+    </download>
+
+    <view group="Default Views" id="view_spectra" label="View All Deconvolved Spectra">
+        <blockRef id="main" type="view_spectra" />
+    </view>
+
+    <block id="view_spectra" type="table">
+        <data>
+            <source name="clustersummary/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="cluster index" type="sortedTabular" />
+            </parsers>
+        </data>
+        <row>
+            <column field="cluster index" label="cluster index" type="integer" width="3" />
+            <column field="RTMean" label="RTMean" type="text" width="10" />
+        </row>
+
+        <row expander="image">
+            <column colspan="5" type="jscolumnspectrumviewer">
+                <parameter file="clustered_mgf/specs_ms.mgf" name="file" />
+                <parameter name="scan" value="[cluster index]" />
+                <parameter name="peptide" value="*..*" />
+            </column>
+        </row>
+    </block>
+
+    <view group="Continue Processing" id="librarysearch" label="Search Spectral Library and Molecular Network">
+            <blockRef id="main" type="librarysearch" />
+    </view>
+    <block id="librarysearch" type="dummylinkout">
+      <data>
+         <parsers>
+            <parser contentType="text/xml" type="stream" />
+        </parsers>
+      </data>
+      <parameter name="URLBASE" value="/ProteoSAFe/index.jsp" />
+      <parameter name="REQUESTPARAMETER=params" value="{&quot;workflow&quot;:&quot;MOLECULAR-LIBRARYSEARCH-GC&quot;,        &quot;desc&quot;:&quot;Library Search/Networking of [task] MSHub Deconvolution&quot;, &quot;spec_on_server&quot;:&quot;t.[task]/clustered_mgf;&quot;,       &quot;mshub_balance_scores&quot;:&quot;t.[task]/preprocessing_scratch/data_integrals.csv;&quot;,       &quot;quantification_table&quot;:&quot;t.[task]/quantification_output;&quot;}" />
+    </block>
+    
+
+    <view group="Export/Download Files" id="download_clustered_spectra" label="Download Spectra as MGF">
+        <blockRef id="main" type="download_clustered_spectra" />
+    </view>
+    <block id="download_clustered_spectra" type="dummydownload">
+      <data>
+        <source name="clustered_mgf/" type="file" />
+         <parsers>
+            <parser contentType="text/xml" type="stream" />
+        </parsers>
+      </data>
+    </block>
+
+    
+
+    <view group="Export/Download Files" id="download_feature_table" label="Download Feature Table">
+        <blockRef id="main" type="download_feature_table" />
+    </view>
+    <block id="download_feature_table" type="dummydownload">
+      <data>
+        <source name="quantification_output/" type="file" />
+         <parsers>
+            <parser contentType="text/xml" type="stream" />
+        </parsers>
+      </data>
+    </block>
+    
+    <view group="Export/Download Files" id="download_integral_table" label="Download MSHub Data Integral Table">
+        <blockRef id="main" type="download_integral_table" />
+    </view>
+    <block id="download_integral_table" type="dummydownload">
+      <data>
+        <source name="preprocessing_scratch/data_integrals.csv" type="file" />
+         <parsers>
+            <parser contentType="text/xml" type="stream" />
+        </parsers>
+      </data>
+    </block>
+
+    <view group="Export/Download Files" id="download_hdf5_data" label="Download MSHub Spectra Data">
+        <blockRef id="main" type="download_hdf5_data" />
+    </view>
+    <block id="download_hdf5_data" type="dummydownload">
+      <data>
+        <source name="preprocessing_scratch/data.h5" type="file" />
+         <parsers>
+            <parser contentType="text/xml" type="stream" />
+        </parsers>
+      </data>
+    </block>
+
+    
+    
+
+</interface>

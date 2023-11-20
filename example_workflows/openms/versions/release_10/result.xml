@@ -1,0 +1,47 @@
+<interface id="openms" version="release_10">
+
+  <download>
+    <source name="output/openms_output/" type="folder" />
+  </download>
+
+  <view group="DOWNLOADS" id="download_openms" label="Download OpenMS Output Files">
+    <blockRef id="openms_output" type="download_openms_output" />
+  </view>
+
+  <view group="DOWNLOADS" id="download_workflow" label="Download Workflow Files">
+    <blockRef id="workflow_files" type="download_workflow_files" />
+  </view>
+
+
+  <view group="Follow Up Analysis" id="makedatasetlink" label="Analyze with Feature Based Molecular Networking at GNPS">
+    <blockRef id="main" type="makedatasetlink" />
+  </view>
+
+
+
+  <block id="download_openms_output" type="dummydownload">
+    <data>
+      
+      <source name="output/invalid_dir/" type="folder" />
+    </data>
+  </block>
+
+  <block id="download_workflow_files" type="dummydownload">
+    <data>
+      <source name="output/workflow_files/" type="file" />
+      <parsers>
+        <parser contentType="text/xml" type="stream" />
+      </parsers>
+    </data>
+  </block>
+
+  <block id="makedatasetlink" type="dummylinkout">
+    <data>
+      <parsers>
+        <parser contentType="text/xml" type="stream" />
+      </parsers>
+    </data>
+    <parameter name="URLBASE" value="https://gnps.ucsd.edu/ProteoSAFe/index.jsp" />
+    <parameter name="REQUESTPARAMETER=params" value="%7B&quot;workflow&quot;:&quot;FEATURE-BASED-MOLECULAR-NETWORKING&quot;,&quot;spec_on_server&quot;:&quot;f.[task]/output/openms_output/gnpsexport/gnpsexport-00000.mgf;&quot;,&quot;quantification_table&quot;:&quot;f.[task]/output/openms_output/textexporter/textexporter-00000.csv;&quot;,&quot;QUANT_TABLE_SOURCE&quot;:&quot;OPENMS&quot;%7D" />
+  </block>
+</interface>

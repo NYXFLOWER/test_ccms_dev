@@ -1,0 +1,235 @@
+<interface id="openms" version="release_13">
+	<workflow-id>OPENMS</workflow-id>
+	<workflow-label>OpenMS + GNPS Workflow</workflow-label>
+
+	
+	<parameters>
+		
+		<parameter label="Description" name="desc">
+			<validator maximum="1000" type="length" />
+		</parameter>
+
+		<parameter label="Email" name="email">
+			<validator type="email" />
+		</parameter>
+
+		
+		<parameter label="Spectrum Files (*.mzML)" name="spec_on_server">
+			<validator type="required" />
+			<fileGenerator purpose="parameters" target="inputFiles" type="upload" />
+		</parameter>
+
+		<parameter label="FeatureFinderMetabo Parameters" name="featurefindermetabo.ini">
+			
+			<fileGenerator purpose="parameters" target="iniFiles-featurefinder" type="upload" />
+		</parameter>
+
+		<parameter label="IDMapper Parameters" name="idmapper.ini">
+			
+			<fileGenerator purpose="parameters" target="iniFiles-idmapper" type="upload" />
+		</parameter>
+
+		<parameter label="MapAlignerPoseClustering Parameters" name="mapalignerposeclustering.ini">
+			
+			<fileGenerator purpose="parameters" target="iniFiles-mapaligner" type="upload" />
+		</parameter>
+
+		<parameter label="FeatureLinkerUnlabeled Parameters" name="featurelinkerunlabeled.ini">
+			
+			<fileGenerator purpose="parameters" target="iniFiles-featurelinker" type="upload" />
+		</parameter>
+    <parameter label="FeatureLinkerUnlabeled Tool" name="featurelinkerunlabeled.tool_type">
+      <options>
+        <option value="Feature Linker Unlabeled QT" />
+        <option value="Feature Linker Unlabeled KD" />
+      </options>
+    </parameter>
+
+		<parameter label="MetabliteAdductDecharger Parameters" name="metaboliteadductdecharger.ini">
+			
+			<fileGenerator purpose="parameters" target="iniFiles-adductdecharger" type="upload" />
+		</parameter>
+
+		<parameter label="GNPSExport Parameters" name="gnpsexport.ini">
+			
+			<fileGenerator purpose="parameters" target="iniFiles-gnpsexport" type="upload" />
+		</parameter>
+		
+
+		<parameter label="TextExporter Parameters" name="textexporter.ini">
+			
+			<fileGenerator purpose="parameters" target="iniFiles-textexporter" type="upload" />
+		</parameter>
+
+	</parameters>
+
+	
+	<block label="Import Data Files">
+		<row>
+			<cell>
+				<label>
+					<content parameter="spec_on_server" />
+				</label>
+			</cell>
+			<cell colspan="3">
+				<module id="spec_on_server" type="fileSelector">
+					<property name="label">Spectrum Files</property>
+				</module>
+			</cell>
+			<cell align="right" colspan="4">
+				<label prefix="false">
+					<content />
+				</label>
+			</cell>
+		</row>
+	</block>
+
+	<block label="1 -- FeatureFinderMetabo">
+		<row>
+			<cell>
+				<label>
+					<content parameter="featurefindermetabo.ini" />
+				</label>
+			</cell>
+			<cell colspan="3">
+				<module id="featurefindermetabo.ini" type="fileSelector">
+					<property name="label">FeatureFinderMetabo INI</property>
+				</module>
+			</cell>
+			<cell align="right" colspan="4">
+				<label prefix="false">
+				</label>
+			</cell>
+		</row>
+	</block>
+
+	<block label="2 -- IDMapper">
+		<row>
+			<cell>
+				<label>
+					<content parameter="idmapper.ini" />
+				</label>
+			</cell>
+			<cell colspan="3">
+				<module id="idmapper.ini" type="fileSelector">
+					<property name="label">IDMapper INI</property>
+				</module>
+			</cell>
+			<cell align="right" colspan="4">
+				<label prefix="false">
+				</label>
+			</cell>
+		</row>
+	</block>
+
+	<block label="3 -- MapAlignerPoseClustering">
+		<row>
+			<cell>
+				<label>
+					<content parameter="mapalignerposeclustering.ini" />
+				</label>
+			</cell>
+			<cell colspan="3">
+				<module id="mapalignerposeclustering.ini" type="fileSelector">
+					<property name="label">MapAlignerPoseClustering INI</property>
+				</module>
+			</cell>
+			<cell align="right" colspan="4">
+				<label prefix="false">
+				</label>
+			</cell>
+		</row>
+	</block>
+
+  <block label="4 -- MetaboliteAdductDecharger">
+		<row>
+			<cell>
+				<label>
+					<content parameter="metaboliteadductdecharger.ini" />
+				</label>
+			</cell>
+			<cell colspan="3">
+				<module id="metaboliteadductdecharger.ini" type="fileSelector">
+					<property name="label">MetaboliteAdductDecharger INI</property>
+				</module>
+			</cell>
+			<cell align="right" colspan="4">
+				<label prefix="false">
+				</label>
+			</cell>
+		</row>
+	</block>
+
+	<block label="5 -- FeatureLinkerUnlabeled">
+		<row>
+			<cell>
+				<label>
+					<content parameter="featurelinkerunlabeled.ini" />
+				</label>
+			</cell>
+			<cell colspan="3">
+				<module id="featurelinkerunlabeled.ini" type="fileSelector">
+					<property name="label">FeatureLinkerUnlabeled INI</property>
+				</module>
+			</cell>
+			<cell align="right" colspan="4">
+				<label prefix="false">
+				</label>
+			</cell>
+		</row>
+    <row>
+      <cell>
+        <label>
+          <content parameter="featurelinkerunlabeled.tool_type" />
+        </label>
+      </cell>
+      <cell colspan="3">
+        <input parameter="featurelinkerunlabeled.tool_type" type="select" />
+      </cell>
+      <cell align="right" colspan="4">
+        <label prefix="false">
+        </label>
+      </cell>
+    </row>
+	</block>
+
+	<block label="6 -- GNPSExport">
+		<row>
+			<cell>
+				<label>
+					<content parameter="gnpsexport.ini" />
+				</label>
+			</cell>
+			<cell colspan="3">
+				<module id="gnpsexport.ini" type="fileSelector">
+					<property name="label">GNPSExport INI</property>
+				</module>
+			</cell>
+			<cell align="right" colspan="4">
+				<label prefix="false">
+				</label>
+			</cell>
+		</row>
+		
+	</block>
+
+	<block label="7 -- TextExporter">
+		<row>
+			<cell>
+				<label>
+					<content parameter="textexporter.ini" />
+				</label>
+			</cell>
+			<cell colspan="3">
+				<module id="textexporter.ini" type="fileSelector">
+					<property name="label">TextExporter INI</property>
+				</module>
+			</cell>
+			<cell align="right" colspan="4">
+				<label prefix="false">
+				</label>
+			</cell>
+		</row>
+	</block>
+
+</interface>

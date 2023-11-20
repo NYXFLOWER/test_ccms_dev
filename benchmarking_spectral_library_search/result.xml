@@ -1,0 +1,290 @@
+<interface id="benchmarking_spectral_library_search" version="release_0.0">
+    <download>
+    </download>
+
+    <view group="Test group" id="table_view_url" label="Output table">
+        <blockRef id="main" type="table_block" />
+    </view>
+
+    <view group="Test group" id="table_view_url2" label="Output table2">
+        <blockRef id="main" type="table_block2" />
+    </view>
+
+    <block id="table_block2" type="stream">
+        <data>
+            <source name="log_dir/logging.txt" type="file" />
+            <parsers>
+                <parser contentType="text/html" type="stream" />
+            </parsers>
+        </data>
+    </block>
+    
+   <block id="table_block" type="table_ss">  
+    <!-- <block id="table_block" type="table"> -->
+        <data>
+            <source name="tsv_collection/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+               <parser type="SQLite" />    
+               <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_original_usi]" />\
+                    <parameter name="LABEL" value="[query_original_usi]" />\
+                </column>
+                <column label="noise_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[noise_original_usi]" />\
+                    <parameter name="LABEL" value="[noise_original_usi]" />\
+                </column>
+                <column label="noise_processed_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[noise_processed_usi]" />\
+                    <parameter name="LABEL" value="[noise_processed_usi]" />\
+                </column>
+                <!-- <column field="InternalFilename4" label="InternalFilename4" type="text" width="20" /> -->
+                <!-- </column>
+                    <column label="query_usi_n0" type="genericurlgenerator" width="12"> \
+                        <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                        <parameter name="REQUESTPARAMETER=usi" value="[query_usi_l0]" />\
+                        <parameter name="LABEL" value="[query_usi_l0]" />\
+                </column> -->
+                <!-- <column field="query_usi_l3" label="query_usi_l3" type="text" width="20" /> -->
+                <column label="query_usi_l3" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi_l3]" />\
+                    <parameter name="LABEL" value="[query_usi_l3]" />\
+                </column>
+                <column field="in_recall" label="in_recall" type="integer" width="1" />
+                <!-- is correct 1 -->
+                <column field="cosine_n0_is_correct_1" label="cosine_n0_is_correct_1" type="integer" width="1" />
+                <column field="cosine_n3_is_correct_1" label="cosine_n3_is_correct_1" type="integer" width="1" />
+                <column field="cosine1_n0_is_correct_1" label="cosine1_n0_is_correct_1" type="integer" width="1" />
+                <column field="cosine1_n3_is_correct_1" label="cosine1_n3_is_correct_1" type="integer" width="1" />
+                <!-- is correct ambiguous -->
+                <column field="cosine_n0_is_correct_ambiguous" label="cosine_n0_is_correct_ambiguous" type="integer" width="1" />
+                <column field="cosine_n3_is_correct_ambiguous" label="cosine_n3_is_correct_ambiguous" type="integer" width="1" />
+                <column field="cosine1_n0_is_correct_ambiguous" label="cosine1_n0_is_correct_ambiguous" type="integer" width="1" />
+                <column field="cosine1_n3_is_correct_ambiguous" label="cosine1_n3_is_correct_ambiguous" type="integer" width="1" />
+                <!-- matching score 1 -->
+                <column field="cosine_n0_matching_score_1" label="cosine_n0_matching_score_1" type="float" precision="4" width="3" />
+                <column field="cosine_n3_matching_score_1" label="cosine_n3_matching_score_1" type="float" precision="4" width="3" />
+                <column field="cosine1_n0_matching_score_1" label="cosine1_n0_matching_score_1" type="float" precision="4" width="3" />
+                <column field="cosine1_n3_matching_score_1" label="cosine1_n3_matching_score_1" type="float" precision="4" width="3" />
+                <!-- matching score 2 -->
+                <column field="cosine_n0_matching_score_2" label="cosine_n0_matching_score_2" type="float" precision="4" width="3" />
+                <column field="cosine_n3_matching_score_2" label="cosine_n3_matching_score_2" type="float" precision="4" width="3" />
+                <column field="cosine1_n0_matching_score_2" label="cosine1_n0_matching_score_2" type="float" precision="4" width="3" />
+                <column field="cosine1_n3_matching_score_2" label="cosine1_n3_matching_score_2" type="float" precision="4" width="3" />
+                <!-- query #annotated peak -->
+                <column field="#query_annotated_peak" label="#query_annotated_peak" type="integer" width="3" />
+                <!-- library #matched peak 1 -->
+                <column field="cosine_n0_library_#match_peaks_1" label="cosine_n0_library_#match_peaks_1" type="integer" width="3" />
+                <column field="cosine_n3_library_#match_peaks_1" label="cosine_n3_library_#match_peaks_1" type="integer" width="3" />
+                <column field="cosine1_n0_library_#match_peaks_1" label="cosine1_n0_library_#match_peaks_1" type="integer" width="3" />
+                <column field="cosine1_n3_library_#match_peaks_1" label="cosine1_n3_library_#match_peaks_1" type="integer" width="3" />
+                <!-- library #matched peak 2 -->
+                <column field="cosine_n0_library_#match_peaks_2" label="cosine_n0_library_#match_peaks_2" type="integer" width="3" />
+                <column field="cosine_n3_library_#match_peaks_2" label="cosine_n3_library_#match_peaks_2" type="integer" width="3" />
+                <column field="cosine1_n0_library_#match_peaks_2" label="cosine1_n0_library_#match_peaks_2" type="integer" width="3" />
+                <column field="cosine1_n3_library_#match_peaks_2" label="cosine1_n3_library_#match_peaks_2" type="integer" width="3" />
+                <!-- library sequence 1 -->
+                <column field="cosine_n0_library_seq_1" label="cosine_n0_library_seq_1" type="text" width="20" />
+                <column field="cosine_n3_library_seq_1" label="cosine_n3_library_seq_1" type="text" width="20" />
+                <column field="cosine1_n0_library_seq_1" label="cosine1_n0_library_seq_1" type="text" width="20" />
+                <column field="cosine1_n3_library_seq_1" label="cosine1_n3_library_seq_1" type="text" width="20" />
+                <!-- library sequence 2 -->
+                <column field="cosine_n0_library_seq_2" label="cosine_n0_library_seq_2" type="text" width="20" />
+                <column field="cosine_n3_library_seq_2" label="cosine_n3_library_seq_2" type="text" width="20" />
+                <column field="cosine1_n0_library_seq_2" label="cosine1_n0_library_seq_2" type="text" width="20" />
+                <column field="cosine1_n3_library_seq_2" label="cosine1_n3_library_seq_2" type="text" width="20" />
+                <!-- library usi 1 -->
+                <column label="cosine_n0_library_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[cosine_n0_library_usi_1]" />\
+                    <parameter name="LABEL" value="[cosine_n0_library_usi_1]" />\
+                </column>
+                <column label="cosine_n3_library_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[cosine_n3_library_usi_1]" />\
+                    <parameter name="LABEL" value="[cosine_n3_library_usi_1]" />\
+                </column>                
+                <column label="cosine1_n0_library_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[cosine1_n0_library_usi_1]" />\
+                    <parameter name="LABEL" value="[cosine1_n0_library_usi_1]" />\
+                </column>  
+                <column label="cosine1_n3_library_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[cosine1_n3_library_usi_1]" />\
+                    <parameter name="LABEL" value="[cosine1_n3_library_usi_1]" />\
+                </column>  
+                <!-- library usi 2 -->
+                <column label="cosine_n0_library_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[cosine_n0_library_usi_2]" />\
+                    <parameter name="LABEL" value="[cosine_n0_library_usi_2]" />\
+                </column>
+                <column label="cosine_n3_library_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[cosine_n3_library_usi_2]" />\
+                    <parameter name="LABEL" value="[cosine_n3_library_usi_2]" />\
+                </column>
+                <column label="cosine1_n0_library_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[cosine1_n0_library_usi_2]" />\
+                    <parameter name="LABEL" value="[cosine1_n0_library_usi_2]" />\
+                </column>
+                <column label="cosine1_n3_library_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[cosine1_n3_library_usi_2]" />\
+                    <parameter name="LABEL" value="[cosine1_n3_library_usi_2]" />\
+                </column> 
+                <!-- cosine precision -->
+                <column field="cosine_n0_precision" label="cosine_n0_precision" type="float" precision="4" width="3" />
+                <column field="cosine_n3_precision" label="cosine_n3_precision" type="float" precision="4" width="3" />
+                <column field="cosine1_n0_precision" label="cosine1_n0_precision" type="float" precision="4" width="3" />
+                <column field="cosine1_n3_precision" label="cosine1_n3_precision" type="float" precision="4" width="3" />
+                <!-- cosine recall -->
+                <column field="cosine_n0_recall" label="cosine_n0_recall" type="float" precision="4" width="3" />
+                <column field="cosine_n3_recall" label="cosine_n3_recall" type="float" precision="4" width="3" />
+                <column field="cosine1_n0_recall" label="cosine1_n0_recall" type="float" precision="4" width="3" />
+                <column field="cosine1_n3_recall" label="cosine1_n3_recall" type="float" precision="4" width="3" />
+                <!-- cosine precision ambiguous -->
+                <column field="cosine_n0_precision_ambiguous" label="cosine_n0_precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="cosine_n3_precision_ambiguous" label="cosine_n3_precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="cosine1_n0_precision_ambiguous" label="cosine1_n0_precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="cosine1_n3_precision_ambiguous" label="cosine1_n3_precision_ambiguous" type="float" precision="4" width="3" />
+                <!-- cosine recall ambiguous -->
+                <column field="cosine_n0_recall_ambiguous" label="cosine_n0_recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="cosine_n3_recall_ambiguous" label="cosine_n3_recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="cosine1_n0_recall_ambiguous" label="cosine1_n0_recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="cosine1_n3_recall_ambiguous" label="cosine1_n3_recall_ambiguous" type="float" precision="4" width="3" />
+
+
+            </row>
+
+            <!-- <row>
+                <column field="library_idx" label="library_idx" type="integer" width="3" />
+                <column field="original_peptide" label="original_peptide" type="text" width="20" />
+                <column field="shuffled_peptide" label="shuffled_peptide" type="text" width="20" />
+                <column field="#tries" label="#tries" type="integer" width="3" />
+                <column field="charge" label="charge" type="integer" width="1" />
+                <column field="cosine" label="cosine" type="float" precision="4" width="3" />
+                <column field="#peaks" label="#peaks" type="integer" width="3" />
+                <column field="#matched_peaks" label="#matched_peaks" type="integer" width="3" />
+
+
+                <column field="original_spectrum_usi" label="original_spectrum_usi" type="text" width="20" />
+                <column field="shuffled_spectrum_usi" label="shuffled_spectrum_usi" type="text" width="20" />
+                </column>
+                <column label="View original spectrum usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[original_spectrum_usi]" />\
+                    <parameter name="LABEL" value="[original_spectrum_usi]" />\
+                </column>
+                <column label="View shuffled spectrum usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[shuffled_spectrum_usi]" />\
+                    <parameter name="LABEL" value="[shuffled_spectrum_usi]" />\
+                </column>
+
+            </row> -->
+
+            <row expander="image">
+                <column colspan="5" height="500" title="Original spectrum" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename1]" name="file" />
+                    <parameter name="scan" value="[query_scan]" />
+                    <parameter name="peptide" value="[query_seq]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.4" />
+                    <parameter name="trim" value="true" />
+                </column>
+                <column colspan="5" height="500" title="Original spectrum" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename4]" name="file" />
+                    <parameter name="scan" value="[query_scan]" />
+                    <parameter name="peptide" value="[query_seq]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.4" />
+                    <parameter name="trim" value="true" />
+                </column>
+            </row>
+            <row expander="image">
+                <column colspan="5" height="500" title="Original spectrum" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename]" name="file" />
+                    <parameter name="scan" value="[cosine_n0_library_idx_1]" />
+                    <parameter name="peptide" value="[cosine_n0_library_seq_1]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.4" />
+                    <parameter name="trim" value="true" />
+                </column>
+                <column colspan="5" height="500" title="Original spectrum" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename]" name="file" />
+                    <parameter name="scan" value="[cosine_n0_library_idx_2]" />
+                    <parameter name="peptide" value="[cosine_n0_library_seq_2]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.4" />
+                    <parameter name="trim" value="true" />
+                </column>
+                <column colspan="5" height="500" title="Original spectrum" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename]" name="file" />
+                    <parameter name="scan" value="[cosine_n3_library_idx_1]" />
+                    <parameter name="peptide" value="[cosine_n3_library_seq_1]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.4" />
+                    <parameter name="trim" value="true" />
+                </column>
+                <column colspan="5" height="500" title="Original spectrum" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename]" name="file" />
+                    <parameter name="scan" value="[cosine_n3_library_idx_2]" />
+                    <parameter name="peptide" value="[cosine_n3_library_seq_2]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.4" />
+                    <parameter name="trim" value="true" />
+                </column>
+            </row>
+            <row expander="image">
+                <column colspan="5" height="500" title="Original spectrum" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename]" name="file" />
+                    <parameter name="scan" value="[cosine1_n0_library_idx_1]" />
+                    <parameter name="peptide" value="[cosine1_n0_library_seq_1]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.4" />
+                    <parameter name="trim" value="true" />
+                </column>
+                <column colspan="5" height="500" title="Original spectrum" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename]" name="file" />
+                    <parameter name="scan" value="[cosine1_n0_library_idx_2]" />
+                    <parameter name="peptide" value="[cosine1_n0_library_seq_2]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.4" />
+                    <parameter name="trim" value="true" />
+                </column>
+                <column colspan="5" height="500" title="Original spectrum" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename]" name="file" />
+                    <parameter name="scan" value="[cosine1_n3_library_idx_1]" />
+                    <parameter name="peptide" value="[cosine1_n3_library_seq_1]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.4" />
+                    <parameter name="trim" value="true" />
+                </column>
+                <column colspan="5" height="500" title="Original spectrum" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename]" name="file" />
+                    <parameter name="scan" value="[cosine1_n3_library_idx_2]" />
+                    <parameter name="peptide" value="[cosine1_n3_library_seq_2]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.4" />
+                    <parameter name="trim" value="true" />
+                </column>
+            </row>
+        </data>
+    </block>
+	
+	
+</interface>

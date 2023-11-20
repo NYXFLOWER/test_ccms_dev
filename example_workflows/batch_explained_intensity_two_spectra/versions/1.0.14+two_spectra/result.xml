@@ -1,0 +1,43 @@
+<interface id="batch_explained_intensity_two_spectra" version="1.0.14+two_spectra">
+  <download>
+    <source name="spectra/" type="folder" />
+  </download>
+  <view id="view_spectra" label="View Spectra">
+    <blockRef id="main" type="view_spectra" />
+  </view>
+
+  <block id="view_spectra" type="table_ss">
+    <data>
+      <source name="identifications_merged/" type="file" />
+      <parsers>
+        <parser type="genericTabular" />
+        <parser type="SQLite" />
+      </parsers>
+    </data>
+
+    <row />
+    <row expander="image">
+      <column colspan="5" height="500" title="Original spectrum" type="jscolumnspectrumviewer" width="600">
+        <parameter file="[_dyn_#Lorikeet File]" name="file" />
+        <parameter name="scan" value="[_dyn_#Scan number]" />
+        <parameter name="peptide" value="[_dyn_#Original peptide]" />
+        <parameter name="modformat" value="specnets" />
+        <parameter name="trim" value="true" />
+      </column>
+      <column colspan="5" height="500" title="Prethreshold spectrum" type="jscolumnspectrumviewer" width="600">
+        <parameter file="[_dyn_#InternalFilename]" name="file" />
+        <parameter name="scan" value="[_dyn_#Scan]" />
+        <parameter name="peptide" value="[_dyn_#Peptide1]" />
+        <parameter name="modformat" value="inspect" />
+        <parameter name="trim" value="true" />
+      </column>
+      <column colspan="5" height="500" title="Afterthreshold spectrum" type="jscolumnspectrumviewer" width="600">
+        <parameter file="[_dyn_#InternalFilename2]" name="file" />
+        <parameter name="scan" value="[_dyn_#Scan]" />
+        <parameter name="peptide" value="[_dyn_#Peptide2]" />
+        <parameter name="modformat" value="inspect" />
+        <parameter name="trim" value="true" />
+      </column>
+    </row>
+  </block>
+</interface>

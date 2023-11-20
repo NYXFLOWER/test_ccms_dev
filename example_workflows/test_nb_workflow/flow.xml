@@ -1,0 +1,33 @@
+<flow name="fast_test_workflow">
+        <object name="workflowParameters" />
+
+
+        <action name="begin">
+                <output object="workflowParameters" port="flowParams" />
+<!--                <output collection="spectrum_collection" port="spectrum_port" />  -->
+                <output object="spectrum_collection" port="spectrum_port" />
+        </action>
+
+<!--        <collection name="spectrum_collection" />  -->
+        <object name="spectrum_collection" />
+        <object name="table" />
+
+        <action name="table_output">
+<!--               <input object="workflowParameters" port="flowParams" />   -->
+<!--                <input collection="spectrum_collection" port="spectrum_port" />  -->
+                <input object="spectrum_collection" port="spectrum_port" />
+                <output object="table" port="table_port" />
+        </action>
+
+        <object name="summary" />
+
+        <action name="table_summary">
+                <input object="table" port="table_port" />
+                <output object="summary" port="summary_port" />
+        </action>
+
+        <action name="end">
+                <input object="summary" port="summary_port" />
+                <input object="table" port="table_port" />
+        </action>
+</flow>

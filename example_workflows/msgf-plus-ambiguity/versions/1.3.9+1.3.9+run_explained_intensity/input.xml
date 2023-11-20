@@ -1,0 +1,402 @@
+<interface id="msgf-plus-ambiguity" version="1.3.9+1.3.9+run_explained_intensity">
+	<workflow-id>MSGF-PLUS-AMBIGUITY</workflow-id>
+	<workflow-label>MSGF-PLUS-AMBIGUITY</workflow-label>
+
+	
+	<parameters>
+		
+		<parameter label="Description" name="desc">
+			<validator maximum="1000" type="length" />
+		</parameter>
+		<parameter label="Email" name="email">
+			<validator type="email" />
+		</parameter>
+		
+		<parameter label="Spectrum Files" name="spec_on_server">
+			<validator type="required" />
+			<fileGenerator purpose="spectrum" target="spec" type="upload" />
+		</parameter>
+		<parameter label="Sequence Database" name="seq_on_server">
+			<fileGenerator purpose="sequence" target="fasta" type="upload" />
+		</parameter>
+		
+		<parameter label="Include Common Contaminants" name="db.contaminants" />
+		
+		<parameter label="Instrument" name="instrument.instrument">
+                        <options>
+                                <option value="ESI-ION-TRAP" />
+                                <option value="QTOF" />
+                                <option label="High accuracy LTQ" value="FT-HYBRID" />
+                        </options>
+                        <validator type="set" />
+		</parameter>
+                <parameter label="Fragmentation Method" name="fragmentation.fragmentation">
+                        <options>
+                                <option label="Specified in spectrum file" value="None" />
+                                <option value="CID" />
+                                <option value="ETD" />
+                                <option value="HCD" />
+                                <option label="Merge spectra from the same precursor" value="Merge" />
+                        </options>
+                        <validator type="set" />
+                </parameter>
+		<parameter label="Cysteine Protecting Group" name="cysteine_protease.cysteine">
+			<options>
+				<option label="Carbamidomethylation (+57)" value="c57" />
+				<option label="Carboxymethylation (+58)" value="c58" />
+				<option label="NIPIA/NIPCAM (+99)" value="c99" />
+				<option value="None" />
+			</options>
+			<validator type="set" />
+		</parameter>
+                <parameter label="Protease" name="cysteine_protease.protease">
+                        <options>
+                                <option value="Trypsin" />
+                                <option value="Chymotrypsin" />
+                                <option value="Lys-C" />
+                                <option value="Lys-N" />
+                                <option value="Arg-C" />
+                                <option value="Glu-C" />
+                                <option value="Asp-N" />
+                                <option value="None" />
+                        </options>
+                        <validator type="set" />
+                </parameter>
+		<parameter label="Number of Allowed 13C" name="c13_nnet.c13">
+			<options>
+				<option value="0" />
+				<option value="1" />
+				<option value="2" />
+			</options>
+			<default value="1" />
+			<validator type="set" />
+		</parameter>
+		<parameter label="Number of Allowed Non-Enzymatic Termini" name="c13_nnet.nnet">
+			<options>
+				<option value="0" />
+				<option value="1" />
+				<option value="2" />
+			</options>
+			<default value="1" />
+			<validator type="set" />
+		</parameter>
+
+		<parameter label="Parent Mass Tolerance" name="tolerance.PM_tolerance">
+			<default value="30" />
+			
+			<processor suffix="tolerance_unit.PM_unit" type="concatenate" />
+		</parameter>
+		<parameter label="Parent Mass Tolerance Units" name="tolerance_unit.PM_unit">
+			<options>
+				<option value="Da" />
+				<option value="ppm" />
+			</options>
+			<default value="ppm" />
+			<validator type="set" />
+		</parameter>
+		
+		<parameter label="Maximum Number of PTMs Permitted in a Single Peptide" name="ptm.mods">
+			<default value="1" />
+			<validator minimum="0" type="integer" />
+		</parameter>
+		
+		<parameter label="Filter" name="filter.filter">
+			<options>
+				<option value="FDR" />
+				
+			</options>
+			<default value="FDR" />
+			
+			<processor type="filter" />
+		</parameter>
+		<parameter label="Spectrum-Level FDR" name="FDR.FDR">
+			<default value="0.01" />
+			<validator maximum="1" minimum="0" type="float" />
+		</parameter>
+		<parameter label="Precursor (protein + charge)-Level FDR" name="FDR_precursor.FDR">
+			<default value="0.01" />
+			<validator maximum="1" minimum="0" type="float" />
+		</parameter>
+		<parameter label="Protein-Level FDR (parsimony algorithm)" name="FDR_protein.FDR">
+			<default value="0.01" />
+			<validator maximum="1" minimum="0" type="float" />
+		</parameter>
+		
+		
+                <parameter label="Top k matches per spectrum" name="TOPK">
+                        <default value="5" />
+			<validator maximum="20" minimum="1" type="integer" />
+                </parameter>
+                <parameter label="Search Parallelism" name="PARALLELISM">
+                        <default value="40" />
+                        <validator maximum="200" minimum="1" type="integer" />
+                </parameter>
+                <parameter label="KL Filtering Threshold" name="KL_FILTER">
+                        <default value="0" />
+                        <validator minimum="0" type="float" />
+                </parameter>
+                <parameter label="Isobaric Tag Type" name="isobaric_tag">
+                        <options>
+                                <option value="None" />
+                                <option value="TMT 2-plex" />
+                                <option value="TMT 6-plex" />
+                                <option value="TMT 10-plex" />
+                                <option value="TMT 11-plex" />
+                                <option value="iTRAQ 4-plex" />
+                                <option value="iTRAQ 8-plex" />
+                        </options>
+                        <default value="None" />
+                        <validator type="set" />
+                </parameter>
+	</parameters>
+
+	
+	<processors>
+		<processor type="sequence" />
+                <processor type="ptm">
+                        <property name="customize">DEAMIDATION</property>
+                        <property name="customize">ITRAQ_8PLEX_K</property>
+                        <property name="customize">ITRAQ_8PLEX_NTERM</property>
+                        <property name="customize">TMT_K</property>
+                        <property name="customize">TMT_NTERM</property>
+                </processor>
+		<processor type="msgfPlus" />
+	</processors>
+
+	
+	<block label="Basic Options">
+		<row>
+			<cell align="center" colspan="4">
+				<label prefix="false">
+					<content>&lt;span style="background-color:#D1EEEE;
+					padding:1px; border:2px inset blue"&gt;See
+					&lt;a style="color:blue; font-weight:bold; font-size:105%;
+						background-color:#D1EEEE" target="_blank"
+						href="http://proteomics.ucsd.edu/Software/MSGFDB.html"&gt;
+						here
+					&lt;/a&gt; to learn more about MS-GFDB.&lt;/span&gt;</content>
+				</label>
+			</cell>
+		</row>
+		<row>
+			<cell>
+				<label>
+					<content parameter="spec_on_server" />
+					<tooltip id="hSpectrumFile" />
+				</label>
+			</cell>
+			<cell colspan="3">
+				<module id="spec_on_server" type="fileSelector">
+					<property name="label">Spectrum Files</property>
+				</module>
+			</cell>
+		</row>
+		<row>
+			<cell>
+				<label>
+					<content parameter="instrument.instrument" />
+					<tooltip id="hInstrument" />
+				</label>
+			</cell>
+			<cell>
+				<input parameter="instrument.instrument" type="select" />
+			</cell>
+			<cell>
+				<label>
+					<content parameter="fragmentation.fragmentation" />
+					<tooltip id="hFragmentation" />
+				</label>
+			</cell>
+			<cell>
+				<input parameter="fragmentation.fragmentation" type="select" />
+			</cell>
+		</row>
+		<row>
+			<cell>
+				<label>
+					<content parameter="cysteine_protease.cysteine" />
+					<tooltip id="hCysteine" />
+				</label>
+			</cell>
+			<cell>
+				<input parameter="cysteine_protease.cysteine" type="select" />
+			</cell>
+			<cell>
+				<label>
+					<content parameter="cysteine_protease.protease" />
+					<tooltip id="hProtease" />
+				</label>
+			</cell>
+			<cell>
+				<input parameter="cysteine_protease.protease" type="select" />
+			</cell>
+		</row>
+		<row>
+			<cell>
+				<label>
+					<content>
+						Number of Allowed &lt;sup&gt;13&lt;/sup&gt;C
+					</content>
+					<tooltip id="hC13" />
+				</label>
+			</cell>
+			<cell>
+				<input parameter="c13_nnet.c13" type="select" />
+			</cell>
+			<cell>
+				<label>
+					<content parameter="c13_nnet.nnet" />
+					<tooltip id="hNnet" />
+				</label>
+			</cell>
+			<cell>
+				<input parameter="c13_nnet.nnet" type="select" />
+			</cell>
+		</row>
+		<row>
+			<cell>
+				<label>
+					<content parameter="tolerance.PM_tolerance" />
+					<tooltip id="hParentMass" />
+				</label>
+			</cell>
+			<cell>
+				<input parameter="tolerance.PM_tolerance" type="text">
+					<attribute name="size" value="3" />
+				</input>
+				<input parameter="tolerance_unit.PM_unit" type="select" />
+			</cell>
+		</row>
+		<row>
+			<cell>
+				<label>
+					<content parameter="seq_on_server" />
+					<tooltip id="hAdditionalSeq" />
+				</label>
+			</cell>
+			<cell colspan="2">
+				<module id="seq_on_server" type="fileSelector">
+					<property name="label">Sequence Files</property>
+				</module>
+			</cell>
+                        <cell>
+                                <input parameter="db.contaminants" type="checkbox" />
+                                <label>
+                                        <content parameter="db.contaminants" />
+                                        <tooltip id="hContaminant" />
+                                </label>
+                        </cell>
+		</row>
+	</block>
+	<block label="Allowed Post-Translational Modifications">
+		<row>
+			<cell align="center">
+				<label>
+					<content parameter="ptm.mods" />
+					<tooltip id="hMods" />
+				</label>
+				<input parameter="ptm.mods" type="text">
+					<attribute name="size" value="3" />
+				</input>
+			</cell>
+		</row>
+		<row>
+			<cell>
+				<module id="ptm" type="ptmTable">
+					<property name="types">fix,opt,fix_nterm,opt_nterm</property>
+					<property name="defaultType">opt</property>
+				</module>
+			</cell>
+		</row>
+	</block>
+	<block label="Advanced Options">
+		<row>
+                    <cell>
+                        <label>
+                            <content parameter="FDR.FDR" />
+                            <tooltip id="psm_fdr_tooltip">PSM-level false discovery rate used to filter results.</tooltip>
+                        </label>
+                    </cell>
+
+                    <cell>
+                        <input parameter="FDR.FDR" type="text">
+                            <attribute name="size" value="3" />
+                        </input>
+                    </cell>
+                    <cell>
+                        <label>
+                            <content parameter="FDR_precursor.FDR" />
+                            <tooltip id="prec_fdr_tooltip">Precursor-level false discovery rate used to filter results.</tooltip>
+                        </label>
+                    </cell>
+
+                    <cell>
+                        <input parameter="FDR_precursor.FDR" type="text">
+                            <attribute name="size" value="3" />
+                        </input>
+                    </cell>
+                    <cell>
+                        <label>
+                            <content parameter="FDR_protein.FDR" />
+                            <tooltip id="protein_fdr_tooltip">Protein-level false discovery rate used to filter results.</tooltip>
+                        </label>
+                    </cell>
+
+                    <cell>
+                        <input parameter="FDR_protein.FDR" type="text">
+                            <attribute name="size" value="3" />
+                        </input>
+                    </cell>
+		</row>
+		
+
+		<row>
+                    <cell>
+                        <label>
+                            <content parameter="TOPK" />
+                            <tooltip id="topk_tooltip">Number of matches per spectrum to be reported.</tooltip>
+                        </label>
+                    </cell>
+                    <cell>
+                        <input parameter="TOPK" type="text">
+                            <attribute name="size" value="3" />
+                        </input>
+                    </cell>
+
+                    <cell>
+                        <label>
+                            <content parameter="PARALLELISM" />
+                            <tooltip id="paralellism_tooltip">Number of spectrum files to search in parallel. Range of 1 to 200.</tooltip>
+                        </label>
+                    </cell>
+                    <cell>
+                        <input parameter="PARALLELISM" type="text">
+                            <attribute name="size" value="3" />
+                        </input>
+                    </cell>
+                    <cell>
+                        <label>
+                            <content parameter="KL_FILTER" />
+                            <tooltip id="kl_filter_thresh_tooltip">Spectra with a Kullback-Leibler divergence above this value will be filtered out. If threshold is set to 0, no spectra are filtered out.</tooltip>
+                        </label>
+                    </cell>
+
+                    <cell>
+                        <input parameter="KL_FILTER" type="text">
+                            <attribute name="size" value="3" />
+                        </input>
+                    </cell>
+		</row>
+		<row>
+                        <cell>
+                                <label>
+                                        <content parameter="isobaric_tag" />
+                                        <tooltip id="isobaric_tag_tooltip">Isobaric tags used for quantification.</tooltip>
+                                </label>
+                        </cell>
+                        <cell>
+                                <input parameter="isobaric_tag" type="select" />
+                        </cell>
+		</row>
+	</block>
+</interface>

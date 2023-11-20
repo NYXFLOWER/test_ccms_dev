@@ -1,0 +1,53 @@
+<interface id="test_nb_workflow" version="release_0.1">
+		<workflow-id>TEST_NB_WORKFLOW</workflow-id>
+        <workflow-label>TEST_NB_WORKFLOW</workflow-label>
+        
+        <parameters>
+                <parameter label="Description" name="desc">
+                        <validator maximum="1000" type="length" />
+                </parameter>
+                <parameter label="Email" name="email">
+                        <validator type="email" />
+                </parameter>
+
+                <parameter label="USI string" name="MyUSIstring">
+                        <validator maximum="1000" type="length" />
+                </parameter>
+                <parameter label="Spectrum Files" name="spec_on_server">
+                        <validator type="required" />
+                        <fileGenerator purpose="spectrum" target="spectrum_collection" type="upload" />
+                </parameter>
+ 
+        </parameters>
+
+        <block label="My block name">
+                <row>
+                        <cell>
+                                <label>
+                                        <content parameter="spec_on_server" />
+                                        <tooltip id="hSpectrumFile" />
+                                </label>
+                        </cell>
+                        <cell colspan="3">
+                                <module id="spec_on_server" type="fileSelector">
+                                        <property name="label">Spectrum Files</property>
+                                </module>
+                        </cell>
+                </row>
+ 
+                <row>
+                         <cell>
+                                <label>
+                                        <content parameter="MyUSIstring" />
+                                </label>
+                        </cell>
+                        <cell colspan="3">
+                                <input parameter="MyUSIstring" type="text">
+                                        <attribute name="size" value="100" />
+                                </input>
+                        </cell>
+                </row>
+ 
+        </block>
+
+</interface>

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<flow name="msgf-plus-ambiguity">
+	<!-- User-provided input files -->
+	<collection name="spectrum"/>
+	<collection name="sequence"/>
+	<!-- ProteoSAFe params.xml -->
+	<object name="parameters"/>
+	<!-- Intermediate workflow output files -->
+	<object name="mergedSequence"/>
+	<object name="preparedSequence"/>
+	<collection name="mzidResult"/>
+	<collection name="msgfPlusResult"/>
+	<object name="mergedResult_topk"/>
+	<object name="mergedResult_topk_wOrigFilename"/>
+	<object name="mergedResult_top1"/>
+
+
+
+	<action name="begin">
+		<output collection="spectrum" port="spec"/>
+		<output collection="sequence" port="fasta"/>
+		<output object="parameters" port="params"/>
+	</action>
+
+	<action name="mergeSequences">
+		<input collection="sequence" port="fasta"/>
+		<output object="mergedSequence" port="out"/>
+	</action>
+
+	<action name="buildSA">
+		<input object="mergedSequence" port="fasta"/>
+		<output object="preparedSequence" port="out"/>
+	</action>
+
+	<action multiplicity="multiple" name="msgfPlus" type="parallel">
+		<input collection="spectrum" port="spec" transformation="unfolding"/>
+		<input object="mergedSequence" port="fasta"/>
+		<input object="preparedSequence" port="seq"/>
+		<input object="parameters" port="params"/>
+		<output collection="mzidResult" port="out"/>
+	</action>
+
+	<action multiplicity="multiple" name="msgfPlusConvert" type="parallel">
+		<input collection="mzidResult" port="in" transformation="unfolding"/>
+		<output collection="msgfPlusResult" port="out"/>
+	</action>
+
+	<action name="merge">
+		<input collection="msgfPlusResult" port="result"/>
+		<output object="mergedResult_topk" port="mergedResult"/>
+	</action>
+
+	<action name="add_orig_filenames">
+        	<input object="parameters" port="params"/>
+		<input object="mergedResult_topk" port="in"/>
+		<output object="mergedResult_topk_wOrigFilename" port="out"/>
+	</action>
+
+	<action name="filter_topk_to_top1">
+		<input object="mergedResult_topk_wOrigFilename" port="in"/>
+		<output object="mergedResult_top1" port="out"/>
+	</action>
+
+    <!-- KL Code -->
+    <!-- KL Divergence -->
+    <object name="kl_output"/>
+    <collection name="kl_scratch"/>
+
+    <action name="generate_kl_divergence">
+        <input object="parameters" port="parameters"/>
+		<input collection="spectrum" port="spectrum"/>
+		<output object="kl_scratch" port="kl_scratch"/>
+        <output object="kl_output" port="kl_output"/>
+	</action>
+
+    <!-- Merging KL -->
+    <object name="merged_result_with_kl"/>
+    <action name="add_kl_to_psms">
+        <input object="parameters" port="parameters"/>
+		<input object="mergedResult_top1" port="mergedResult"/>
+        <input object="kl_output" port="kl_output"/>
+        <output object="merged_result_with_kl" port="merged_result_with_kl"/>
+    </action>
+
+    <!-- Calculating Ambiguity -->
+	<object name="merged_result_with_kl_with_ambiguity"/>
+    <action name="add_ambiguity_to_psms">
+		<input object="merged_result_with_kl" port="merged_result_with_kl"/>
+        <input collection="spectrum" port="spectrum"/>
+        <output object="merged_result_with_kl_with_ambiguity" port="merged_result_with_kl_with_ambiguity"/>
+    </action>
+
+	<object name="merged_result_with_kl_with_ambiguity_filtered"/>
+    <action name="filter">
+		<input object="merged_result_with_kl_with_ambiguity" port="merged_result_with_kl_with_ambiguity"/>
+        <output object="merged_result_with_kl_with_ambiguity_filtered" port="merged_result_with_kl_with_ambiguity_filtered"/>
+    </action>
+
+	<!-- FDR and mzTab Conversion -->
+	<object name="fdr_log"/>
+	<collection name="convertParameters_top1"/>
+	<collection name="convertParameters_topk"/>
+	<collection name="convertedMzTab_top1"/>
+	<collection name="convertedMzTab_topk"/>
+	<collection name="validatedMzTab_top1"/>
+	<collection name="validatedMzTab_topk"/>
+	<!-- Final workflow result files -->
+	<object name="tsvResult_top1"/>
+	<object name="tsvResult_topk"/>
+	<collection name="cleanedMzTab_top1"/>
+	<collection name="cleanedMzTab_topk"/>
+	<object name="statistics_top1"/>
+	<object name="statistics_topk"/>
+
+	<action name="fdr">
+        <input object="parameters" port="parameters"/>
+        <input object="mergedSequence" port="sequence"/>
+		<input object="mergedResult_top1" port="in"/>
+		<output object="tsvResult_top1" port="out"/>
+		<output object="fdr_log" port="logfile"/>
+	</action>
+
+	<action name="output_topk_passing_fdr">
+		<input object="mergedResult_topk_wOrigFilename" port="topk_results"/>
+		<input object="fdr_log" port="fdr_log"/>
+		<output object="tsvResult_topk" port="out"/>
+	</action>
+
+	<action name="convertTSVToMzTab_top1">
+		<input object="tsvResult_top1" port="input"/>
+		<input object="parameters" port="params"/>
+		<output collection="convertParameters_top1" port="config"/>
+		<output collection="convertedMzTab_top1" port="mzTab"/>
+	</action>
+
+	<action name="convertTSVToMzTab_topk">
+		<input object="tsvResult_topk" port="input"/>
+		<input object="parameters" port="params"/>
+		<output collection="convertParameters_topk" port="config"/>
+		<output collection="convertedMzTab_topk" port="mzTab"/>
+	</action>
+
+        <action name="processMzTab_top1">
+                <input object="parameters" port="params"/>
+                <input collection="convertedMzTab_top1" port="input"/>
+                <input collection="spectrum" port="peak"/>
+                <output collection="validatedMzTab_top1" port="validated"/>
+                <output collection="cleanedMzTab_top1" port="cleaned"/>
+                <output object="statistics_top1" port="summary"/>
+        </action>
+
+        <action name="processMzTab_topk">
+                <input object="parameters" port="params"/>
+                <input collection="convertedMzTab_topk" port="input"/>
+                <input collection="spectrum" port="peak"/>
+                <output collection="validatedMzTab_topk" port="validated"/>
+                <output collection="cleanedMzTab_topk" port="cleaned"/>
+                <output object="statistics_topk" port="summary"/>
+        </action>
+
+	<action name="end">
+        <input object="kl_output" port="kl_output"/>
+        <input object="mergedResult_topk_wOrigFilename" port="mergedResult_topk"/>
+        <input object="mergedResult_top1" port="mergedResult"/>
+        <input object="merged_result_with_kl_with_ambiguity_filtered" port="merged_result_with_kl_with_ambiguity"/>
+		<input collection="cleanedMzTab_topk" port="mzTab_topk"/>
+		<input collection="cleanedMzTab_top1" port="mzTab"/>
+		<input object="statistics_topk" port="statistics_topk"/>
+		<input object="statistics_top1" port="statistics"/>
+	</action>
+</flow>

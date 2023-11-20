@@ -1,0 +1,166 @@
+<interface id="batch_explained_intensity" version="1.1">
+	<workflow-id>BATCH_EXPLAINED_INTENSITY</workflow-id>
+	<workflow-label>Utility: Batch Explained Intensities</workflow-label>
+
+	
+	<parameters>
+		
+		
+		<parameter label="Description" name="desc">
+			<validator maximum="100" type="length" />
+		</parameter>
+		<parameter label="Email" name="email">
+			<validator type="email" />
+		</parameter>
+		
+		<parameter label="Spectrum Files" name="spectrum">
+			<validator type="required" />
+			<fileGenerator target="spectrum" type="upload" />
+		</parameter>
+		<parameter label="Identifications" name="identifications">
+			<validator type="required" />
+			<fileGenerator target="identifications" type="upload" />
+		</parameter>
+		<parameter label="Filename Header" name="filename">
+			<default value="Filename" />
+		</parameter>
+		<parameter label="Scan Header" name="scan">
+			<default value="Scan" />
+		</parameter>
+		<parameter label="Sequence Header" name="sequence">
+			<default value="Peptide" />
+		</parameter>
+		<parameter label="Parallelism" name="parallelism">
+			<default value="50" />
+			<validator type="integer" />
+		</parameter>
+		<parameter label="SNR Filter" name="filter.snr">
+			<default value="0" />
+			<validator type="integer" />
+		</parameter>
+		<parameter label="Low Mass Filter" name="filter.low_mass">
+			<default value="0" />
+			<validator type="integer" />
+		</parameter>
+		<parameter label="Precursor Filter" name="filter.precursor">
+			<options>
+							<option value="Yes" />
+							<option value="No" />
+			</options>
+			<default value="No" />
+			<validator type="set" />
+		</parameter>
+		<parameter label="Fragment Peak Tolerance" name="peak_tolerance">
+			<default value="0.05" />
+			<validator type="float" />
+		</parameter>
+		
+	</parameters>
+	
+	<block label="Basic Options">
+		<row>
+			<cell>
+				<label>
+					<content parameter="spectrum" />
+					<tooltip id="SpectrumFile" />
+				</label>
+			</cell>
+			<cell>
+				<module id="spectrum" type="fileSelector">
+					<property name="label">Spectrum Files</property>
+				</module>
+			</cell>
+			<cell>
+				<label>
+					<content parameter="identifications" />
+				</label>
+			</cell>
+			<cell>
+				<module id="identifications" type="fileSelector">
+					<property name="label">Identifications File</property>
+				</module>
+			</cell>
+		</row>
+	</block>
+	<block label="TSV Mappings">
+		<row>
+			<cell>
+				<label>
+					<content parameter="filename" />
+				</label>
+			</cell>
+			<cell colspan="2">
+				<input parameter="filename" type="text" />
+			</cell>
+			<cell>
+				<label>
+					<content parameter="scan" />
+				</label>
+			</cell>
+			<cell colspan="2">
+				<input parameter="scan" type="text" />
+			</cell>
+			<cell>
+				<label>
+					<content parameter="sequence" />
+				</label>
+			</cell>
+			<cell colspan="3">
+				<input parameter="sequence" type="text" />
+			</cell>
+		</row>
+	</block>
+	<block label="Spectrum Filtering">
+		<row>
+			<cell>
+				<label>
+					<content parameter="filter.snr" />
+				</label>
+			</cell>
+			<cell colspan="2">
+				<input parameter="filter.snr" type="text" />
+			</cell>
+			<cell>
+				<label>
+					<content parameter="filter.low_mass" />
+				</label>
+			</cell>
+			<cell colspan="2">
+				<input parameter="filter.low_mass" type="text" />
+			</cell>
+			<cell>
+				<label>
+					<content parameter="filter.precursor" />
+				</label>
+			</cell>
+			<cell colspan="2">
+				<input parameter="filter.precursor" type="select" />
+			</cell>
+		</row>
+	</block>
+	<block label="Tolerance">
+		<row>
+			<cell>
+				<label>
+					<content parameter="peak_tolerance" />
+				</label>
+			</cell>
+			<cell colspan="2">
+				<input parameter="peak_tolerance" type="text" />
+			</cell>
+		</row>
+	</block>
+	<block label="Parallelism">
+		<row>
+			<cell>
+				<label>
+					<content parameter="parallelism" />
+				</label>
+			</cell>
+			<cell colspan="2">
+				<input parameter="parallelism" type="text" />
+			</cell>
+		</row>
+	</block>
+
+</interface>

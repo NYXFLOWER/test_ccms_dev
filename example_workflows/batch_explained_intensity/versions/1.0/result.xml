@@ -1,0 +1,5 @@
+<interface id="batch_explained_intensity" version="1.0">
+  <download>
+		<source name="spectra/" type="folder" />
+	</download>
+</interface>

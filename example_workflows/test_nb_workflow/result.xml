@@ -1,0 +1,75 @@
+<interface id="test_nb_workflow" version="release_0_useless">
+    <download>
+    </download>
+    
+    <view group="Test group" id="summary_view_url" label="Summary">
+        <blockRef id="main" type="summary_block" />
+    </view>
+
+    <view group="Test group" id="table_view_url" label="Output table">
+        <blockRef id="main" type="table_block" />
+    </view>
+
+    <block id="summary_block" type="stream">
+        <data>
+            <source name="summary_dir/" type="file" />
+            <parsers>
+                <parser contentType="text/html" type="stream" />
+            </parsers>
+        </data>
+    </block>
+    
+<!--    <block id="table_block" type="table_ss">   -->
+    <block id="table_block" type="table">
+        <data>
+            <source name="table_dir/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="Dataset" type="sortedTabular" />
+<!--                <parser type="SQLite" />  -->   <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <processors> 
+<!--                <processor type="mzTab" />  -->
+<!--                <processor field="internalFilename" newField="baseFilename" type="baseFilename" />  -->
+				<processor field="Spectrum file name" type="uploadFilename" />  
+            </processors> 
+
+            <row>
+                <column field="Dataset" label="Dataset_header" type="text" width="12" />
+                <column field="Spectrum file name" label="Spectrum file name" type="text" width="50" />
+                <column field="Scan" label="Scan" type="integer" width="5" />
+                <column field="Sequence" label="Sequence" type="text" width="30" />
+                <column field="Charge" label="Charge" type="integer" width="1" />
+<!--                <column field="Charge" label="Charge" type="float" precision="1" />  -->
+                <column field="USI" label="USI_header" type="text" width="20" />
+                <column label="View USI" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[USI]" />\
+                    <parameter name="LABEL" value="View on MassIVE" />\
+<!--                    <parameter name="USETASK" value="True" />\  -->
+<!--                    <parameter name="PASS_URL" value="True" />\  -->
+                </column>
+                <column label="View USI2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="mzspec:[Dataset]:[Spectrum file name]:scan:[Scan]:[Sequence]/[Charge]" />\
+                    <parameter name="LABEL" value="View USI2" />\
+                </column>
+
+            </row>
+			
+                <row expander="image">
+                        <column colspan="20" height="500" type="jscolumnspectrumviewer" width="600">
+                                <parameter file="[Dataset]/ccms_peak/CD4 Tcells/LTQ-Orbitrap Elite/28/[Spectrum file name].mzML" name="file" />
+                                <parameter name="scan" value="[Scan]" />
+                                <parameter name="peptide" value="[Sequence]" />
+<!--                                <parameter name="modformat" value="inspect" />  -->
+                                <parameter name="modformat" value="proforma" />
+                                <parameter name="trim" value="true" />
+                        </column>
+                </row>
+
+        </data>
+    </block>
+	
+	
+</interface>

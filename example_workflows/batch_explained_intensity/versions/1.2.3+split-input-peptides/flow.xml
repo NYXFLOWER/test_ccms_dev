@@ -1,0 +1,41 @@
+<flow name="batch_explained_intensity">
+   
+   <collection name="spectrum" />
+   <object name="parameters" />
+   <object name="identifications" />
+   <collection name="identifications_batched" />
+   <collection name="identifications_batched_final" />
+   <collection name="jobs" />
+   <object name="identifications_merged" />
+
+   <action name="begin">
+     <output port="spectrum" collection="spectrum" />
+     <output port="identifications" object="identifications" />
+     <output port="params" collection="parameters" />
+   </action>
+
+  <action name="split_identifications">
+    <input port="spectrum" collection="spectrum" />
+    <input port="identifications" object="identifications" />
+    <input port="params" collection="parameters" />
+    <output port="identifications_batched" collection="identifications_batched" />
+    <output port="jobs" collection="jobs" />
+  </action>
+
+  <action name="calculated_explained_intensity" multiplicity="multiple" type="parallel">
+    <input port="jobs" collection="jobs" transformation="unfolding" />
+    <input port="spectrum" collection="spectrum" />
+    <input port="identifications_batched" collection="identifications_batched" />
+    <output port="identifications_batched_final" collection="identifications_batched_final" />
+  </action>
+
+  <action name="merge_tsv">
+    <input port="identifications_batched_final" collection="identifications_batched_final" />
+    <output port="identifications_merged" collection="identifications_merged" />
+  </action>
+
+   <action name="end">
+     <input port="identifications_merged" object="identifications_merged" />
+   </action>
+
+</flow>

@@ -1,0 +1,17 @@
+<flow name="test_flower_workflow">
+        <object name="workflowParameters" />
+
+
+        <action name="begin">
+                <output object="workflowParameters" port="flowParams" />
+<!--                <output collection="spectrum_collection" port="spectrum_port" />  -->
+                <output object="tsv_collection" port="tsv_port" />
+        </action>
+
+<!--        <collection name="spectrum_collection" />  -->
+        <object name="tsv_collection" />
+
+        <action name="end">
+                <input object="tsv_collection" port="tsv_port" />
+        </action>
+</flow>

@@ -1,0 +1,43 @@
+<flow name="mshub-gc">
+    <collection name="spectra" />
+    <object name="workflowParameters" />
+
+    <action name="begin">
+        <output collection="spectra" port="spec" />
+        <output object="workflowParameters" port="params" />
+    </action>
+
+    
+    <collection name="preprocessing_scratch" />
+    <object name="clustered_mgf" />
+    <object name="clusterinfo" />
+    <object name="clustersummary" />
+    <collection name="summary_output" />
+
+    <action name="preprocess_gcms_data">
+        <input collection="spectra" port="spectra" />
+        <input object="workflowParameters" port="workflowParameters" />
+        <output collection="preprocessing_scratch" port="preprocessing_scratch" />
+        <output object="clustered_mgf" port="clustered_mgf" />
+        <output object="clusterinfo" port="clusterinfo" />
+        <output object="clustersummary" port="clustersummary" />
+        <output collection="summary_output" port="summary_output" />
+    </action>
+
+    <object name="quantification_output" />
+    <action name="create_quantification">
+        <input collection="preprocessing_scratch" port="preprocessing_scratch" />
+        <input object="workflowParameters" port="workflowParameters" />
+        <output object="quantification_output" port="quantification_output" />
+    </action>
+
+
+    <action name="end">
+        <input collection="clustered_mgf" port="clustered_mgf" />
+        <input collection="clusterinfo" port="clusterinfo" />
+        <input collection="clustersummary" port="clustersummary" />
+        <input collection="summary_output" port="summary_output" />
+        <input collection="preprocessing_scratch" port="preprocessing_scratch" />
+        <input collection="quantification_output" port="quantification_output" />
+    </action>
+</flow>

@@ -1,0 +1,73 @@
+<interface id="mshub-gc" version="release_11">
+    <download>
+        <source name="clusterinfo/" type="folder" />
+        <source name="clustersummary/" type="folder" />
+        <source name="clustered_mgf/" type="folder" />
+        <source name="preprocessing_scratch/" type="folder" />
+    </download>
+
+    <view group="Continue Process" id="librarysearch" label="Process Library Seach">
+            <blockRef id="main" type="librarysearch" />
+    </view>
+    <block id="librarysearch" type="dummylinkout">
+      <data>
+         <parsers>
+            <parser contentType="text/xml" type="stream" />
+        </parsers>
+      </data>
+      <parameter name="URLBASE" value="http://gnps.ucsd.edu/ProteoSAFe/index.jsp" />
+      <parameter name="REQUESTPARAMETER=params" value="{&quot;workflow&quot;:&quot;MOLECULAR-LIBRARYSEARCH-GC&quot;, &quot;desc&quot;:&quot;Library Search/Networking of [task] MSHub Deconvolution&quot;, &quot;spec_on_server&quot;:&quot;t.[task]/clustered_mgf;&quot;, &quot;quantTable&quot;:&quot;t.[task]/preprocessing_scratch/data_integrals.csv;&quot;,&quot;library_on_server&quot;:&quot;d.staticlibs/NIST_EI_14;&quot;}" />
+    </block>
+
+    <view id="view_spectra" label="View All Deconvolved Spectra">
+        <blockRef id="main" type="view_spectra" />
+    </view>
+
+    <block id="view_spectra" type="table">
+        <data>
+            <source name="clustersummary/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="cluster index" type="sortedTabular" />
+            </parsers>
+        </data>
+        <row>
+            <column field="cluster index" label="cluster index" type="integer" width="3" />
+            <column field="RTMean" label="RTMean" type="text" width="10" />
+        </row>
+
+        <row expander="image">
+            <column colspan="5" type="jscolumnspectrumviewer">
+                <parameter file="clustered_mgf/specs_ms.mgf" name="file" />
+                <parameter name="scan" value="[cluster index]" />
+                <parameter name="peptide" value="*..*" />
+            </column>
+        </row>
+    </block>
+
+    <view group="Export/Download Network Files" id="download_clustered_spectra" label="Download Spectra as MGF">
+        <blockRef id="main" type="download_clustered_spectra" />
+    </view>
+    <block id="download_clustered_spectra" type="dummydownload">
+      <data>
+        <source name="clustered_mgf/" type="file" />
+         <parsers>
+            <parser contentType="text/xml" type="stream" />
+        </parsers>
+      </data>
+    </block>
+    <view group="Export/Download Network Files" id="download_quant_table" label="Download Quant Table">
+        <blockRef id="main" type="download_quant_table" />
+    </view>
+    <block id="download_quant_table" type="dummydownload">
+      <data>
+        <source name="preprocessing_scratch/data_integrals.csv" type="file" />
+         <parsers>
+            <parser contentType="text/xml" type="stream" />
+        </parsers>
+      </data>
+    </block>
+
+    
+    
+
+</interface>

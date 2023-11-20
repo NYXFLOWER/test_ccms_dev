@@ -1,0 +1,249 @@
+<interface id="batch_explained_intensity_two_spectra" version="1.0.14+two_spectra">
+	<block label="Workflow Description"><row><cell><label prefix="false"><content>&lt;div style="5px;padding:1px; border:2px;margin-left:8%;margin-right:8%;text-align:left"&gt;                    &lt;br&gt;&lt;strong&gt;Utility: Batch Explained Intensities with two kinds of spectra&lt;/strong&gt;                     &lt;hr style="margin-top:5px;margin-bottom:5px"&gt;                     Workflow for generating explained intensities for given input identification files.  Can be used for both single sequences for a given specturm and for comparing multiple sequences for a peptide.                     &lt;hr style="margin-top:5px;margin-bottom:5px"&gt;                     &lt;small&gt;Workflow version 1.0.14+two_spectra &lt;/small&gt;                     &lt;/div&gt;</content></label></cell></row></block><workflow-id>BATCH_EXPLAINED_INTENSITY_TWO_SPECTRA</workflow-id>
+	<workflow-label>Utility: Batch Explained Intensities with two kinds of spectra</workflow-label>
+
+	
+	<parameters>
+		
+		
+		<parameter label="Description" name="desc">
+			<validator maximum="1000" type="length" />
+		</parameter>
+		<parameter label="Email" name="email">
+			<validator type="email" />
+		</parameter>
+		
+		<parameter label="Spectrum Files" name="spectrum">
+			<validator type="required" />
+			<fileGenerator target="spectrum" type="upload" />
+		</parameter>
+		<parameter label="Spectrum Files (Second Type)" name="spectrum2">
+			<validator type="required" />
+			<fileGenerator target="spectrum2" type="upload" />
+		</parameter>
+		<parameter label="Identifications" name="identifications">
+			<validator type="required" />
+			<fileGenerator target="identifications" type="upload" />
+		</parameter>
+		<parameter label="Filename Header" name="filename">
+			<default value="Filename" />
+		</parameter>
+		<parameter label="Filename 2 Header" name="filename2">
+			<default value="Filename2" />
+		</parameter>
+		<parameter label="Scan Header" name="scan">
+			<default value="Scan" />
+		</parameter>
+		<parameter label="Sequence1 Header" name="sequence1">
+			<default value="Peptide" />
+		</parameter>
+		<parameter label="Sequence2 Header" name="sequence2">
+			<default value="Peptide2" />
+		</parameter>
+		<parameter label="Charge1 Header" name="charge1">
+			<default value="Charge" />
+		</parameter>
+		<parameter label="Charge2 Header" name="charge2">
+			<default value="Charge2" />
+		</parameter>
+		<parameter label="Parallelism" name="parallelism">
+			<default value="50" />
+			<validator type="integer" />
+		</parameter>
+		<parameter label="SNR Filter" name="filter.snr">
+			<default value="0" />
+			<validator type="integer" />
+		</parameter>
+		<parameter label="Low Mass Filter" name="filter.low_mass">
+			<default value="0" />
+			<validator type="integer" />
+		</parameter>
+		<parameter label="Precursor Filter" name="filter.precursor">
+			<options>
+							<option value="Yes" />
+							<option value="No" />
+			</options>
+			<default value="No" />
+			<validator type="set" />
+		</parameter>
+		<parameter label="Fragment Peak Tolerance" name="peak_tolerance">
+			<default value="0.05" />
+			<validator type="float" />
+		</parameter>
+		<parameter label="Use MGF Index" name="mgf_index">
+			<options>
+							<option value="Yes" />
+							<option value="No" />
+			</options>
+			<default value="No" />
+			<validator type="set" />
+		</parameter>
+		
+	</parameters>
+	
+	<block label="Basic Options">
+		<row>
+			<cell>
+				<label>
+					<content parameter="spectrum" />
+					<tooltip id="SpectrumFile" />
+				</label>
+			</cell>
+			<cell>
+				<module id="spectrum" type="fileSelector">
+					<property name="label">Spectrum Files</property>
+				</module>
+			</cell>
+			<cell>
+				<label>
+					<content parameter="spectrum2" />
+					<tooltip id="SpectrumFile2" />
+				</label>
+			</cell>
+			<cell>
+				<module id="spectrum2" type="fileSelector">
+					<property name="label">Spectrum Files (Second Type)</property>
+				</module>
+			</cell>
+			<cell>
+				<label>
+					<content parameter="identifications" />
+				</label>
+			</cell>
+			<cell>
+				<module id="identifications" type="fileSelector">
+					<property name="label">Identifications File</property>
+				</module>
+			</cell>
+		</row>
+	</block>
+	<block label="TSV Mappings">
+		<row>
+			<cell>
+				<label>
+					<content parameter="filename" />
+				</label>
+			</cell>
+			<cell colspan="2">
+				<input parameter="filename" type="text" />
+			</cell>
+			<cell>
+				<label>
+					<content parameter="filename2" />
+				</label>
+			</cell>
+			<cell colspan="2">
+				<input parameter="filename2" type="text" />
+			</cell>
+			<cell>
+				<label>
+					<content parameter="scan" />
+				</label>
+			</cell>
+			<cell colspan="2">
+				<input parameter="scan" type="text" />
+			</cell>
+		</row>
+		<row>
+			<cell>
+				<label>
+					<content parameter="sequence1" />
+				</label>
+			</cell>
+			<cell colspan="2">
+				<input parameter="sequence1" type="text" />
+			</cell>
+			<cell>
+				<label>
+					<content parameter="sequence2" />
+				</label>
+			</cell>
+			<cell colspan="2">
+				<input parameter="sequence2" type="text" />
+			</cell>
+		</row>
+		<row>
+			<cell>
+				<label>
+					<content parameter="charge1" />
+				</label>
+			</cell>
+			<cell colspan="2">
+				<input parameter="charge1" type="text" />
+			</cell>
+			<cell>
+				<label>
+					<content parameter="charge2" />
+				</label>
+			</cell>
+			<cell colspan="2">
+				<input parameter="charge2" type="text" />
+			</cell>
+		</row>
+	</block>
+	<block label="Spectrum Filtering">
+		<row>
+			<cell>
+				<label>
+					<content parameter="filter.snr" />
+				</label>
+			</cell>
+			<cell colspan="2">
+				<input parameter="filter.snr" type="text" />
+			</cell>
+			<cell>
+				<label>
+					<content parameter="filter.low_mass" />
+				</label>
+			</cell>
+			<cell colspan="2">
+				<input parameter="filter.low_mass" type="text" />
+			</cell>
+			<cell>
+				<label>
+					<content parameter="filter.precursor" />
+				</label>
+			</cell>
+			<cell colspan="2">
+				<input parameter="filter.precursor" type="select" />
+			</cell>
+		</row>
+	</block>
+	<block label="Tolerance">
+		<row>
+			<cell>
+				<label>
+					<content parameter="peak_tolerance" />
+				</label>
+			</cell>
+			<cell colspan="2">
+				<input parameter="peak_tolerance" type="text" />
+			</cell>
+		</row>
+	</block>
+	<block label="Parallelism">
+		<row>
+			<cell>
+				<label>
+					<content parameter="parallelism" />
+				</label>
+			</cell>
+			<cell colspan="2">
+				<input parameter="parallelism" type="text" />
+			</cell>
+		</row>
+	</block>
+	<block label="Advanced MSGF+ Options">
+		<row>
+			<cell>
+				<label>
+					<content parameter="mgf_index" />
+				</label>
+			</cell>
+			<cell colspan="2">
+				<input parameter="mgf_index" type="select" />
+			</cell>
+		</row>
+	</block>
+
+</interface>

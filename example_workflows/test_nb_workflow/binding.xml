@@ -1,0 +1,42 @@
+<binding>
+        <bind action="begin" type="download">
+                <url value="{livesearch.download}" />
+                <query name="task" valueRef="@task" />
+                <query name="user" valueRef="@user" />
+                <compression type="zip" />
+                <download port="flowParams" type="file">
+                        <query name="resource" value="params" />
+                </download>
+<!--                 <download port="spectrum_port" type="folder"> -->
+                <download port="spectrum_port" type="file">
+                        <query name="resource" value="spectrum_collection" />
+                </download>
+                <downloadParams>
+                        <query name="resource" value="params" />
+                </downloadParams>
+        </bind>
+
+        <bind action="table_output" tool="test_table_tool">
+<!--            <inputAsRequirement port="spectrum_port" requirement="spectrum_folder" />  -->
+            <inputAsRequirement port="spectrum_port" requirement="spectrum_file" />
+            <productionToOutput port="table_port" production="test_table_output1" />
+        </bind>
+
+        <bind action="table_summary" tool="test_summary_tool">
+            <inputAsRequirement port="table_port" requirement="test_table_output1" />
+            <productionToOutput port="summary_port" production="test_summary_output" />
+        </bind>
+
+        <bind action="end" type="upload">
+                <url value="{livesearch.upload}" />
+                <query name="task" valueRef="@task" />
+                <contentQuery name="content" />
+                <compression type="zip" />
+                <upload port="table_port" type="file">
+                        <query name="resource" value="table_dir" />
+                </upload>
+                <upload port="summary_port" type="file">
+                        <query name="resource" value="summary_dir" />
+                </upload>
+        </bind>
+</binding>

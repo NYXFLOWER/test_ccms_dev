@@ -1,0 +1,364 @@
+<toolset>
+	<!-- MS-GFDB column mappings -->
+	<valueMap name="fragmentationMethod">
+		<mapping key="None" value="0"/>
+		<mapping key="CID" value="1"/>
+		<mapping key="ETD" value="2"/>
+		<mapping key="HCD" value="3"/>
+		<mapping key="Merge" value="4"/>
+	</valueMap>
+
+	<valueMap name="instrument">
+		<mapping key="ESI-ION-TRAP" value="0"/>
+		<mapping key="QTOF" value="1"/>
+		<mapping key="FT-HYBRID" value="2"/>
+	</valueMap>
+
+	<valueMap name="protease">
+		<mapping key="None" value="0"/>
+		<mapping key="Trypsin" value="1"/>
+		<mapping key="Chymotrypsin" value="2"/>
+		<mapping key="Lys-C" value="3"/>
+		<mapping key="Lys-N" value="4"/>
+		<mapping key="Glu-C" value="5"/>
+		<mapping key="Arg-C" value="6"/>
+		<mapping key="Asp-N" value="7"/>
+	</valueMap>
+
+	<valueMap name="msgfDBColumns">
+		<mapping key="File" value="0"/>
+		<mapping key="Index" value="1"/>
+		<mapping key="Peptide" value="7"/>
+		<mapping key="Protein" value="8"/>
+		<mapping key="Score" value="11"/>
+	</valueMap>
+
+    <pathSet base="scripts/2013.0811">
+        <toolPath path="CCMSWorkflowUtils.jar" tool="mergeWithHeader"/>
+        <toolPath path="CCMSWorkflowUtils.jar" tool="mergeFasta"/>
+    </pathSet>
+
+    <tool name="mergeFasta">
+        <require name="input" type="folder"/>
+        <produce extension="fasta" name="output" naming="explicit" type="file"/>
+
+        <execution argConvention="gnu" env="java">
+                <mainClass name="edu.ucsd.workflow.Merge"/>
+                <envArg option="Xmx512M"/>
+                <arg option="input" valueRef="input"/>
+                <arg option="output" valueRef="output"/>
+        </execution>
+    </tool>
+
+    <tool name="mergeWithHeader">
+        <require name="input" type="folder"/>
+        <produce name="output" naming="explicit" type="file"/>
+
+        <execution argConvention="gnu" env="java">
+                <mainClass name="edu.ucsd.workflow.Merge"/>
+                <envArg option="Xmx512M"/>
+                <arg option="input" valueRef="input"/>
+                <arg option="output" valueRef="output"/>
+                <arg option="header"/>
+        </execution>
+    </tool>
+
+	<!-- MS-GF+ tool specifications -->
+	<pathSet base="MSGFPlus/10089">
+		<toolPath path="MSGFPlus.jar" tool="MSGFPlus_BuildSA"/>
+		<toolPath path="MSGFPlus.py" tool="MSGFPlus"/>
+		<toolPath path="MSGFPlus.jar" tool="MSGFPlus_ConvertToTSV"/>
+	</pathSet>
+
+	<tool name="MSGFPlus_BuildSA">
+		<require datatype="fasta" name="input" type="file"/>
+		<produce datatype="msgfDBSeq" name="output" type="file"/>
+
+		<execution argConvention="adhoc" env="java">
+			<mainClass name="edu.ucsd.msjava.msdbsearch.BuildSA"/>
+			<envArg option="Xmx3500M"/>
+			<arg option="d" valueRef="input"/>
+			<arg option="o" valueRef="output"/>
+			<arg option="tda" value="1"/>
+		</execution>
+	</tool>
+
+	<tool name="MSGFPlus">
+		<require datatype="spectrum" name="spectrum" type="file"/>
+		<require datatype="fasta" name="sequence" type="file"/>
+		<require datatype="msgfDBSeq" name="preparedSequence" type="file"/>
+		<require name="parameters" type="file"/>
+		<produce extension="mzid" name="output" naming="explicit" type="file"/>
+
+		<execution argConvention="posix" env="python">
+			<arg value="-Xmx12000M"/>
+			<arg option="s" valueRef="spectrum"/>
+			<arg option="d" valueRef="sequence"/>
+			<arg option="dd" valueRef="preparedSequence"/>
+			<arg option="o" valueRef="output"/>
+			<arg option="t" valueRef="@tolerance.PM_tolerance_tolerance_unit.PM_unit"/>
+			<arg option="tda" value="1"/>
+			<arg mapAgainst="fragmentationMethod" option="m" valueRef="@fragmentation.fragmentation"/>
+			<arg mapAgainst="instrument" option="inst" valueRef="@instrument.instrument"/>
+			<arg mapAgainst="protease" option="e" valueRef="@cysteine_protease.protease"/>
+			<arg option="ti" valueRef="@c13_nnet.msgfPlusC13"/>
+			<arg option="ntt" valueRef="@c13_nnet.msgfPlusNnet"/>
+			<arg option="mod" valueRef="parameters"/>
+			<arg option="thread" value="2"/>
+			<arg option="n" valueRef="@TOPK"/>
+			<!-- <arg option="showQValue" value="0"/> -->
+			<!-- <arg option="replicate"  value="1"/> -->
+		</execution>
+	</tool>
+
+	<tool name="MSGFPlus_ConvertToTSV">
+		<require name="input" type="file"/>
+		<produce extension="tsv" name="output" naming="explicit" type="file"/>
+
+		<execution argConvention="gnu" env="java">
+			<mainClass name="edu.ucsd.msjava.ui.MzIDToTsv"/>
+			<envArg option="Xmx50000M"/>
+			<arg option="i" valueRef="input"/>
+			<arg option="o" valueRef="output"/>
+			<arg option="showQValue" value="0"/>
+			<arg option="showDecoy" value="1"/>
+			<arg option="unroll" value="1"/>
+		</execution>
+	</tool>
+
+    <!-- KL Tools -->
+    <pathSet base="msgfdb-ambiguity">
+        <toolPath path="kl_calculation_wrapper.py" tool="generate_kl_divergence"/>
+    </pathSet>
+		<pathSet base="dis_cluster_fast">
+			<pathVar name="kl_exe.file" path="main_execmodule"/>
+			<pathVar name="empty_params.file" path="generic_params"/>
+			<pathVar name="isotope_bin.file" path="isotope_table_4000mz_1000peps_3isotopes.bin"/>
+		</pathSet>
+    <tool name="generate_kl_divergence">
+        <require name="parameters" type="file"/>
+        <require name="spectrum" type="folder"/>
+        <produce name="kl_scratch" type="folder"/>
+        <produce extension="tsv" name="kl_output" naming="explicit" type="file"/>
+
+        <execution argConvention="adhoc" env="binary">
+            <arg valueRef="parameters"/>
+            <arg valueRef="spectrum"/>
+            <arg valueRef="kl_output"/>
+            <arg valueRef="kl_scratch"/>
+            <arg pathRef="kl_exe.file"/>
+            <arg pathRef="isotope_bin.file"/>
+	    <arg pathRef="empty_params.file"/>
+        </execution>
+    </tool>
+
+    <!-- Merging KL -->
+    <pathSet base="anaconda2">
+        <toolPath path="bin/python2.7" tool="add_kl_to_psms"/>
+        <toolPath path="bin/python2.7" tool="clean_tsv_file_for_mztab_conversion"/>
+    </pathSet>
+    <pathSet base="msgf-plus-ambiguity">
+        <pathVar name="add_kl_to_psms.script" path="merge_kl_scores_with_ids_updated.py"/>
+        <pathVar name="clean_tsv_file_for_mztab_conversion.script" path="clean_tsv_file_for_mztab_conversion.py"/>
+        <toolPath path="filter_topk_to_top1.py" tool="filterTopKToTop1"/>
+        <toolPath path="output_topk_passing_fdr.py" tool="outputTopKPassingFdr"/>
+        <toolPath path="add_orig_filenames.py" tool="addOrigFilenames"/>
+    </pathSet>
+    <tool name="add_kl_to_psms">
+        <require name="parameters" type="file"/>
+        <require name="mergedResult" type="file"/>
+        <require name="kl_output" type="file"/>
+        <produce extension="tsv" name="merged_result_with_kl" naming="explicit" type="file"/>
+        <execution argConvention="adhoc" env="binary">
+            <arg pathRef="add_kl_to_psms.script"/>
+            <arg valueRef="parameters"/>
+            <arg valueRef="mergedResult"/>
+            <arg valueRef="kl_output"/>
+            <arg valueRef="merged_result_with_kl"/>
+        </execution>
+    </tool>
+
+    <tool name="clean_tsv_file_for_mztab_conversion">
+        <require name="merged_result_with_kl_with_ambiguity" type="file"/>
+        <produce extension="tsv" name="merged_result_with_kl_with_ambiguity_filtered" naming="explicit" type="file"/>
+
+        <execution argConvention="adhoc" env="binary">
+            <arg pathRef="clean_tsv_file_for_mztab_conversion.script"/>
+            <arg valueRef="merged_result_with_kl_with_ambiguity"/>
+            <arg valueRef="merged_result_with_kl_with_ambiguity_filtered"/>
+        </execution>
+    </tool>
+
+    <pathSet base="anaconda3">
+        <toolPath path="bin/python3.5" tool="add_ambiguity_to_psms"/>
+    </pathSet>
+    <pathSet base="msgf-plus-ambiguity">
+        <pathVar name="add_ambiguity_to_psms.script" path="add_ambiguity_to_psms.py"/>
+    </pathSet>
+    <tool name="add_ambiguity_to_psms">
+        <require name="merged_result_with_kl" type="file"/>
+        <require name="spectrum" type="folder"/>
+        <produce extension="tsv" name="merged_result_with_kl_with_ambiguity" naming="explicit" type="file"/>
+
+        <execution argConvention="adhoc" env="binary">
+            <arg pathRef="add_ambiguity_to_psms.script"/>
+            <arg valueRef="merged_result_with_kl"/>
+            <arg valueRef="spectrum"/>
+            <arg valueRef="merged_result_with_kl_with_ambiguity"/>
+        </execution>
+    </tool>
+
+
+	<!-- FDR -->
+	<pathSet base="anaconda3/bin">
+		<toolPath path="python3.5" tool="MSGFPlus_ComputeFDR"/>
+	</pathSet>
+	<pathSet base="MSGFPlus/10089">
+	    <pathVar name="MSGFPlus_ComputeFDR.script" path="MSGFPlus_ComputeFDR_and_RemapProteins1.py"/>
+	</pathSet>
+
+	<tool name="MSGFPlus_ComputeFDR">
+	    <require name="parameters" type="file"/>
+	    <require name="sequence" type="file"/>
+		<require name="input" type="file"/>
+        <produce name="output" naming="explicit" type="file"/>
+        <produce name="logfile" naming="explicit" type="file"/>
+
+	    <execution argConvention="adhoc" env="binary">
+			<arg pathRef="MSGFPlus_ComputeFDR.script"/>
+			<arg valueRef="parameters"/>
+			<arg valueRef="sequence"/>
+			<arg valueRef="input"/>
+			<arg valueRef="output"/>
+			<arg value="XXX"/>
+			<arg valueRef="logfile"/>
+		</execution>
+	</tool>
+
+	<!-- MS-GF+ TSV to MZTab file conversion tool specifications -->
+	<!--<pathSet base="MzTabUtils/2016.0517">
+		<toolPath tool="MSGFPlus_TSVToMzTabParameters" path="MzTabUtils.jar"/>
+		<toolPath tool="MSGFPlus_MzTabValidator"       path="MzTabUtils.jar"/>
+		<toolPath tool="MSGFPlus_MzTabCleaner"         path="MzTabUtils.jar"/>
+		<toolPath tool="MSGFPlus_MzTabSummarizer"      path="MzTabUtils.jar"/>
+	</pathSet>-->
+	<pathSet base="MzTabConverter/2018.0226">
+    		<pathVar name="ConvertTSVToMzTab_script" path="convert_TSV_to_mzTab.sh"/>
+    		<toolPath path="convert_TSV_to_mzTab.sh" tool="ConvertTSVToMzTab"/>
+    		<toolPath path="post_process_mzTabs.sh" tool="PostProcessMzTabs"/>
+    		<toolPath path="post_process_mzTabs.sh" tool="PostProcessMzTabs_top1"/>
+	</pathSet>
+
+	<tool name="ConvertTSVToMzTab">
+		<require name="input" type="file"/>
+		<require name="params" type="file"/>
+    		<produce name="config" type="folder"/>
+    		<produce name="mzTab" type="folder"/>
+
+		<execution argConvention="gnu" env="shell">
+        		<arg option="config_Xmx" value="512M"/>
+        		<arg option="convert_Xmx" value="10000M"/>
+			<arg option="tsv" valueRef="input"/>
+			<arg option="params" valueRef="params"/>
+        		<arg option="config_directory" valueRef="config"/>
+        		<arg option="raw_mzTab_directory" valueRef="mzTab"/>
+			<arg option="header_line" value="true"/>
+			<arg option="filename" value="#SpecFile"/>
+			<arg option="modified_sequence" value="Peptide"/>
+			<arg option="mod_pattern" value="#"/>
+			<arg option="fixed_mods_reported" value="true"/>
+			<arg option="match_mass_precision" value="3"/>
+			<arg option="scan" value="ScanNum"/>
+			<arg option="index" value="SpecID"/>
+			<arg option="accession" value="Protein"/>
+			<arg option="charge" value="Charge"/>
+		</execution>
+	</tool>
+
+	<tool name="PostProcessMzTabs">
+		<require name="params" type="file"/>
+		<require name="input" type="folder"/>
+		<require name="peak" type="folder"/>
+    		<produce name="validated" type="folder"/>
+    		<produce name="cleaned" type="folder"/>
+		<produce name="summary" naming="fixed" type="file" value="statistics.tsv"/>
+
+		<execution argConvention="gnu" env="shell">
+        		<arg option="validate_Xmx" value="1024M"/>
+        		<arg option="clean_Xmx" value="1024M"/>
+        		<arg option="summarize_Xmx" value="3000M"/>
+			<arg option="params" valueRef="params"/>
+        		<arg option="raw_mzTab_directory" valueRef="input"/>
+        		<arg option="validated_mzTab_directory" valueRef="validated"/>
+        		<arg option="cleaned_mzTab_directory" valueRef="cleaned"/>
+        		<arg option="summary_file" valueRef="summary"/>
+        		<arg option="mzTab_path" value="mzTab_topk"/>
+        		<arg option="peak_directory" valueRef="peak"/>
+        		<arg option="peak_path" value="spec"/>
+        		<arg option="peak_collection" value="spec_on_server"/>
+        		<arg option="invalid_threshold" value="101"/>
+			<arg option="psmQValue" value="QValue"/>
+			<arg option="peptideQValue" value="PepQValue"/>
+		</execution>
+	</tool>
+
+	<tool name="PostProcessMzTabs_top1">
+		<require name="params" type="file"/>
+		<require name="input" type="folder"/>
+		<require name="peak" type="folder"/>
+    		<produce name="validated" type="folder"/>
+    		<produce name="cleaned" type="folder"/>
+		<produce name="summary" naming="fixed" type="file" value="statistics.tsv"/>
+
+		<execution argConvention="gnu" env="shell">
+        		<arg option="validate_Xmx" value="1024M"/>
+        		<arg option="clean_Xmx" value="1024M"/>
+        		<arg option="summarize_Xmx" value="3000M"/>
+			<arg option="params" valueRef="params"/>
+        		<arg option="raw_mzTab_directory" valueRef="input"/>
+        		<arg option="validated_mzTab_directory" valueRef="validated"/>
+        		<arg option="cleaned_mzTab_directory" valueRef="cleaned"/>
+        		<arg option="summary_file" valueRef="summary"/>
+        		<arg option="mzTab_path" value="mzTab"/>
+        		<arg option="peak_directory" valueRef="peak"/>
+        		<arg option="peak_path" value="spec"/>
+        		<arg option="peak_collection" value="spec_on_server"/>
+        		<arg option="invalid_threshold" value="101"/>
+			<arg option="psmQValue" value="QValue"/>
+			<arg option="peptideQValue" value="PepQValue"/>
+		</execution>
+	</tool>
+
+
+   <tool name="filterTopKToTop1">
+         <require name="in" type="file"/>
+         <produce name="out" naming="explicit" type="file"/>
+         <execution argConvention="adhoc" env="python">
+             <arg valueRef="in"/>
+             <arg valueRef="out"/>
+         </execution>
+   </tool>
+
+   <tool name="outputTopKPassingFdr">
+         <require name="topk_results" type="file"/>
+         <require name="fdr_log" type="file"/>
+         <produce extension="tsv" name="out" naming="explicit" type="file"/>
+         <execution argConvention="adhoc" env="python">
+             <arg valueRef="topk_results"/>
+             <arg valueRef="fdr_log"/>
+             <arg valueRef="out"/>
+         </execution>
+   </tool>
+
+   <tool name="addOrigFilenames">
+         <require name="params" type="file"/>
+         <require name="in" type="file"/>
+         <produce name="out" naming="explicit" type="file"/>
+         <execution argConvention="adhoc" env="python">
+             <arg valueRef="params"/>
+             <arg valueRef="in"/>
+             <arg valueRef="out"/>
+         </execution>
+   </tool>
+
+</toolset>

@@ -1,0 +1,123 @@
+<flow name="openms">
+  <object name="workflowParameters" />
+  <collection name="inputFiles" />
+  <collection name="inFiles" />
+
+  <object name="iniFiles-featurefinder" />
+  <object name="iniFiles-idmapper" />
+  <object name="iniFiles-mapaligner" />
+  <object name="iniFiles-featurelinker" />
+  <object name="iniFiles-adductdecharger" />
+  <object name="iniFiles-gnpsexport" />
+  <object name="iniFiles-textexporter" />
+
+  <collection name="featurefindermetabo" />
+  <collection name="idmapper" />
+  <collection name="mapalignerposeclustering" />
+  <collection name="metaboliteadductdecharger" />
+  <collection name="featurelinkerunlabeled" />
+  <collection name="filefilter" />
+  <collection name="gnpsexport" />
+  <collection name="textexporter" />
+
+  <collection name="output" />
+  
+  
+
+  <action name="begin">
+    <output object="workflowParameters" port="flowParams" />
+    <output collection="inputFiles" port="inputFiles" />
+    <output collection="inFiles" port="inFiles" />
+    <output object="iniFiles-featurefinder" port="iniFiles-featurefinder" />
+    <output object="iniFiles-idmapper" port="iniFiles-idmapper" />
+    <output object="iniFiles-mapaligner" port="iniFiles-mapaligner" />
+    <output object="iniFiles-featurelinker" port="iniFiles-featurelinker" />
+    <output object="iniFiles-adductdecharger" port="iniFiles-adductdecharger" />
+    <output object="iniFiles-gnpsexport" port="iniFiles-gnpsexport" />
+    <output object="iniFiles-textexporter" port="iniFiles-textexporter" />
+  </action>
+
+  <action name="parse-input">
+    <input collection="inputFiles" port="inputFiles" />
+    <output collection="inFiles" port="inFiles" />
+  </action>
+
+  <action name="feature-finder-metabo">
+    <input object="inFiles" port="inFiles" />
+    <input object="iniFiles-featurefinder" port="iniFiles-featurefinder" />
+    <output collection="featurefindermetabo" port="featurefindermetabo" />
+  </action>
+
+  <action name="id-mapper">
+    <input collection="inFiles" port="inFiles" />
+    <input object="iniFiles-idmapper" port="iniFiles-idmapper" />
+    <input collection="featurefindermetabo" port="featurefindermetabo" />
+    <output collection="idmapper" port="idmapper" />
+  </action>
+
+  <action name="map-aligner-pose-clustering">
+    <input collection="idmapper" port="idmapper" />
+    <input object="iniFiles-mapaligner" port="iniFiles-mapaligner" />
+    <output collection="mapalignerposeclustering" port="mapalignerposeclustering" />
+  </action>
+
+  <action name="metabolite-adduct-decharger">
+    <input collection="mapalignerposeclustering" port="mapalignerposeclustering" />
+    <input object="iniFiles-adductdecharger" port="iniFiles-adductdecharger" />
+    <output collection="metaboliteadductdecharger" port="metaboliteadductdecharger" />
+  </action>
+
+  <action name="feature-linker-unlabeled">
+    <input collection="metaboliteadductdecharger" port="metaboliteadductdecharger" />
+    <input object="iniFiles-featurelinker" port="iniFiles-featurelinker" />
+    <input object="workflowParameters" port="flowParams" />
+    <output collection="featurelinkerunlabeled" port="featurelinkerunlabeled" />
+  </action>
+
+  <action name="file-filter">
+    <input collection="featurelinkerunlabeled" port="featurelinkerunlabeled" />
+    <output collection="filefilter" port="filefilter" />
+  </action>
+
+  <action name="gnps-export">
+    <input collection="filefilter" port="filefilter" />
+    <input collection="inFiles" port="inFiles" />
+    <input object="iniFiles-gnpsexport" port="iniFiles-gnpsexport" />
+    <output collection="gnpsexport" port="gnpsexport" />
+  </action>
+
+  <action name="text-exporter">
+    <input collection="filefilter" port="filefilter" />
+    <input object="iniFiles-textexporter" port="iniFiles-textexporter" />
+    <output collection="textexporter" port="textexporter" />
+  </action>
+
+  <action name="parse-output">
+    <input collection="inFiles" port="inFiles" />
+    <input collection="featurefindermetabo" port="featurefindermetabo" />
+    <input collection="iniFiles-featurefinder" port="iniFiles-featurefinder" />
+    <input collection="idmapper" port="idmapper" />
+    <input collection="iniFiles-idmapper" port="iniFiles-idmapper" />
+    <input collection="mapalignerposeclustering" port="mapalignerposeclustering" />
+    <input collection="iniFiles-mapaligner" port="iniFiles-mapaligner" />
+    <input collection="metaboliteadductdecharger" port="metaboliteadductdecharger" />
+    <input collection="iniFiles-adductdecharger" port="iniFiles-adductdecharger" />
+    <input collection="featurelinkerunlabeled" port="featurelinkerunlabeled" />
+    <input collection="iniFiles-featurelinker" port="iniFiles-featurelinker" />
+    <input collection="filefilter" port="filefilter" />
+    <input collection="gnpsexport" port="gnpsexport" />
+    <input collection="iniFiles-gnpsexport" port="iniFiles-gnpsexport" />
+    <input collection="textexporter" port="textexporter" />
+    <input collection="iniFiles-textexporter" port="iniFiles-textexporter" />
+
+    <output collection="output" port="output" />
+    
+    
+  </action>
+
+  <action name="end">
+    <input collection="output" port="output" />
+    
+    
+  </action>
+</flow>

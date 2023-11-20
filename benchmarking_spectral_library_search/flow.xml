@@ -1,0 +1,31 @@
+<flow name="benchmarking_spectral_library_search">
+        <object name="workflowParameters" />
+
+
+        <action name="begin">
+                <output object="workflowParameters" port="flowParams" />
+                <output object="query_mgf_1" port="query_mgf_port_1" />
+                <output object="query_mgf_1" port="query_mgf_port_2" />
+                <output object="query_mgf_1" port="query_mgf_port_3" />
+                <output object="query_mgf_1" port="query_mgf_port_4" />
+        </action>
+
+        <object name="query_mgf_1" />
+        <object name="query_mgf_2" />
+        <object name="query_mgf_3" />
+        <object name="query_mgf_4" />
+
+        <object name="output_logs" />
+
+        <action name="run_benchmark">
+                <input object="query_mgf_1" port="query_mgf_port_1" />
+                <output object="output_logs" port="output_logs_port" />
+        </action>
+
+<!--        <collection name="spectrum_collection" />  -->
+        <!-- <object name="query_mgf_1" /> -->
+
+        <action name="end">
+                <input object="output_logs" port="output_logs_port" />
+        </action>
+</flow>

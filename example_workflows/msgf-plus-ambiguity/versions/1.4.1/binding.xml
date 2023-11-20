@@ -1,0 +1,318 @@
+<binding>
+	<bind action="begin" type="download">
+		<url value="{livesearch.download}" />
+	 	<query name="task" valueRef="@task" />
+	 	<query name="user" valueRef="@user" />
+	 	<compression type="zip" />
+		<download port="spec" type="folder">
+			<query name="resource" value="spec" />
+		</download>
+		<download port="fasta" type="folder">
+			<query name="resource" value="fasta" />
+		</download>
+		<download port="params" type="file">
+			<query name="resource" value="params" />
+		</download>
+		<downloadParams>
+			<query name="resource" value="params" />
+		</downloadParams>
+	</bind>
+
+        <bind action="kl_filter_p" tool="parallelize_20">
+                <inputAsRequirement port="spectrum_converted" requirement="input_folder" />
+                <productionToOutput port="spectrum_converted_p" production="output_lists" />
+        </bind>
+
+        <bind action="kl_filter" tool="KLFilter">
+                <inputAsRequirement port="spectra" requirement="spectra" />
+                <inputAsRequirement port="inputSpec" requirement="inputSpec" />
+                <inputAsRequirement port="params" requirement="params" />
+                <productionToOutput port="massCorrectedInputSpec" production="massCorrectedInputSpec" />          
+                <productionToOutput port="massCorrectedInputSpec_MS3" production="massCorrectedInputSpec_MS3" />  
+                <productionToOutput port="outKLTable" production="outKLTable" />
+        </bind>
+
+        <bind action="merge_KLTables" tool="mergeWithHeader">
+                <inputAsRequirement port="KLTable" requirement="input" />
+                <productionToOutput port="KLTable_merged" production="output" />
+        </bind>
+
+        <bind action="extract_isobaric_tag_peaks" tool="extractIsobaricTagPeaks">
+                <inputAsRequirement port="inputspectra" requirement="inputspectra" />
+                <inputAsRequirement port="inputspectra_ms3" requirement="inputspectra_ms3" />
+                <inputAsRequirement port="kltable" requirement="kltable" />
+                <inputAsRequirement port="params" requirement="params" />
+                <productionToOutput port="inputspectra_isobaric_tag_peaks_removed" production="inputspectra_isobaric_tag_peaks_removed" />
+                <productionToOutput port="isobaric_tag_abundances" production="isobaric_tag_abundances" />
+        </bind>
+
+	<bind action="mergeSequences" tool="mergeFasta">
+		<inputAsRequirement port="fasta" requirement="input" />
+		<productionToOutput port="out" production="output" />
+	</bind>
+
+	<bind action="buildSA" tool="MSGFPlus_BuildSA">
+		<inputAsRequirement port="fasta" requirement="input" />
+		<productionToOutput port="out" production="output" />
+	</bind>
+
+        <bind action="msgfPlus4Cores_p" tool="parallelize">
+                <inputAsRequirement port="input_folder" requirement="input_folder" />
+                <productionToOutput port="output_lists" production="output_lists" />
+        </bind>
+
+	<bind action="msgfPlus4Cores_scaledMemory" tool="MSGFPlus4Cores">
+		<inputAsRequirement port="spec" requirement="spectrum_filelist" />
+		<inputAsRequirement port="spectra" requirement="spectra" />
+		<inputAsRequirement port="fasta" requirement="sequence" />
+		<inputAsRequirement port="seq" requirement="preparedSequence" />
+		<inputAsRequirement port="params" requirement="parameters" />
+		<productionToOutput port="out" production="output" />
+	</bind>
+
+	<bind action="msgfPlusConvert" tool="MSGFPlus_ConvertToTSV">
+		<inputAsRequirement port="in" requirement="input" />
+		<productionToOutput port="out" production="output" />
+	</bind>
+
+	<bind action="merge" tool="mergeWithHeader">
+		<inputAsRequirement port="result" requirement="input" />
+		<productionToOutput port="mergedResult" production="output" />
+	</bind>
+
+	<bind action="add_tag_intensities" tool="add_tag_intensities">
+		<inputAsRequirement port="in" requirement="in" />
+		<inputAsRequirement port="isobaric_tag_abundances" requirement="isobaric_tag_abundances" />
+		<productionToOutput port="out" production="out" />
+	</bind>
+
+	<bind action="add_orig_filenames" tool="addOrigFilenames">
+		<inputAsRequirement port="params" requirement="params" />
+		<inputAsRequirement port="in" requirement="in" />
+		<productionToOutput port="out" production="out" />
+	</bind>
+
+    
+    <bind action="generate_kl_divergence" tool="generate_kl_divergence">
+        <inputAsRequirement port="parameters" requirement="parameters" />
+        <inputAsRequirement port="spectrum" requirement="spectrum" />
+        <productionToOutput port="kl_scratch" production="kl_scratch" />
+        <productionToOutput port="kl_output" production="kl_output" />
+    </bind>
+
+    <bind action="launch_expl_intensity_workflow" tool="launch_expl_intensity_workflow">
+        <inputAsRequirement port="psms_tsv" requirement="psms_tsv" />
+        <inputAsRequirement port="spectra_dir" requirement="spectra_dir" />
+        <productionToOutput port="psms_w_expl_intensity" production="psms_w_expl_intensity" />
+    </bind>
+
+    <bind action="add_kl_to_psms" tool="add_kl_to_psms">
+        <inputAsRequirement port="parameters" requirement="parameters" />
+        <inputAsRequirement port="mergedResult" requirement="mergedResult" />
+        <inputAsRequirement port="kl_output" requirement="kl_output" />
+        <productionToOutput port="merged_result_with_kl" production="merged_result_with_kl" />
+    </bind>
+
+    <bind action="add_kl_to_psms_lib_construction" tool="add_kl_to_psms">
+        <inputAsRequirement port="parameters" requirement="parameters" />
+        <inputAsRequirement port="mergedResult" requirement="mergedResult" />
+        <inputAsRequirement port="kl_output" requirement="kl_output" />
+        <productionToOutput port="merged_result_with_kl" production="merged_result_with_kl" />
+    </bind>
+
+	<bind action="add_ambiguity_to_psms" tool="add_ambiguity_to_psms">
+        <inputAsRequirement port="merged_result_with_kl" requirement="merged_result_with_kl" />
+        <inputAsRequirement port="spectrum" requirement="spectrum" />
+        <productionToOutput port="merged_result_with_kl_with_ambiguity" production="merged_result_with_kl_with_ambiguity" />
+    </bind>
+
+	<bind action="add_ambiguity_to_psms_lib_construction" tool="add_ambiguity_to_psms_lib_construction">
+        <inputAsRequirement port="merged_result_with_kl" requirement="merged_result_with_kl" />
+        <inputAsRequirement port="spectrum" requirement="spectrum" />
+        <productionToOutput port="merged_result_with_kl_with_ambiguity" production="merged_result_with_kl_with_ambiguity" />
+    </bind>
+
+	<bind action="filter" tool="clean_tsv_file_for_mztab_conversion">
+        <inputAsRequirement port="merged_result_with_kl_with_ambiguity" requirement="merged_result_with_kl_with_ambiguity" />
+        <productionToOutput port="merged_result_with_kl_with_ambiguity_filtered" production="merged_result_with_kl_with_ambiguity_filtered" />
+    </bind>
+
+	<bind action="filter_lib_construction" tool="clean_tsv_file_for_mztab_conversion">
+        <inputAsRequirement port="merged_result_with_kl_with_ambiguity" requirement="merged_result_with_kl_with_ambiguity" />
+        <productionToOutput port="merged_result_with_kl_with_ambiguity_filtered" production="merged_result_with_kl_with_ambiguity_filtered" />
+    </bind>
+
+	
+
+	<bind action="fdr_ambiguity" tool="MSGFPlus_ComputeFDR">
+        <inputAsRequirement port="parameters" requirement="parameters" />
+        <inputAsRequirement port="sequence" requirement="sequence" />
+		<inputAsRequirement port="in" requirement="input" />
+		<productionToOutput port="out" production="output" />
+		<productionToOutput port="logfile" production="logfile" />
+	</bind>
+
+	<bind action="fdr_ambiguity_library_construction" tool="MSGFPlus_ComputeFDR_lib_construction">
+        <inputAsRequirement port="parameters" requirement="parameters" />
+        <inputAsRequirement port="sequence" requirement="sequence" />
+		<inputAsRequirement port="in" requirement="input" />
+		<productionToOutput port="out" production="output" />
+		<productionToOutput port="logfile" production="logfile" />
+	</bind>
+
+	<bind action="add_topk_fdr_cols" tool="MSGFPlus_ComputeFDR_topk">
+        <inputAsRequirement port="parameters" requirement="parameters" />
+        <inputAsRequirement port="sequence" requirement="sequence" />
+		<inputAsRequirement port="in" requirement="input" />
+		<productionToOutput port="out" production="output" />
+		<productionToOutput port="logfile" production="logfile" />
+	</bind>
+
+	<bind action="add_topk_fdr_cols_lib_construction" tool="MSGFPlus_ComputeFDR_topk_lib_construction">
+        <inputAsRequirement port="parameters" requirement="parameters" />
+        <inputAsRequirement port="sequence" requirement="sequence" />
+		<inputAsRequirement port="in" requirement="input" />
+		<productionToOutput port="out" production="output" />
+		<productionToOutput port="logfile" production="logfile" />
+	</bind>
+
+        <bind action="convertTSVToMzTab_top1" tool="ConvertTSVToMzTab">
+                <inputAsRequirement port="input" requirement="input" />
+                <inputAsRequirement port="params" requirement="params" />
+                <productionToOutput port="config" production="config" />
+                <productionToOutput port="mzTab" production="mzTab" />
+        </bind>
+
+        <bind action="convertTSVToMzTab_topk" tool="ConvertTSVToMzTab_topk">
+                <inputAsRequirement port="input" requirement="input" />
+                <inputAsRequirement port="params" requirement="params" />
+                <productionToOutput port="config" production="config" />
+                <productionToOutput port="mzTab" production="mzTab" />
+        </bind>
+
+        <bind action="convertTSVToMzTab_topk_lib_construction" tool="ConvertTSVToMzTab_topk">
+                <inputAsRequirement port="input" requirement="input" />
+                <inputAsRequirement port="params" requirement="params" />
+                <productionToOutput port="config" production="config" />
+                <productionToOutput port="mzTab" production="mzTab" />
+        </bind>
+
+        <bind action="convertTSVToMzTab_lib_construction" tool="ConvertTSVToMzTab_libConstruction">
+                <inputAsRequirement port="input" requirement="input" />
+                <inputAsRequirement port="params" requirement="params" />
+                <productionToOutput port="config" production="config" />
+                <productionToOutput port="mzTab" production="mzTab" />
+        </bind>
+
+        <bind action="processMzTab_top1" tool="PostProcessMzTabs_top1">
+                <inputAsRequirement port="params" requirement="params" />
+                <inputAsRequirement port="input" requirement="input" />
+                <inputAsRequirement port="peak" requirement="peak" />
+                <productionToOutput port="validated" production="validated" />
+                <productionToOutput port="cleaned" production="cleaned" />
+                <productionToOutput port="summary" production="summary" />
+        </bind>
+
+        <bind action="processMzTab_topk" tool="PostProcessMzTabs">
+                <inputAsRequirement port="params" requirement="params" />
+                <inputAsRequirement port="input" requirement="input" />
+                <inputAsRequirement port="peak" requirement="peak" />
+                <productionToOutput port="validated" production="validated" />
+                <productionToOutput port="cleaned" production="cleaned" />
+                <productionToOutput port="summary" production="summary" />
+        </bind>
+
+        <bind action="processMzTab_topk_lib_construction" tool="PostProcessMzTabs_libConstruction_topk">
+                <inputAsRequirement port="params" requirement="params" />
+                <inputAsRequirement port="input" requirement="input" />
+                <inputAsRequirement port="peak" requirement="peak" />
+                <productionToOutput port="validated" production="validated" />
+                <productionToOutput port="cleaned" production="cleaned" />
+                <productionToOutput port="summary" production="summary" />
+        </bind>
+
+        <bind action="processMzTab_lib_construction" tool="PostProcessMzTabs_libConstruction">
+                <inputAsRequirement port="params" requirement="params" />
+                <inputAsRequirement port="input" requirement="input" />
+                <inputAsRequirement port="peak" requirement="peak" />
+                <productionToOutput port="validated" production="validated" />
+                <productionToOutput port="cleaned" production="cleaned" />
+                <productionToOutput port="summary" production="summary" />
+        </bind>
+
+	<bind action="filter_topk_to_top1" tool="filterTopKToTop1">
+		<inputAsRequirement port="in" requirement="in" />
+		<productionToOutput port="out" production="out" />
+	</bind>
+
+	<bind action="output_topk_passing_fdr" tool="outputTopKPassingFdr">
+		<inputAsRequirement port="topk_results" requirement="topk_results" />
+		<inputAsRequirement port="top1_results" requirement="top1_results" />
+		<inputAsRequirement port="fdr_log" requirement="fdr_log" />
+		<productionToOutput port="out" production="out" />
+	</bind>
+
+	<bind action="output_topk_passing_fdr_lib_construction" tool="outputTopKPassingFdr">
+		<inputAsRequirement port="topk_results" requirement="topk_results" />
+		<inputAsRequirement port="top1_results" requirement="top1_results" />
+		<inputAsRequirement port="fdr_log" requirement="fdr_log" />
+		<productionToOutput port="out" production="out" />
+	</bind>
+
+        <bind action="make_msstats_input" tool="makeMsstatsInput">
+            <inputAsRequirement port="ided_spectra" requirement="ided_spectra" />
+            <productionToOutput port="out" production="out" />
+        </bind>
+
+	<bind action="end" type="upload">
+		<url value="{livesearch.upload}" />
+	 	<query name="task" valueRef="@task" />
+	 	<contentQuery name="content" />
+	 	<compression type="zip" />
+        <upload port="mergedResult_topk" type="file">
+			<query name="resource" value="mergedResult_topk" />
+		</upload>
+        <upload port="mergedResult" type="file">
+			<query name="resource" value="mergedResult" />
+		</upload>
+        <upload port="merged_result_with_kl_with_ambiguity_global_fdr" type="file">
+			<query name="resource" value="merged_result_with_kl_with_ambiguity_global_fdr" />
+		</upload>
+        <upload port="merged_result_with_kl_with_ambiguity" type="file">
+			<query name="resource" value="merged_result_with_kl_with_ambiguity" />
+		</upload>
+		<upload port="mzTab_topk" type="file">
+			<query name="resource" value="mzTab_topk" />
+		</upload>
+		<upload port="mzTab_topk_lib_construction" type="file">
+			<query name="resource" value="mzTab_topk_lib_construction" />
+		</upload>
+		<upload port="mzTab" type="file">
+			<query name="resource" value="mzTab" />
+		</upload>
+		<upload port="mzTab_lib_construction" type="file">
+			<query name="resource" value="mzTab_lib_construction" />
+		</upload>
+		<upload port="statistics_topk" type="file">
+			<query name="resource" value="statistics_topk" />
+		</upload>
+		<upload port="statistics_topk_lib_construction" type="file">
+			<query name="resource" value="statistics_topk_lib_construction" />
+		</upload>
+		<upload port="statistics" type="file">
+			<query name="resource" value="statistics" />
+		</upload>
+		<upload port="statistics_lib_construction" type="file">
+			<query name="resource" value="statistics_lib_construction" />
+		</upload>
+		<upload port="tsvResult_topk_global_fdr" type="file">
+			<query name="resource" value="tsvResult_topk_global_fdr" />
+		</upload>
+		<upload port="tsvResult_topk" type="file">
+			<query name="resource" value="tsvResult_topk" />
+		</upload>
+                <upload port="msstats_input_isobaric_tag" type="file">
+                        <query name="resource" value="msstats_input_isobaric_tag" />
+                </upload>
+	</bind>
+</binding>

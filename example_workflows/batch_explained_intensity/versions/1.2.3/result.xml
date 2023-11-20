@@ -1,0 +1,36 @@
+<interface id="batch_explained_intensity" version="1.2.3">
+  <download>
+		<source name="spectra/" type="folder" />
+	</download>
+  <view id="view_spectra" label="View Spectra">
+      <blockRef id="main" type="view_spectra" />
+  </view>
+
+  <block id="view_spectra" type="table_ss">
+		<data>
+			<source name="identifications_merged/" type="file" />
+			<parsers>
+        <parser type="genericTabular" />
+         <parser type="SQLite" />
+			</parsers>
+      <row>
+      </row>
+      <row expander="image">
+        <column colspan="5" height="500" type="jscolumnspectrumviewer" width="600">
+                <parameter file="[_dyn_#InternalFilename]" name="file" />
+                <parameter name="scan" value="[_dyn_#Scan]" />
+                <parameter name="peptide" value="[_dyn_#Peptide1]" />
+                <parameter name="modformat" value="inspect" />
+                <parameter name="trim" value="true" />
+        </column>
+        <column colspan="5" height="500" type="jscolumnspectrumviewer" width="600">
+                <parameter file="[_dyn_#InternalFilename]" name="file" />
+                <parameter name="scan" value="[_dyn_#Scan]" />
+                <parameter name="peptide" value="[_dyn_#Peptide2]" />
+                <parameter name="modformat" value="inspect" />
+                <parameter name="trim" value="true" />
+        </column>
+      </row>
+		</data>
+	</block>
+</interface>

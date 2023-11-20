@@ -1,0 +1,28 @@
+<binding>
+        <bind action="begin" type="download">
+                <url value="{livesearch.download}" />
+                <query name="task" valueRef="@task" />
+                <query name="user" valueRef="@user" />
+                <compression type="zip" />
+                <download port="flowParams" type="file">
+                        <query name="resource" value="params" />
+                </download>
+<!--                 <download port="spectrum_port" type="folder"> -->
+                <download port="tsv_port" type="file">
+                        <query name="resource" value="tsv_collection" />
+                </download>
+                <downloadParams>
+                        <query name="resource" value="params" />
+                </downloadParams>
+        </bind>
+
+        <bind action="end" type="upload">
+                <url value="{livesearch.upload}" />
+                <query name="task" valueRef="@task" />
+                <contentQuery name="content" />
+                <compression type="zip" />
+                <upload port="tsv_port" type="file">
+                        <query name="resource" value="table_dir" />
+                </upload>
+        </bind>
+</binding>

@@ -1,0 +1,40 @@
+<toolset>
+    <pathSet base="test_flower_workflow">
+        <toolPath path="test_table" tool="test_table_tool" />
+        <toolPath path="test_summary" tool="test_summary_tool" />
+    </pathSet>	
+
+    <tool name="test_table_tool">
+        <require name="spectrum_file" type="file" />
+<!--        <require name="spectrum_folder" type="folder" />  -->
+		
+<!--        <produce extension="tsv" name="test_table_output" naming="explicit" type="file" /> -->
+        <produce extension="txt" name="test_table_output1" naming="fixed" type="file" value="test_table_output_filename1.tsv" />
+<!--        <produce extension="txt" name="test_table_output2" naming="fixed" type="file" value="test_table_output_filename2.tsv" />  -->
+
+<!--        <execution argConvention="posix" env="binary">  -->
+<!--        <execution argConvention="adhoc" env="binary">  -->
+        <execution argConvention="gnu" env="binary">
+<!--            <arg pathRef="dummy.script" />  -->
+            <arg valueRef="test_table_output1" />
+            <arg valueRef="spectrum_file" />
+            <arg valueRef="@MyUSIstring" />
+<!--            <arg option="USI" valueRef="@MyUSIstring" />  -->
+<!--            <arg option="SPECTRA" valueRef="spectrum_folder" />  -->
+<!--            <arg valueRef="spectrum_folder" />  -->
+        </execution>
+    </tool>
+
+    <tool name="test_summary_tool">
+        <require name="test_table_output1" type="file" />
+		
+        <produce extension="txt" name="test_summary_output" naming="fixed" type="file" value="summary.html" />
+
+        <execution argConvention="gnu" env="binary">
+            <arg valueRef="test_summary_output" />
+            <arg option="TABLE" valueRef="test_table_output1" />
+            <arg option="USI" valueRef="@MyUSIstring" />
+        </execution>
+    </tool>
+
+</toolset>

@@ -1,0 +1,37 @@
+<interface id="test_flower_workflow" version="release_0.0">
+		<workflow-id>test_flower_workflow</workflow-id>
+        <workflow-label>test_flower_workflow</workflow-label>
+        
+        <parameters>
+                <parameter label="Description" name="desc">
+                        <validator maximum="1000" type="length" />
+                </parameter>
+                <parameter label="Email" name="email">
+                        <validator type="email" />
+                </parameter>
+
+                <parameter label="TSV Files" name="tsv_on_server">
+                        <validator type="required" />
+                        <fileGenerator purpose="tsv" target="tsv_collection" type="upload" />
+                </parameter>
+ 
+        </parameters>
+
+        <block label="Inputs">
+                <row>
+                        <cell>
+                                <label>
+                                        <content parameter="tsv_on_server" />
+                                        <tooltip id="hSpectrumFile" />
+                                </label>
+                        </cell>
+                        <cell colspan="3">
+                                <module id="tsv_on_server" type="fileSelector">
+                                        <property name="label">TSV Files</property>
+                                </module>
+                        </cell>
+                </row>
+ 
+        </block>
+
+</interface>

@@ -1,0 +1,56 @@
+<binding>
+	<bind action="begin" type="download">
+	 	<url value="{livesearch.download}" />
+	 	<query name="task" valueRef="@task" />
+	 	<query name="user" valueRef="@user" />
+	 	<compression type="zip" />
+	</bind>
+	<bind action="begin" type="download">
+			 <url value="{livesearch.download}" />
+			 <query name="task" valueRef="@task" />
+			<query name="user" valueRef="@user" />
+			 <compression type="zip" />
+			 <download port="spectrum" type="folder">
+			 	<query name="resource" value="spectrum" />
+			 </download>
+			 <download port="identifications" type="file">
+				<query name="resource" value="identifications" />
+			 </download>
+			 <download port="params" type="file">
+				 <query name="resource" value="params" />
+			 </download>
+			 <downloadParams>
+				 <query name="resource" value="params" />
+			 </downloadParams>
+	</bind>
+
+	<bind action="split_identifications" tool="split_identifications">
+    <inputAsRequirement port="spectrum" requirement="spectrum" />
+    <inputAsRequirement port="identifications" requirement="identifications" />
+    <inputAsRequirement port="params" requirement="parameters" />
+    <productionToOutput port="identifications_batched" production="identifications_batched" />
+    <productionToOutput port="jobs" production="jobs" />
+  </bind>
+
+  <bind action="calculated_explained_intensity" tool="generate_explained_intensity">
+    <inputAsRequirement port="jobs" requirement="jobs" />
+    <inputAsRequirement port="spectrum" requirement="spectrum" />
+    <inputAsRequirement port="identifications_batched" requirement="identifications_batched" />
+    <productionToOutput port="identifications_batched_final" production="identifications_batched_final" />
+  </bind>
+
+  <bind action="merge_tsv" tool="merge_tsv">
+    <inputAsRequirement port="identifications_batched_final" requirement="identifications_batched_final" />
+    <productionToOutput port="identifications_merged" production="identifications_merged" />
+  </bind>
+
+  <bind action="end" type="upload">
+	 	<url value="{livesearch.upload}" />
+	 	<query name="task" valueRef="@task" />
+	 	<contentQuery name="content" />
+	 	<compression type="zip" />
+		<upload port="identifications_merged" type="file">
+			<query name="resource" value="identifications_merged" />
+		</upload>
+  </bind>
+</binding>

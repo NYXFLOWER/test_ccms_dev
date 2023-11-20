@@ -1,0 +1,71 @@
+<toolset>
+   
+   <fetchMethod value="link" />
+   
+   <pathSet base="batch_explained_intensity/1.2.3+mgf-index">
+         <pathVar name="generate_explained_intensity_script" path="generate_explained_intensity.py" />
+         <pathVar name="split_identifications_script" path="split_identifications.py" />
+         <pathVar name="merge_tsv_script" path="merge_tsv_files_efficient.py" />
+   </pathSet>
+
+   <pathSet base="anaconda3">
+     <toolPath tool="split_identifications" path="bin/python3.5" />
+     <toolPath tool="generate_explained_intensity" path="bin/python3.5" />
+     <toolPath tool="merge_tsv" path="bin/python3.5" />
+   </pathSet>
+
+   <tool name="split_identifications">
+          <require name="identifications" type="file" />
+          <require name="spectrum" type="folder" />
+          <require name="parameters" type="file" />
+          <produce name="jobs" type="folder" />
+          <produce name="identifications_batched" type="folder" />
+         <execution env="binary" argConvention="adhoc">
+             <arg pathRef="split_identifications_script" />
+             <arg valueRef="identifications" />
+             <arg valueRef="parameters" />
+             <arg valueRef="identifications_batched" />
+             <arg valueRef="spectrum" />
+             <arg valueRef="jobs" />
+             <arg valueRef="@filename" />
+             <arg valueRef="@parallelism" />
+         </execution>
+   </tool>
+
+   <tool name="generate_explained_intensity">
+          <require name="jobs" type="file" />
+          <require name="spectrum" type="folder" />
+          <require name="i" type="file" />
+          <require name="identifications_batched" type="folder" />
+          <produce name="identifications_batched_final" type="folder" />
+         <execution env="binary" argConvention="adhoc">
+             <arg pathRef="generate_explained_intensity_script" />
+             <arg valueRef="jobs" />
+             <arg valueRef="identifications_batched_final" />
+             <arg valueRef="@filename" />
+             <arg valueRef="@scan" />
+             <arg valueRef="@sequence1" />
+             <arg valueRef="@sequence2" />
+             <arg valueRef="@charge1" />
+             <arg valueRef="@charge2" />
+             <arg value="Type" />
+             <arg value="Intensity" />
+             <arg valueRef="@filter.snr" />
+             <arg valueRef="@filter.low_mass" />
+             <arg valueRef="@filter.precursor" />
+             <arg valueRef="@peak_tolerance" />
+             <arg valueRef="@mgf_index" />
+         </execution>
+   </tool>
+
+   <tool name="merge_tsv">
+       <require name="identifications_batched_final" type="folder" />
+       <produce name="identifications_merged" type="file" naming="explicit" extension="tsv" />
+       <execution env="binary" argConvention="adhoc">
+           <arg pathRef="merge_tsv_script" />
+           <arg valueRef="identifications_batched_final" />
+           <arg valueRef="identifications_merged" />
+       </execution>
+   </tool>
+
+</toolset>

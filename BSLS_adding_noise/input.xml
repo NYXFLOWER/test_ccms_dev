@@ -1,0 +1,150 @@
+<interface id="bsls_adding_noise" version="release_0.0">
+		<workflow-id>BSLS_ADDING_NOISE</workflow-id>
+        <workflow-label>BSLS_Adding_Noise</workflow-label>
+        
+        <parameters>
+                <parameter label="Description" name="desc">
+                        <validator maximum="1000" type="length" />
+                </parameter>
+    
+                <parameter label="Email" name="email">
+                        <validator type="email" />
+                </parameter>
+
+                <parameter label="TSV Files" name="tsv_on_server">
+                        <validator type="required" />
+                        <fileGenerator purpose="tsv" target="tsv_collection" type="upload" />
+                </parameter>
+
+                <parameter label="Query MGF File 1" name="query_mgf_file_1">
+                        <validator type="required" />
+                        <fileGenerator purpose="spectrum" target="query_mgf_1" type="upload" />
+                </parameter>
+
+                <parameter label="Library MGF Files" name="library_mgf_files">
+                        <validator type="required" />
+                        <fileGenerator purpose="spectrum" target="library_mgf_collection" type="upload" />
+                </parameter>  
+
+                <parameter label="Noise MGF File" name="noise_mgf_file">
+                        <validator type="required" />
+                        <fileGenerator purpose="spectrum" target="noise_mgf_collection" type="upload" />
+                </parameter>  
+
+                <parameter label="Output Noise-added Query Directory" name="noise_added_query_dir">
+                        <validator maximum="1000" type="length" />
+                </parameter>
+
+                <parameter label="Ion Model File" name="ion_model_file">
+                        <validator type="required" />
+                        <fileGenerator purpose="txt" target="ion_model_collection" type="upload" />
+                </parameter>
+
+                <parameter label="AA mass File" name="aa_mass_file">
+                        <validator type="required" />
+                        <fileGenerator purpose="txt" target="aa_mass_collection" type="upload" />
+                </parameter>
+        </parameters>
+
+        <block label="Input Files">
+                <row>
+                        <cell>
+                                <label>
+                                        <content parameter="query_mgf_file_1" />
+                                        <tooltip id="hSpectrumFile" />
+                                </label>
+                        </cell>
+                        <cell colspan="3">
+                                <module id="query_mgf_file_1" type="fileSelector">
+                                        <property name="label">Query MGF File 1</property>
+                                </module>
+                        </cell>
+                </row>
+
+                <row>
+                        <cell>
+                                <label>
+                                        <content parameter="ion_model_file" />
+                                        <tooltip id="hSpectrumFile" />
+                                </label>
+                        </cell>
+                        <cell colspan="3">
+                                <module id="ion_model_file" type="fileSelector">
+                                        <property name="label">Ion Model File</property>
+                                </module>
+                        </cell>
+                        
+                </row>
+                
+                <row>
+                        <cell>
+                                <label>
+                                        <content parameter="noise_mgf_file" />
+                                        <tooltip id="hSpectrumFile" />
+                                </label>
+                        </cell>
+                        <cell colspan="3">
+                                <module id="noise_mgf_file" type="fileSelector">
+                                        <property name="label">Noise MGF File</property>
+                                </module>
+                        </cell>
+                        <cell>
+                                <label>
+                                        <content parameter="aa_mass_file" />
+                                        <tooltip id="hSpectrumFile" />
+                                </label>
+                        </cell>
+                        <cell colspan="3">
+                                <module id="aa_mass_file" type="fileSelector">
+                                        <property name="label">AA Mass Files</property>
+                                </module>
+                        </cell>
+                </row>
+                <row>
+                        <cell>
+                                <label>
+                                        <content parameter="library_mgf_files" />
+                                        <tooltip id="hSpectrumFile" />
+                                </label>
+                        </cell>
+                        <cell colspan="3">
+                                <module id="library_mgf_files" type="fileSelector">
+                                        <property name="label">Library MGF Files</property>
+                                </module>
+                        </cell>
+                </row>
+        </block>
+                <block label="Output Settings">
+                <row>
+                         <cell>
+                                <label>
+                                        <content parameter="noise_added_query_dir" />
+                                </label>
+                        </cell>
+                        <cell colspan="3">
+                                <input parameter="noise_added_query_dir" type="text">
+                                        <attribute name="size" value="50" />
+                                </input>
+                        </cell>
+                </row>
+ 
+        </block>
+
+        <block label="Add Noise to Query Spectra">
+                <row>
+                        <cell>
+                                <label>
+                                        <content parameter="tsv_on_server" />
+                                        <tooltip id="hSpectrumFile" />
+                                </label>
+                        </cell>
+                        <cell colspan="3">
+                                <module id="tsv_on_server" type="fileSelector">
+                                        <property name="label">TSV Files</property>
+                                </module>
+                        </cell>
+                </row>
+ 
+        </block>
+
+</interface>
