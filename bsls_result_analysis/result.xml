@@ -1,0 +1,2595 @@
+<interface id="bsls_result_analysis" version="release_0.0">
+    <download>
+    </download>
+
+    <!-- Dataset info -->
+    <view group="Dataset Info and Comparison" id="query_noise_set_info" label="Query + Noise Sets">
+        <blockRef id="main" type="query_block" />
+    </view>
+
+    <view group="Dataset Info and Comparison" id="library_set_info" label="Library Sets">
+        <blockRef id="main" type="library_block" />
+    </view>
+
+    <!-- Results: Query + Library -->
+    <!-- cosine, projected cosine, JS-divergence, EntropyScore, MSPLIT, SpectraST -->
+    <view group="Results: Query + Library" id="ql_cosine" label="cosine">
+        <blockRef id="main" type="ql_cosine" />
+    </view>
+    <view group="Results: Query + Library" id="ql_cosine1" label="projected cosine">
+        <blockRef id="main" type="ql_cosine1" />
+    </view>
+    <view group="Results: Query + Library" id="ql_js" label="JS-divergence">
+        <blockRef id="main" type="ql_js" />
+    </view>
+    <view group="Results: Query + Library" id="ql_entropy" label="EntropyScore">
+        <blockRef id="main" type="ql_entropy" />
+    </view>
+    <view group="Results: Query + Library" id="ql_msplit" label="MSPLIT">
+        <blockRef id="main" type="ql_msplit" />
+    </view>
+    <view group="Results: Query + Library" id="ql_spectrast" label="SpectraST">
+        <blockRef id="main" type="ql_spectrast" />
+    </view>
+
+    <!-- Results: Clean Query + Clean Library -->
+    <!-- cosine, projected cosine, JS-divergence, EntropyScore, MSPLIT, SpectraST -->
+    <view group="Results: Clean Query + Clean Library" id="cl_cosine" label="cosine">
+        <blockRef id="main" type="cc_cosine" />
+    </view>
+    <view group="Results: Clean Query + Clean Library" id="cl_cosine1" label="projected cosine">
+        <blockRef id="main" type="cc_cosine1" />
+    </view>
+    <view group="Results: Clean Query + Clean Library" id="cl_js" label="JS-divergence">
+        <blockRef id="main" type="cc_js" />
+    </view>
+    <view group="Results: Clean Query + Clean Library" id="cl_entropy" label="EntropyScore">
+        <blockRef id="main" type="cc_entropy" />
+    </view>
+    <view group="Results: Clean Query + Clean Library" id="cl_msplit" label="MSPLIT">
+        <blockRef id="main" type="cc_msplit" />
+    </view>
+    <view group="Results: Clean Query + Clean Library" id="cl_spectrast" label="SpectraST">
+        <blockRef id="main" type="cc_spectrast" />
+    </view>
+
+    <!-- Results: Query + Predicted Library -->
+    <!-- cosine, projected cosine, JS-divergence, EntropyScore, MSPLIT, SpectraST -->
+    <view group="Results: Query + Predicted Library" id="qp_cosine" label="cosine">
+        <blockRef id="main" type="qp_cosine" />
+    </view>
+    <view group="Results: Query + Predicted Library" id="qp_cosine1" label="projected cosine">
+        <blockRef id="main" type="qp_cosine1" />
+    </view>
+    <view group="Results: Query + Predicted Library" id="qp_js" label="JS-divergence">
+        <blockRef id="main" type="qp_js" />
+    </view>
+    <view group="Results: Query + Predicted Library" id="qp_entropy" label="EntropyScore">
+        <blockRef id="main" type="qp_entropy" />
+    </view>
+    <view group="Results: Query + Predicted Library" id="qp_msplit" label="MSPLIT">
+        <blockRef id="main" type="qp_msplit" />
+    </view>
+    <view group="Results: Query + Predicted Library" id="qp_spectrast" label="SpectraST">
+        <blockRef id="main" type="qp_spectrast" />
+    </view>
+    
+    <!-- Results: Clean Query + Predicted Library -->
+    <!-- cosine, projected cosine, JS-divergence, EntropyScore, MSPLIT, SpectraST -->
+    <view group="Results: Clean Query + Predicted Library" id="cp_cosine" label="cosine">
+        <blockRef id="main" type="cp_cosine" />
+    </view>
+    <view group="Results: Clean Query + Predicted Library" id="cp_cosine1" label="projected cosine">
+        <blockRef id="main" type="cp_cosine1" />
+    </view>
+    <view group="Results: Clean Query + Predicted Library" id="cp_js" label="JS-divergence">
+        <blockRef id="main" type="cp_js" />
+    </view>
+    <view group="Results: Clean Query + Predicted Library" id="cp_entropy" label="EntropyScore">
+        <blockRef id="main" type="cp_entropy" />
+    </view>
+    <view group="Results: Clean Query + Predicted Library" id="cp_msplit" label="MSPLIT">
+        <blockRef id="main" type="cp_msplit" />
+    </view>
+    <view group="Results: Clean Query + Predicted Library" id="cp_spectrast" label="SpectraST">
+        <blockRef id="main" type="cp_spectrast" />
+    </view>
+
+    <!-- Results: Query + Noise + Library -->
+    <!-- cosine, projected cosine, JS-divergence, EntropyScore, MSPLIT, SpectraST -->
+    <view group="Results: Query + Noise + Library" id="qnl_cosine" label="cosine">
+        <blockRef id="main" type="qnl_cosine" />
+    </view>
+    <view group="Results: Query + Noise + Library" id="qnl_cosine1" label="projected cosine">
+        <blockRef id="main" type="qnl_cosine1" />
+    </view>
+    <view group="Results: Query + Noise + Library" id="qnl_js" label="JS-divergence">
+        <blockRef id="main" type="qnl_js" />
+    </view>
+    <view group="Results: Query + Noise + Library" id="qnl_entropy" label="EntropyScore">
+        <blockRef id="main" type="qnl_entropy" />
+    </view>
+    <view group="Results: Query + Noise + Library" id="qnl_msplit" label="MSPLIT">
+        <blockRef id="main" type="qnl_msplit" />
+    </view>
+    <view group="Results: Query + Noise + Library" id="qnl_spectrast" label="SpectraST">
+        <blockRef id="main" type="qnl_spectrast" />
+    </view>
+
+    <!-- Results: Clean Query + Noise + Clean Library -->
+    <!-- cosine, projected cosine, JS-divergence, EntropyScore, MSPLIT, SpectraST -->
+    <view group="Results: Clean Query + Noise + Clean Library" id="cnc_cosine" label="cosine">
+        <blockRef id="main" type="cnc_cosine" />
+    </view>
+    <view group="Results: Clean Query + Noise + Clean Library" id="cnc_cosine1" label="projected cosine">
+        <blockRef id="main" type="cnc_cosine1" />
+    </view>
+    <view group="Results: Clean Query + Noise + Clean Library" id="cnc_js" label="JS-divergence">
+        <blockRef id="main" type="cnc_js" />
+    </view>
+    <view group="Results: Clean Query + Noise + Clean Library" id="cnc_entropy" label="EntropyScore">
+        <blockRef id="main" type="cnc_entropy" />
+    </view>
+    <view group="Results: Clean Query + Noise + Clean Library" id="cnc_msplit" label="MSPLIT">
+        <blockRef id="main" type="cnc_msplit" />
+    </view>
+    <view group="Results: Clean Query + Noise + Clean Library" id="cnc_spectrast" label="SpectraST">
+        <blockRef id="main" type="cnc_spectrast" />
+    </view>
+
+
+    <!-- Results: Query + Noise + Predicted Library -->
+    <!-- cosine, projected cosine, JS-divergence, EntropyScore, MSPLIT, SpectraST -->
+    <view group="Results: Query + Noise + Predicted Library" id="qnp_cosine" label="cosine">
+        <blockRef id="main" type="qnp_cosine" />
+    </view>
+    <view group="Results: Query + Noise + Predicted Library" id="qnp_cosine1" label="projected cosine">
+        <blockRef id="main" type="qnp_cosine1" />
+    </view>
+    <view group="Results: Query + Noise + Predicted Library" id="qnp_js" label="JS-divergence">
+        <blockRef id="main" type="qnp_js" />
+    </view>
+    <view group="Results: Query + Noise + Predicted Library" id="qnp_entropy" label="EntropyScore">
+        <blockRef id="main" type="qnp_entropy" />
+    </view>
+    <view group="Results: Query + Noise + Predicted Library" id="qnp_msplit" label="MSPLIT">
+        <blockRef id="main" type="qnp_msplit" />
+    </view>
+    <view group="Results: Query + Noise + Predicted Library" id="qnp_spectrast" label="SpectraST">
+        <blockRef id="main" type="qnp_spectrast" />
+    </view>
+
+    <!-- Results: Clean Query + Noise + Predicted Library -->
+    <!-- cosine, projected cosine, JS-divergence, EntropyScore, MSPLIT, SpectraST -->
+    <view group="Results: Clean Query + Noise + Predicted Library" id="cnp_cosine" label="cosine">
+        <blockRef id="main" type="cnp_cosine" />
+    </view>
+    <view group="Results: Clean Query + Noise + Predicted Library" id="cnp_cosine1" label="projected cosine">
+        <blockRef id="main" type="cnp_cosine1" />
+    </view>
+    <view group="Results: Clean Query + Noise + Predicted Library" id="cnp_js" label="JS-divergence">
+        <blockRef id="main" type="cnp_js" />
+    </view>
+    <view group="Results: Clean Query + Noise + Predicted Library" id="cnp_entropy" label="EntropyScore">
+        <blockRef id="main" type="cnp_entropy" />
+    </view>
+    <view group="Results: Clean Query + Noise + Predicted Library" id="cnp_msplit" label="MSPLIT">
+        <blockRef id="main" type="cnp_msplit" />
+    </view>
+    <view group="Results: Clean Query + Noise + Predicted Library" id="cnp_spectrast" label="SpectraST">
+        <blockRef id="main" type="cnp_spectrast" />
+    </view>
+
+
+    <!-- Info Block -->
+
+    <block id="query_block" type="table_ss">  
+        <data>
+            <source name="query_info_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="noise_charge" label="noise_charge" type="integer" width="1" />
+                <column field="noise_seq" label="noise_seq" type="text" width="20" />
+                <column field="query_noise_cosine" label="query_noise_cosine" type="float" precision="4" width="3" />
+                <column field="#added_noise_peaks" label="#added_noise_peaks" type="text" width="20" />
+
+
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_original_usi]" />\
+                    <parameter name="LABEL" value="[query_original_usi]" />\
+                </column>
+            </row>
+
+            <row expander="image">
+                <column colspan="5" height="500" title="Original spectrum" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename1]" name="file" />
+                    <parameter name="scan" value="[query_scan]" />
+                    <parameter name="peptide" value="[query_seq]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.05" />
+                    <parameter name="trim" value="true" />
+                </column>
+                <column colspan="5" height="500" title="Original spectrum" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename2]" name="file" />
+                    <parameter name="scan" value="[query_scan]" />
+                    <parameter name="peptide" value="[query_seq]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.05" />
+                    <parameter name="trim" value="true" />
+                </column>
+                <column colspan="5" height="500" title="Original spectrum" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename2]" name="file" />
+                    <parameter name="scan" value="[query_scan]" />
+                    <parameter name="peptide" value="[noise_seq]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.05" />
+                    <parameter name="trim" value="true" />
+                </column>
+            </row>
+            <row expander="image">
+                <column colspan="5" height="500" title="Original spectrum" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename3]" name="file" />
+                    <parameter name="scan" value="[query_scan]" />
+                    <parameter name="peptide" value="[query_seq]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.05" />
+                    <parameter name="trim" value="true" />
+                </column>
+                <column colspan="5" height="500" title="Original spectrum" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename4]" name="file" />
+                    <parameter name="scan" value="[query_scan]" />
+                    <parameter name="peptide" value="[query_seq]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.05" />
+                    <parameter name="trim" value="true" />
+                </column>
+                <column colspan="5" height="500" title="Original spectrum" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename4]" name="file" />
+                    <parameter name="scan" value="[query_scan]" />
+                    <parameter name="peptide" value="[noise_seq]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.05" />
+                    <parameter name="trim" value="true" />
+                </column>
+            </row>
+        </data>
+    </block>
+    <block id="library_block" type="table_ss">
+        <data>
+            <source name="library_info_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="scan" type="sortedTabular" />
+               <parser type="SQLite" />    
+               <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <column field="scan" label="scan" type="integer" width="3" />
+                <column field="charge" label="charge" type="integer" width="1" />
+                <column field="seq" label="sequence" type="text" width="20" />
+
+
+                <column label="library_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[usi]" />\
+                    <parameter name="LABEL" value="[usi]" />\
+                </column>
+            </row>
+
+            <row expander="image">
+                <column colspan="5" height="500" title="Original spectrum" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename1]" name="file" />
+                    <parameter name="scan" value="[scan]" />
+                    <parameter name="peptide" value="[seq]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.05" />
+                    <parameter name="trim" value="true" />
+                </column>
+            </row>
+            <row expander="image">
+                <column colspan="5" height="500" title="Original spectrum" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename2]" name="file" />
+                    <parameter name="scan" value="[scan]" />
+                    <parameter name="peptide" value="[seq]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.05" />
+                    <parameter name="trim" value="true" />
+                </column>
+            </row>
+            <row expander="image">
+                <column colspan="5" height="500" title="Original spectrum" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename3]" name="file" />
+                    <parameter name="scan" value="[scan]" />
+                    <parameter name="peptide" value="[seq]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.05" />
+                    <parameter name="trim" value="true" />
+                </column>
+            </row>
+            
+        </data>
+    </block>
+    
+    <!-- Result Block: Query + Library -->
+    <block id="ql_cosine" type="table_ss">
+        <data>
+            <source name="ql_cosine_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="ql_cosine1" type="table_ss">
+        <data>
+            <source name="ql_cosine1_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="ql_js" type="table_ss">
+        <data>
+            <source name="ql_js_divergence_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+    
+    <block id="ql_entropy" type="table_ss">
+        <data>
+            <source name="ql_entropy_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="ql_msplit" type="table_ss">
+        <data>
+            <source name="ql_msplit_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="ql_spectrast" type="table_ss">
+        <data>
+            <source name="ql_spectrast_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <!-- Result Block: Clean Query + Clean Library -->
+
+    <block id="cc_cosine" type="table_ss">
+        <data>
+            <source name="cc_cosine_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="cc_cosine1" type="table_ss">
+        <data>
+            <source name="cc_cosine1_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="cc_js" type="table_ss">
+        <data>
+            <source name="cc_js_divergence_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+    
+    <block id="cc_entropy" type="table_ss">
+        <data>
+            <source name="cc_entropy_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="cc_msplit" type="table_ss">
+        <data>
+            <source name="cc_msplit_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="cc_spectrast" type="table_ss">
+        <data>
+            <source name="cc_spectrast_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <!-- Results: Query + Predicted Library -->
+    <block id="qp_cosine" type="table_ss">
+        <data>
+            <source name="qp_cosine_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="qp_cosine1" type="table_ss">
+        <data>
+            <source name="qp_cosine1_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="qp_js" type="table_ss">
+        <data>
+            <source name="qp_js_divergence_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+    
+    <block id="qp_entropy" type="table_ss">
+        <data>
+            <source name="qp_entropy_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="qp_msplit" type="table_ss">
+        <data>
+            <source name="qp_msplit_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="qp_spectrast" type="table_ss">
+        <data>
+            <source name="qp_spectrast_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+
+    <!-- Results: Clean Query + Predicted Library -->
+    <block id="cp_cosine" type="table_ss">
+        <data>
+            <source name="cp_cosine_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="cp_cosine1" type="table_ss">
+        <data>
+            <source name="cp_cosine1_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="cp_js" type="table_ss">
+        <data>
+            <source name="cp_js_divergence_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+    
+    <block id="cp_entropy" type="table_ss">
+        <data>
+            <source name="cp_entropy_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="cp_msplit" type="table_ss">
+        <data>
+            <source name="cp_msplit_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="cp_spectrast" type="table_ss">
+        <data>
+            <source name="cp_spectrast_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <!-- Results: Query + Noise + Library -->
+    <block id="qnl_cosine" type="table_ss">
+        <data>
+            <source name="qnl_cosine_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="qnl_cosine1" type="table_ss">
+        <data>
+            <source name="qnl_cosine1_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="qnl_js" type="table_ss">
+        <data>
+            <source name="qnl_js_divergence_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+    
+    <block id="qnl_entropy" type="table_ss">
+        <data>
+            <source name="qnl_entropy_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="qnl_msplit" type="table_ss">
+        <data>
+            <source name="qnl_msplit_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="qnl_spectrast" type="table_ss">
+        <data>
+            <source name="qnl_spectrast_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <!-- Results: Clean Query + Noise + Clean Library -->
+    <block id="cnc_cosine" type="table_ss">
+        <data>
+            <source name="cnc_cosine_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="cnc_cosine1" type="table_ss">
+        <data>
+            <source name="cnc_cosine1_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="cnc_js" type="table_ss">
+        <data>
+            <source name="cnc_js_divergence_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+    
+    <block id="cnc_entropy" type="table_ss">
+        <data>
+            <source name="cnc_entropy_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="cnc_msplit" type="table_ss">
+        <data>
+            <source name="cnc_msplit_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="cnc_spectrast" type="table_ss">
+        <data>
+            <source name="cnc_spectrast_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <!-- Results: Query + Noise + Predicted Library -->
+    <block id="qnp_cosine" type="table_ss">
+        <data>
+            <source name="qnp_cosine_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="qnp_cosine1" type="table_ss">
+        <data>
+            <source name="qnp_cosine1_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="qnp_js" type="table_ss">
+        <data>
+            <source name="qnp_js_divergence_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+    
+    <block id="qnp_entropy" type="table_ss">
+        <data>
+            <source name="qnp_entropy_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="qnp_msplit" type="table_ss">
+        <data>
+            <source name="qnp_msplit_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="qnp_spectrast" type="table_ss">
+        <data>
+            <source name="qnp_spectrast_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <!-- Results: Clean Query + Noise + Predicted Library -->
+    <block id="cnp_cosine" type="table_ss">
+        <data>
+            <source name="cnp_cosine_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="cnp_cosine1" type="table_ss">
+        <data>
+            <source name="cnp_cosine1_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="cnp_js" type="table_ss">
+        <data>
+            <source name="cnp_js_divergence_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+    
+    <block id="cnp_entropy" type="table_ss">
+        <data>
+            <source name="cnp_entropy_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="cnp_msplit" type="table_ss">
+        <data>
+            <source name="cnp_msplit_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+    <block id="cnp_spectrast" type="table_ss">
+        <data>
+            <source name="cnp_spectrast_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+                <parser type="SQLite" />    
+                <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- use columns: query_scan (int), library_idx_1 (int), library_idx_2 (int), matching_score_1 (float), matching_score_2, in_recall (int), is_correct_1 (int), is_correct_2, is_correct_ambiguous, precision, precision_ambiguous, recall, recall_ambiguous, query_charge, query_seq, library_seq_1, library_seq_2, query_usi, library_usi_1, library_usi_2-->
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="library_idx_1" label="library_idx_1" type="integer" width="3" />
+                <column field="library_idx_2" label="library_idx_2" type="integer" width="3" />
+                <column field="matching_score_1" label="matching_score_1" type="float" precision="4" width="3" />
+                <column field="matching_score_2" label="matching_score_2" type="float" precision="4" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="is_correct_1" label="is_correct_1" type="integer" width="3" />
+                <column field="is_correct_2" label="is_correct_2" type="integer" width="3" />
+                <column field="is_correct_ambiguous" label="is_correct_ambiguous" type="integer" width="3" />
+                <column field="precision" label="precision" type="float" precision="4" width="3" />
+                <column field="precision_ambiguous" label="precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="recall" label="recall" type="float" precision="4" width="3" />
+                <column field="recall_ambiguous" label="recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="library_seq_1" label="library_seq_1" type="text" width="20" />
+                <column field="library_seq_2" label="library_seq_2" type="text" width="20" />
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+                <column label="library_original_usi_1" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_1]" />\
+                    <parameter name="LABEL" value="[library_usi_1]" />\
+                </column>
+                <column label="library_original_usi_2" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[library_usi_2]" />\
+                    <parameter name="LABEL" value="[library_usi_2]" />\
+                </column>
+            </row>
+        </data>
+    </block>
+
+
+
+
+
+
+	
+</interface>

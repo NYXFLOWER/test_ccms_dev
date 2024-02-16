@@ -1,0 +1,198 @@
+<interface id="bsls_dataset_comparison" version="release_0.0">
+		<workflow-id>BSLS_DATASET_COMPARISON</workflow-id>
+        <workflow-label>BSLS_Dataset_Comparison</workflow-label>
+        
+        <parameters>
+            <parameter label="Description" name="desc">
+                    <validator maximum="1000" type="length" />
+            </parameter>
+
+            <parameter label="Email" name="email">
+            <!-- <validator type="email" /> -->
+            </parameter>
+            
+            <!-- query -->
+
+            <parameter label="Query Info TSV" name="query_info_tsv_file">
+                    <fileGenerator purpose="tsv" target="query_info_tsv" type="upload" />
+            </parameter>
+            
+            <!-- InternalFilename1 -->
+            <parameter label="Query" name="query_mgf_file_0">
+                <fileGenerator purpose="spectrum" target="query_mgf_0" type="upload" />
+            </parameter>
+            <!-- InternalFilename2 -->
+            <parameter label="Query + Noise" name="query_mgf_file_100">
+                <fileGenerator purpose="spectrum" target="query_mgf_100" type="upload" />
+            </parameter>
+            <!-- InternalFilename3 -->
+            <parameter label="Clean Query" name="query_clean_mgf_file_0">
+                <fileGenerator purpose="spectrum" target="query_clean_mgf_0" type="upload" />
+            </parameter>
+            <!-- InternalFilename4 -->
+            <parameter label="Clean Query + Noise" name="query_clean_mgf_file_100">
+                <fileGenerator purpose="spectrum" target="query_clean_mgf_100" type="upload" />
+            </parameter>
+            <!-- InternalFilename5 -->
+            <parameter label="Shuffled Annotated Noise Spectrum" name="noise_clean_mgf_file">
+                <fileGenerator purpose="spectrum" target="noise_clean_mgf" type="upload" />
+            </parameter>
+
+            <!-- library -->
+
+            <parameter label="Library Info TSV" name="library_info_tsv_file">
+                    <fileGenerator purpose="tsv" target="library_info_tsv" type="upload" />
+            </parameter>
+            
+            <!-- InternalFilename6 -->
+            <parameter label="Library" name="library_mgf_file">
+                <fileGenerator purpose="spectrum" target="library_mgf" type="upload" />
+            </parameter>
+            <!-- InternalFilename7 -->
+            <parameter label="Annotated Library" name="annotated_library_mgf_file">
+                <fileGenerator purpose="spectrum" target="annotated_library_mgf" type="upload" />
+            </parameter>
+            <!-- InternalFilename8 -->
+            <parameter label="Predicted Library" name="predicted_library_mgf_file">
+                <fileGenerator purpose="spectrum" target="predicted_library_mgf" type="upload" />
+            </parameter>
+        </parameters>
+
+        <block label="Query Sets">
+            <row>
+                <cell>
+                    <label>
+                        <content parameter="query_info_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="query_info_tsv_file" type="fileSelector">
+                        <property name="label">Query Info TSV File</property>
+                    </module>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                        <label>
+                                <content parameter="query_mgf_file_0" />
+                                <tooltip id="hSpectrumFile" />
+                        </label>
+                </cell>
+                <cell colspan="3">
+                        <module id="query_mgf_file_0" type="fileSelector">
+                                <property name="label">Query MGF File</property>
+                        </module>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                        <label>
+                                <content parameter="query_mgf_file_100" />
+                                <tooltip id="hSpectrumFile" />
+                        </label>
+                </cell>
+                <cell colspan="3">
+                        <module id="query_mgf_file_100" type="fileSelector">
+                                <property name="label">Query + Noise MGF File</property>
+                        </module>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                        <label>
+                                <content parameter="query_clean_mgf_file_0" />
+                                <tooltip id="hSpectrumFile" />
+                        </label>
+                </cell>
+                <cell colspan="3">
+                        <module id="query_clean_mgf_file_0" type="fileSelector">
+                                <property name="label">Clean Query MGF File</property>
+                        </module>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                        <label>
+                                <content parameter="query_clean_mgf_file_100" />
+                                <tooltip id="hSpectrumFile" />
+                        </label>
+                </cell>
+                <cell colspan="3">
+                        <module id="query_clean_mgf_file_100" type="fileSelector">
+                                <property name="label">Clean Query + Noise MGF File</property>
+                        </module>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                        <label>
+                                <content parameter="noise_clean_mgf_file" />
+                                <tooltip id="hSpectrumFile" />
+                        </label>
+                </cell>
+                <cell colspan="3">
+                        <module id="noise_clean_mgf_file" type="fileSelector">
+                                <property name="label">Clean and Shuffled Noise MGF File</property>
+                        </module>
+                </cell>
+            </row>
+        </block>
+
+        <block label="Library Sets">
+            <row>
+                <cell>
+                    <label>
+                        <content parameter="library_info_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="library_info_tsv_file" type="fileSelector">
+                        <property name="label">Library Info TSV File</property>
+                    </module>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                        <label>
+                                <content parameter="library_mgf_file" />
+                                <tooltip id="hSpectrumFile" />
+                        </label>
+                </cell>
+                <cell colspan="3">
+                        <module id="library_mgf_file" type="fileSelector">
+                                <property name="label">Library MGF File</property>
+                        </module>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                        <label>
+                                <content parameter="annotated_library_mgf_file" />
+                                <tooltip id="hSpectrumFile" />
+                        </label>
+                </cell>
+                <cell colspan="3">
+                        <module id="annotated_library_mgf_file" type="fileSelector">
+                                <property name="label">Annotated Library MGF File</property>
+                        </module>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                        <label>
+                                <content parameter="predicted_library_mgf_file" />
+                                <tooltip id="hSpectrumFile" />
+                        </label>
+                </cell>
+                <cell colspan="3">
+                        <module id="predicted_library_mgf_file" type="fileSelector">
+                                <property name="label">Predicted Library MGF File</property>
+                        </module>
+                </cell>
+            </row>
+        </block>
+        
+
+</interface>

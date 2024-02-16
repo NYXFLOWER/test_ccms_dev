@@ -1,0 +1,25 @@
+<flow name="bsls_result_summary">
+        <object name="workflowParameters" />
+
+
+        <action name="begin">
+                <output object="workflowParameters" port="flowParams" />
+                <output object="result_tsv_1" port="result_tsv_port_1" />
+        </action>
+
+        <object name="result_tsv_1" />
+
+        <!-- <object name="output_logs" /> -->
+
+        <!-- <action name="temp_action">
+                <input object="query_mgf_1" port="query_mgf_port_1" />
+                <output object="output_logs" port="output_logs_port" />
+        </action> -->
+
+<!--        <collection name="spectrum_collection" />  -->
+        <!-- <object name="query_mgf_1" /> -->
+
+        <action name="end">
+                <input object="result_tsv_1" port="result_tsv_port_1" />
+        </action>
+</flow>

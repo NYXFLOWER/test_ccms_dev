@@ -1,0 +1,56 @@
+<interface id="bsls_result_summary" version="release_0.0">
+    <workflow-id>BSLS_RESULT_SUMMARY</workflow-id>
+    <workflow-label>BSLS_Result_Summary</workflow-label>
+
+    <parameters>
+        <parameter label="Description" name="desc">
+            <validator maximum="1000" type="length" />
+        </parameter>
+
+        <parameter label="Email" name="email">
+            <validator type="email" />
+        </parameter>
+
+        <parameter label="Result TSV File 1" name="result_tsv_file_1">
+            <!-- <validator type="required" /> -->
+            <fileGenerator purpose="tsv" target="result_tsv_1" type="upload" />
+        </parameter>
+
+        <parameter label="Result TSV File 2" name="result_tsv_file_2">
+            <!-- <validator type="required" /> -->
+            <fileGenerator purpose="tsv" target="result_tsv_2" type="upload" />
+        </parameter>
+    </parameters>
+
+    <block label="Current Benchmark Result Summary">
+        <row>
+            <cell>
+                <label>
+                    <content parameter="result_tsv_file_1" />
+                    <tooltip id="hSpectrumFile" />
+                </label>
+            </cell>
+            <cell colspan="3">
+                <module id="result_tsv_file_1" type="fileSelector">
+                    <property name="label">Reuslt TSV File 1</property>
+                </module>
+            </cell>
+        </row>
+    </block>
+
+    <block label="New Results to Add">
+        <row>
+            <cell>
+                <label>
+                    <content parameter="result_tsv_file_2" />
+                    <tooltip id="hSpectrumFile" />
+                </label>
+            </cell>
+            <cell colspan="3">
+                <module id="result_tsv_file_2" type="fileSelector">
+                    <property name="label">Reuslt TSV File 2</property>
+                </module>
+            </cell>
+        </row>
+    </block>
+</interface>

@@ -1,0 +1,52 @@
+DEBUG      workflow_validator:87 ======================Error List==============================
+DEBUG      workflow_validator:90 Missing path for tool: NetworkQC_Generate_QC
+DEBUG      workflow_validator:90 Missing path for tool: spectrumMatchClassify_1
+DEBUG      workflow_validator:90 Missing path for tool: msplit_1
+DEBUG      workflow_validator:90 Port in binding not found in flow: get_unidentified_msgfplus
+DEBUG      workflow_validator:90 Port in binding not found in flow: get_unidentified_msgfplus
+DEBUG      workflow_validator:90 Port in binding not found in flow: get_unidentified_msgfplus
+DEBUG      workflow_validator:87 ======================Error List==============================
+DEBUG      workflow_validator:90 Missing path for tool: NetworkQC_Generate_QC
+DEBUG      workflow_validator:90 Missing path for tool: spectrumMatchClassify_1
+DEBUG      workflow_validator:90 Missing path for tool: msplit_1
+DEBUG      workflow_validator:87 ======================Error List==============================
+DEBUG      workflow_validator:90 Missing path for tool: NetworkQC_Generate_QC
+DEBUG      workflow_validator:90 Missing path for tool: spectrumMatchClassify_1
+DEBUG      workflow_validator:90 Missing path for tool: msplit_1
+DEBUG      workflow_validator:87 ======================Error List==============================
+DEBUG      workflow_validator:90 Missing path for tool: NetworkQC_Generate_QC
+DEBUG      workflow_validator:90 Missing path for tool: spectrumMatchClassify_1
+DEBUG      workflow_validator:90 Missing path for tool: msplit_1
+DEBUG      workflow_validator:90 Tool not found for flow: param_medic should be named: param_medic
+DEBUG      workflow_validator:87 ======================Error List==============================
+DEBUG      workflow_validator:90 Missing path for tool: NetworkQC_Generate_QC
+DEBUG      workflow_validator:90 Missing path for tool: spectrumMatchClassify_1
+DEBUG      workflow_validator:90 Missing path for tool: msplit_1
+DEBUG      workflow_validator:87 ======================Error List==============================
+DEBUG      workflow_validator:90 Missing path for tool: NetworkQC_Generate_QC
+DEBUG      workflow_validator:90 Missing path for tool: spectrumMatchClassify_1
+DEBUG      workflow_validator:90 Missing path for tool: msplit_1
+DEBUG      workflow_validator:87 ======================Error List==============================
+DEBUG      workflow_validator:90 Missing path for tool: NetworkQC_Generate_QC
+DEBUG      workflow_validator:90 Missing path for tool: spectrumMatchClassify_1
+DEBUG      workflow_validator:90 Missing path for tool: msplit_1
+DEBUG      workflow_validator:87 ======================Error List==============================
+DEBUG      workflow_validator:90 Missing path for tool: NetworkQC_Generate_QC
+DEBUG      workflow_validator:90 Missing path for tool: spectrumMatchClassify_1
+DEBUG      workflow_validator:90 Missing path for tool: msplit_1
+DEBUG      workflow_validator:87 ======================Error List==============================
+DEBUG      workflow_validator:90 Missing path for tool: NetworkQC_Generate_QC
+DEBUG      workflow_validator:90 Missing path for tool: spectrumMatchClassify_1
+DEBUG      workflow_validator:90 Missing path for tool: msplit_1
+DEBUG      workflow_validator:87 ======================Error List==============================
+DEBUG      workflow_validator:90 Missing path for tool: NetworkQC_Generate_QC
+DEBUG      workflow_validator:90 Missing path for tool: spectrumMatchClassify_1
+DEBUG      workflow_validator:90 Missing path for tool: msplit_1
+DEBUG      workflow_validator:87 ======================Error List==============================
+DEBUG      workflow_validator:90 Missing path for tool: NetworkQC_Generate_QC
+DEBUG      workflow_validator:90 Missing path for tool: spectrumMatchClassify_1
+DEBUG      workflow_validator:90 Missing path for tool: msplit_1
+DEBUG      workflow_validator:87 ======================Error List==============================
+DEBUG      workflow_validator:90 Missing path for tool: NetworkQC_Generate_QC
+DEBUG      workflow_validator:90 Missing path for tool: spectrumMatchClassify_1
+DEBUG      workflow_validator:90 Missing path for tool: msplit_1

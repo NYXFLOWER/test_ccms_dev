@@ -1,0 +1,1003 @@
+<interface id="bsls_result_analysis" version="release_0.0">
+		<workflow-id>BSLS_RESULT_ANALYSIS</workflow-id>
+        <workflow-label>BSLS_Result_Analysis</workflow-label>
+        
+        <parameters>
+            <parameter label="Description" name="desc">
+                    <validator maximum="1000" type="length" />
+            </parameter>
+
+            <parameter label="Email" name="email">
+            <!-- <validator type="email" /> -->
+            </parameter>
+            
+            <!-- query -->
+
+            <parameter label="Query Info TSV" name="query_info_tsv_file">
+                    <fileGenerator purpose="tsv" target="query_info_tsv" type="upload" />
+            </parameter>
+            
+            <!-- InternalFilename1 -->
+            <parameter label="Query" name="query_mgf_file_0">
+                <fileGenerator purpose="spectrum" target="query_mgf_0" type="upload" />
+            </parameter>
+            <!-- InternalFilename2 -->
+            <parameter label="Query + Noise" name="query_mgf_file_100">
+                <fileGenerator purpose="spectrum" target="query_mgf_100" type="upload" />
+            </parameter>
+            <!-- InternalFilename3 -->
+            <parameter label="Clean Query" name="query_clean_mgf_file_0">
+                <fileGenerator purpose="spectrum" target="query_clean_mgf_0" type="upload" />
+            </parameter>
+            <!-- InternalFilename4 -->
+            <parameter label="Clean Query + Noise" name="query_clean_mgf_file_100">
+                <fileGenerator purpose="spectrum" target="query_clean_mgf_100" type="upload" />
+            </parameter>
+            <!-- InternalFilename5 -->
+            <parameter label="Shuffled Annotated Noise Spectrum" name="noise_clean_mgf_file">
+                <fileGenerator purpose="spectrum" target="noise_clean_mgf" type="upload" />
+            </parameter>
+
+            <!-- library -->
+
+            <parameter label="Library Info TSV" name="library_info_tsv_file">
+                    <fileGenerator purpose="tsv" target="library_info_tsv" type="upload" />
+            </parameter>
+            
+            <!-- InternalFilename6 -->
+            <parameter label="Library" name="library_mgf_file">
+                <fileGenerator purpose="spectrum" target="library_mgf" type="upload" />
+            </parameter>
+            <!-- InternalFilename7 -->
+            <parameter label="Annotated Library" name="annotated_library_mgf_file">
+                <fileGenerator purpose="spectrum" target="annotated_library_mgf" type="upload" />
+            </parameter>
+            <!-- InternalFilename8 -->
+            <parameter label="Predicted Library" name="predicted_library_mgf_file">
+                <fileGenerator purpose="spectrum" target="predicted_library_mgf" type="upload" />
+            </parameter>
+            
+            <!-- Results on Query + Library -->
+            <!-- cosine -->
+            <parameter label="Cosine" name="ql_cosine_tsv_file">
+                <fileGenerator purpose="tsv" target="ql_cosine_tsv" type="upload" />
+            </parameter>
+            <!-- cosine1 -->
+            <parameter label="Projected cosine" name="ql_cosine1_tsv_file">
+                <fileGenerator purpose="tsv" target="ql_cosine1_tsv" type="upload" />
+            </parameter>
+            <!-- JS-divergence -->
+            <parameter label="JS-divergence" name="ql_js_divergence_tsv_file">
+                <fileGenerator purpose="tsv" target="ql_js_divergence_tsv" type="upload" />
+            </parameter>
+            <!-- entropy -->
+            <parameter label="EntropyScore" name="ql_entropy_tsv_file">
+                <fileGenerator purpose="tsv" target="ql_entropy_tsv" type="upload" />
+            </parameter>
+            <!-- msplit -->
+            <parameter label="MSPLIT" name="ql_msplit_tsv_file">
+                <fileGenerator purpose="tsv" target="ql_msplit_tsv" type="upload" />
+            </parameter>
+            <!-- spectrast -->
+            <parameter label="SpectraST" name="ql_spectrast_tsv_file">
+                <fileGenerator purpose="tsv" target="ql_spectrast_tsv" type="upload" />
+            </parameter>
+
+            <!-- Results on Clean Query + Clean Library -->
+            <!-- cosine -->
+            <parameter label="Cosine" name="cc_cosine_tsv_file">
+                <fileGenerator purpose="tsv" target="cc_cosine_tsv" type="upload" />
+            </parameter>
+            <!-- cosine1 -->
+            <parameter label="Projected cosine" name="cc_cosine1_tsv_file">
+                <fileGenerator purpose="tsv" target="cc_cosine1_tsv" type="upload" />
+            </parameter>
+            <!-- JS-divergence -->
+            <parameter label="JS-divergence" name="cc_js_divergence_tsv_file">
+                <fileGenerator purpose="tsv" target="cc_js_divergence_tsv" type="upload" />
+            </parameter>
+            <!-- entropy -->
+            <parameter label="EntropyScore" name="cc_entropy_tsv_file">
+                <fileGenerator purpose="tsv" target="cc_entropy_tsv" type="upload" />
+            </parameter>
+            <!-- msplit -->
+            <parameter label="MSPLIT" name="cc_msplit_tsv_file">
+                <fileGenerator purpose="tsv" target="cc_msplit_tsv" type="upload" />
+            </parameter>
+            <!-- spectrast -->
+            <parameter label="SpectraST" name="cc_spectrast_tsv_file">
+                <fileGenerator purpose="tsv" target="cc_spectrast_tsv" type="upload" />
+            </parameter>
+
+            <!-- Results on Query + Predicted Library -->
+            <!-- cosine -->
+            <parameter label="Cosine" name="qp_cosine_tsv_file">
+                <fileGenerator purpose="tsv" target="qp_cosine_tsv" type="upload" />
+            </parameter>
+            <!-- cosine1 -->
+            <parameter label="Projected cosine" name="qp_cosine1_tsv_file">
+                <fileGenerator purpose="tsv" target="qp_cosine1_tsv" type="upload" />
+            </parameter>
+            <!-- JS-divergence -->
+            <parameter label="JS-divergence" name="qp_js_divergence_tsv_file">
+                <fileGenerator purpose="tsv" target="qp_js_divergence_tsv" type="upload" />
+            </parameter>
+            <!-- entropy -->
+            <parameter label="EntropyScore" name="qp_entropy_tsv_file">
+                <fileGenerator purpose="tsv" target="qp_entropy_tsv" type="upload" />
+            </parameter>
+            <!-- msplit -->
+            <parameter label="MSPLIT" name="qp_msplit_tsv_file">
+                <fileGenerator purpose="tsv" target="qp_msplit_tsv" type="upload" />
+            </parameter>
+            <!-- spectrast -->
+            <parameter label="SpectraST" name="qp_spectrast_tsv_file">
+                <fileGenerator purpose="tsv" target="qp_spectrast_tsv" type="upload" />
+            </parameter>
+
+            <!-- Results on Clean Query + Predicted Library -->
+            <!-- cosine -->
+            <parameter label="Cosine" name="cp_cosine_tsv_file">
+                <fileGenerator purpose="tsv" target="cp_cosine_tsv" type="upload" />
+            </parameter>
+            <!-- cosine1 -->
+            <parameter label="Projected cosine" name="cp_cosine1_tsv_file">
+                <fileGenerator purpose="tsv" target="cp_cosine1_tsv" type="upload" />
+            </parameter>
+            <!-- JS-divergence -->
+            <parameter label="JS-divergence" name="cp_js_divergence_tsv_file">
+                <fileGenerator purpose="tsv" target="cp_js_divergence_tsv" type="upload" />
+            </parameter>
+            <!-- entropy -->
+            <parameter label="EntropyScore" name="cp_entropy_tsv_file">
+                <fileGenerator purpose="tsv" target="cp_entropy_tsv" type="upload" />
+            </parameter>
+            <!-- msplit -->
+            <parameter label="MSPLIT" name="cp_msplit_tsv_file">
+                <fileGenerator purpose="tsv" target="cp_msplit_tsv" type="upload" />
+            </parameter>
+            <!-- spectrast -->
+            <parameter label="SpectraST" name="cp_spectrast_tsv_file">
+                <fileGenerator purpose="tsv" target="cp_spectrast_tsv" type="upload" />
+            </parameter>
+
+            <!-- Results on Query + Noise + Library -->
+            <!-- cosine -->
+            <parameter label="Cosine" name="qnl_cosine_tsv_file">
+                <fileGenerator purpose="tsv" target="qnl_cosine_tsv" type="upload" />
+            </parameter>
+            <!-- cosine1 -->
+            <parameter label="Projected cosine" name="qnl_cosine1_tsv_file">
+                <fileGenerator purpose="tsv" target="qnl_cosine1_tsv" type="upload" />
+            </parameter>
+            <!-- JS-divergence -->
+            <parameter label="JS-divergence" name="qnl_js_divergence_tsv_file">
+                <fileGenerator purpose="tsv" target="qnl_js_divergence_tsv" type="upload" />
+            </parameter>
+            <!-- entropy -->
+            <parameter label="EntropyScore" name="qnl_entropy_tsv_file">
+                <fileGenerator purpose="tsv" target="qnl_entropy_tsv" type="upload" />
+            </parameter>
+            <!-- msplit -->
+            <parameter label="MSPLIT" name="qnl_msplit_tsv_file">
+                <fileGenerator purpose="tsv" target="qnl_msplit_tsv" type="upload" />
+            </parameter>
+            <!-- spectrast -->
+            <parameter label="SpectraST" name="qnl_spectrast_tsv_file">
+                <fileGenerator purpose="tsv" target="qnl_spectrast_tsv" type="upload" />
+            </parameter>
+
+            <!-- Results on Clean Query + Noise + Clean Library -->
+            <!-- cosine -->
+            <parameter label="Cosine" name="cnc_cosine_tsv_file">
+                <fileGenerator purpose="tsv" target="cnc_cosine_tsv" type="upload" />
+            </parameter>
+            <!-- cosine1 -->
+            <parameter label="Projected cosine" name="cnc_cosine1_tsv_file">
+                <fileGenerator purpose="tsv" target="cnc_cosine1_tsv" type="upload" />
+            </parameter>
+            <!-- JS-divergence -->
+            <parameter label="JS-divergence" name="cnc_js_divergence_tsv_file">
+                <fileGenerator purpose="tsv" target="cnc_js_divergence_tsv" type="upload" />
+            </parameter>
+            <!-- entropy -->
+            <parameter label="EntropyScore" name="cnc_entropy_tsv_file">
+                <fileGenerator purpose="tsv" target="cnc_entropy_tsv" type="upload" />
+            </parameter>
+            <!-- msplit -->
+            <parameter label="MSPLIT" name="cnc_msplit_tsv_file">
+                <fileGenerator purpose="tsv" target="cnc_msplit_tsv" type="upload" />
+            </parameter>
+            <!-- spectrast -->
+            <parameter label="SpectraST" name="cnc_spectrast_tsv_file">
+                <fileGenerator purpose="tsv" target="cnc_spectrast_tsv" type="upload" />
+            </parameter>
+
+            <!-- Results on Query + Noise + Predicted Library -->
+            <!-- cosine -->
+            <parameter label="Cosine" name="qnp_cosine_tsv_file">
+                <fileGenerator purpose="tsv" target="qnp_cosine_tsv" type="upload" />
+            </parameter>
+            <!-- cosine1 -->
+            <parameter label="Projected cosine" name="qnp_cosine1_tsv_file">
+                <fileGenerator purpose="tsv" target="qnp_cosine1_tsv" type="upload" />
+            </parameter>
+            <!-- JS-divergence -->
+            <parameter label="JS-divergence" name="qnp_js_divergence_tsv_file">
+                <fileGenerator purpose="tsv" target="qnp_js_divergence_tsv" type="upload" />
+            </parameter>
+            <!-- entropy -->
+            <parameter label="EntropyScore" name="qnp_entropy_tsv_file">
+                <fileGenerator purpose="tsv" target="qnp_entropy_tsv" type="upload" />
+            </parameter>
+            <!-- msplit -->
+            <parameter label="MSPLIT" name="qnp_msplit_tsv_file">
+                <fileGenerator purpose="tsv" target="qnp_msplit_tsv" type="upload" />
+            </parameter>
+            <!-- spectrast -->
+            <parameter label="SpectraST" name="qnp_spectrast_tsv_file">
+                <fileGenerator purpose="tsv" target="qnp_spectrast_tsv" type="upload" />
+            </parameter>
+
+            <!-- Results on Clean Query + Noise + Predicted Library -->
+            <!-- cosine -->
+            <parameter label="Cosine" name="cnp_cosine_tsv_file">
+                <fileGenerator purpose="tsv" target="cnp_cosine_tsv" type="upload" />
+            </parameter>
+            <!-- cosine1 -->
+            <parameter label="Projected cosine" name="cnp_cosine1_tsv_file">
+                <fileGenerator purpose="tsv" target="cnp_cosine1_tsv" type="upload" />
+            </parameter>
+            <!-- JS-divergence -->
+            <parameter label="JS-divergence" name="cnp_js_divergence_tsv_file">
+                <fileGenerator purpose="tsv" target="cnp_js_divergence_tsv" type="upload" />
+            </parameter>
+            <!-- entropy -->
+            <parameter label="EntropyScore" name="cnp_entropy_tsv_file">
+                <fileGenerator purpose="tsv" target="cnp_entropy_tsv" type="upload" />
+            </parameter>
+            <!-- msplit -->
+            <parameter label="MSPLIT" name="cnp_msplit_tsv_file">
+                <fileGenerator purpose="tsv" target="cnp_msplit_tsv" type="upload" />
+            </parameter>
+            <!-- spectrast -->
+            <parameter label="SpectraST" name="cnp_spectrast_tsv_file">
+                <fileGenerator purpose="tsv" target="cnp_spectrast_tsv" type="upload" />
+            </parameter>
+
+            
+
+        </parameters>
+
+        <block label="Query Sets">
+            <row>
+                <cell>
+                    <label>
+                        <content parameter="query_info_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="query_info_tsv_file" type="fileSelector">
+                        <property name="label">Query Info TSV File</property>
+                    </module>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                        <label>
+                                <content parameter="query_mgf_file_0" />
+                                <tooltip id="hSpectrumFile" />
+                        </label>
+                </cell>
+                <cell colspan="3">
+                        <module id="query_mgf_file_0" type="fileSelector">
+                                <property name="label">Query MGF File</property>
+                        </module>
+                </cell>
+                <cell>
+                        <label>
+                                <content parameter="query_mgf_file_100" />
+                                <tooltip id="hSpectrumFile" />
+                        </label>
+                </cell>
+                <cell colspan="3">
+                        <module id="query_mgf_file_100" type="fileSelector">
+                                <property name="label">Query + Noise MGF File</property>
+                        </module>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                        <label>
+                                <content parameter="query_clean_mgf_file_0" />
+                                <tooltip id="hSpectrumFile" />
+                        </label>
+                </cell>
+                <cell colspan="3">
+                        <module id="query_clean_mgf_file_0" type="fileSelector">
+                                <property name="label">Clean Query MGF File</property>
+                        </module>
+                </cell>
+                <cell>
+                        <label>
+                                <content parameter="query_clean_mgf_file_100" />
+                                <tooltip id="hSpectrumFile" />
+                        </label>
+                </cell>
+                <cell colspan="3">
+                        <module id="query_clean_mgf_file_100" type="fileSelector">
+                                <property name="label">Clean Query + Noise MGF File</property>
+                        </module>
+                </cell>
+            </row>
+            <!-- <row>
+                <cell>
+                        <label>
+                                <content parameter="noise_clean_mgf_file" />
+                                <tooltip id="hSpectrumFile" />
+                        </label>
+                </cell>
+                <cell colspan="3">
+                        <module id="noise_clean_mgf_file" type="fileSelector">
+                                <property name="label">Clean and Shuffled Noise MGF File</property>
+                        </module>
+                </cell>
+            </row> -->
+        </block>
+
+        <block label="Library Sets">
+            <row>
+                <cell>
+                    <label>
+                        <content parameter="library_info_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="library_info_tsv_file" type="fileSelector">
+                        <property name="label">Library Info TSV File</property>
+                    </module>
+                </cell>
+                <cell>
+                    <label>
+                        <content parameter="library_mgf_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="library_mgf_file" type="fileSelector">
+                        <property name="label">Library MGF File</property>
+                    </module>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                        <label>
+                                <content parameter="annotated_library_mgf_file" />
+                                <tooltip id="hSpectrumFile" />
+                        </label>
+                </cell>
+                <cell colspan="3">
+                        <module id="annotated_library_mgf_file" type="fileSelector">
+                                <property name="label">Annotated Library MGF File</property>
+                        </module>
+                </cell>
+                <cell>
+                        <label>
+                                <content parameter="predicted_library_mgf_file" />
+                                <tooltip id="hSpectrumFile" />
+                        </label>
+                </cell>
+                <cell colspan="3">
+                        <module id="predicted_library_mgf_file" type="fileSelector">
+                                <property name="label">Predicted Library MGF File</property>
+                        </module>
+                </cell>
+            </row>
+        </block>
+
+        <block label="Results: Query + Library">
+            <row>
+                <cell>
+                    <label>
+                        <content parameter="ql_cosine_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="ql_cosine_tsv_file" type="fileSelector">
+                        <property name="label">QL - Cosine TSV File</property>
+                    </module>
+                </cell>
+                <cell>
+                    <label>
+                        <content parameter="ql_cosine1_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="ql_cosine1_tsv_file" type="fileSelector">
+                        <property name="label">QL - Projected Cosine TSV File</property>
+                    </module>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                    <label>
+                        <content parameter="ql_js_divergence_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="ql_js_divergence_tsv_file" type="fileSelector">
+                        <property name="label">QL - JS-divergence TSV File</property>
+                    </module>
+                </cell>
+                <cell>
+                    <label>
+                        <content parameter="ql_entropy_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="ql_entropy_tsv_file" type="fileSelector">
+                        <property name="label">QL - EntropyScore TSV File</property>
+                    </module>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                    <label>
+                        <content parameter="ql_msplit_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="ql_msplit_tsv_file" type="fileSelector">
+                        <property name="label">QL - MSPLIT TSV File</property>
+                    </module>
+                </cell>
+                <cell>
+                    <label>
+                        <content parameter="ql_spectrast_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="ql_spectrast_tsv_file" type="fileSelector">
+                        <property name="label">QL - SpectraST TSV File</property>
+                    </module>
+                </cell>
+            </row>
+        </block>
+
+        <block label="Results: Clean Query + Clean Library">
+            <row>
+                <cell>
+                    <label>
+                        <content parameter="cc_cosine_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="cc_cosine_tsv_file" type="fileSelector">
+                        <property name="label">CC - Cosine TSV File</property>
+                    </module>
+                </cell>
+                <cell>
+                    <label>
+                        <content parameter="cc_cosine1_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="cc_cosine1_tsv_file" type="fileSelector">
+                        <property name="label">CC - Projected Cosine TSV File</property>
+                    </module>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                    <label>
+                        <content parameter="cc_js_divergence_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="cc_js_divergence_tsv_file" type="fileSelector">
+                        <property name="label">CC - JS-divergence TSV File</property>
+                    </module>
+                </cell>
+                <cell>
+                    <label>
+                        <content parameter="cc_entropy_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="cc_entropy_tsv_file" type="fileSelector">
+                        <property name="label">CC - EntropyScore TSV File</property>
+                    </module>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                    <label>
+                        <content parameter="cc_msplit_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="cc_msplit_tsv_file" type="fileSelector">
+                        <property name="label">CC - MSPLIT TSV File</property>
+                    </module>
+                </cell>
+                <cell>
+                    <label>
+                        <content parameter="cc_spectrast_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="cc_spectrast_tsv_file" type="fileSelector">
+                        <property name="label">CC - SpectraST TSV File</property>
+                    </module>
+                </cell>
+            </row>
+        </block>
+
+        <block label="Results: Query + Predicted Library">
+            <row>
+                <cell>
+                    <label>
+                        <content parameter="qp_cosine_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="qp_cosine_tsv_file" type="fileSelector">
+                        <property name="label">QP - Cosine TSV File</property>
+                    </module>
+                </cell>
+                <cell>
+                    <label>
+                        <content parameter="qp_cosine1_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="qp_cosine1_tsv_file" type="fileSelector">
+                        <property name="label">QP - Projected Cosine TSV File</property>
+                    </module>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                    <label>
+                        <content parameter="qp_js_divergence_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="qp_js_divergence_tsv_file" type="fileSelector">
+                        <property name="label">QP - JS-divergence TSV File</property>
+                    </module>
+                </cell>
+                <cell>
+                    <label>
+                        <content parameter="qp_entropy_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="qp_entropy_tsv_file" type="fileSelector">
+                        <property name="label">QP - EntropyScore TSV File</property>
+                    </module>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                    <label>
+                        <content parameter="qp_msplit_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="qp_msplit_tsv_file" type="fileSelector">
+                        <property name="label">QP - MSPLIT TSV File</property>
+                    </module>
+                </cell>
+                <cell>
+                    <label>
+                        <content parameter="qp_spectrast_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="qp_spectrast_tsv_file" type="fileSelector">
+                        <property name="label">QP - SpectraST TSV File</property>
+                    </module>
+                </cell>
+            </row>
+        </block>
+
+        <block label="Results: Clean Query + Predicted Library">
+            <row>
+                <cell>
+                    <label>
+                        <content parameter="cp_cosine_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="cp_cosine_tsv_file" type="fileSelector">
+                        <property name="label">CP - Cosine TSV File</property>
+                    </module>
+                </cell>
+                <cell>
+                    <label>
+                        <content parameter="cp_cosine1_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="cp_cosine1_tsv_file" type="fileSelector">
+                        <property name="label">CP - Projected Cosine TSV File</property>
+                    </module>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                    <label>
+                        <content parameter="cp_js_divergence_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="cp_js_divergence_tsv_file" type="fileSelector">
+                        <property name="label">CP - JS-divergence TSV File</property>
+                    </module>
+                </cell>
+                <cell>
+                    <label>
+                        <content parameter="cp_entropy_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="cp_entropy_tsv_file" type="fileSelector">
+                        <property name="label">CP - EntropyScore TSV File</property>
+                    </module>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                    <label>
+                        <content parameter="cp_msplit_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="cp_msplit_tsv_file" type="fileSelector">
+                        <property name="label">CP - MSPLIT TSV File</property>
+                    </module>
+                </cell>
+                <cell>
+                    <label>
+                        <content parameter="cp_spectrast_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="cp_spectrast_tsv_file" type="fileSelector">
+                        <property name="label">CP - SpectraST TSV File</property>
+                    </module>
+                </cell>
+            </row>
+        </block>
+
+        <block label="Results: Query + Noise + Library">
+            <row>
+                <cell>
+                    <label>
+                        <content parameter="qnl_cosine_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="qnl_cosine_tsv_file" type="fileSelector">
+                        <property name="label">QNL - Cosine TSV File</property>
+                    </module>
+                </cell>
+                <cell>
+                    <label>
+                        <content parameter="qnl_cosine1_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="qnl_cosine1_tsv_file" type="fileSelector">
+                        <property name="label">QNL - Projected Cosine TSV File</property>
+                    </module>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                    <label>
+                        <content parameter="qnl_js_divergence_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="qnl_js_divergence_tsv_file" type="fileSelector">
+                        <property name="label">QNL - JS-divergence TSV File</property>
+                    </module>
+                </cell>
+                <cell>
+                    <label>
+                        <content parameter="qnl_entropy_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="qnl_entropy_tsv_file" type="fileSelector">
+                        <property name="label">QNL - EntropyScore TSV File</property>
+                    </module>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                    <label>
+                        <content parameter="qnl_msplit_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="qnl_msplit_tsv_file" type="fileSelector">
+                        <property name="label">QNL - MSPLIT TSV File</property>
+                    </module>
+                </cell>
+                <cell>
+                    <label>
+                        <content parameter="qnl_spectrast_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="qnl_spectrast_tsv_file" type="fileSelector">
+                        <property name="label">QNL - SpectraST TSV File</property>
+                    </module>
+                </cell>
+            </row>
+        </block>
+
+        <block label="Results: Clean Query + Noise + Clean Library">
+            <row>
+                <cell>
+                    <label>
+                        <content parameter="cnc_cosine_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="cnc_cosine_tsv_file" type="fileSelector">
+                        <property name="label">CNC - Cosine TSV File</property>
+                    </module>
+                </cell>
+                <cell>
+                    <label>
+                        <content parameter="cnc_cosine1_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="cnc_cosine1_tsv_file" type="fileSelector">
+                        <property name="label">CNC - Projected Cosine TSV File</property>
+                    </module>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                    <label>
+                        <content parameter="cnc_js_divergence_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="cnc_js_divergence_tsv_file" type="fileSelector">
+                        <property name="label">CNC - JS-divergence TSV File</property>
+                    </module>
+                </cell>
+                <cell>
+                    <label>
+                        <content parameter="cnc_entropy_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="cnc_entropy_tsv_file" type="fileSelector">
+                        <property name="label">CNC - EntropyScore TSV File</property>
+                    </module>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                    <label>
+                        <content parameter="cnc_msplit_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="cnc_msplit_tsv_file" type="fileSelector">
+                        <property name="label">CNC - MSPLIT TSV File</property>
+                    </module>
+                </cell>
+                <cell>
+                    <label>
+                        <content parameter="cnc_spectrast_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="cnc_spectrast_tsv_file" type="fileSelector">
+                        <property name="label">CNC - SpectraST TSV File</property>
+                    </module>
+                </cell>
+            </row>
+        </block>
+
+        <block label="Results: Query + Noise + Predicted Library">
+            <row>
+                <cell>
+                    <label>
+                        <content parameter="qnp_cosine_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="qnp_cosine_tsv_file" type="fileSelector">
+                        <property name="label">QNP - Cosine TSV File</property>
+                    </module>
+                </cell>
+                <cell>
+                    <label>
+                        <content parameter="qnp_cosine1_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="qnp_cosine1_tsv_file" type="fileSelector">
+                        <property name="label">QNP - Projected Cosine TSV File</property>
+                    </module>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                    <label>
+                        <content parameter="qnp_js_divergence_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="qnp_js_divergence_tsv_file" type="fileSelector">
+                        <property name="label">QNP - JS-divergence TSV File</property>
+                    </module>
+                </cell>
+                <cell>
+                    <label>
+                        <content parameter="qnp_entropy_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="qnp_entropy_tsv_file" type="fileSelector">
+                        <property name="label">QNP - EntropyScore TSV File</property>
+                    </module>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                    <label>
+                        <content parameter="qnp_msplit_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="qnp_msplit_tsv_file" type="fileSelector">
+                        <property name="label">QNP - MSPLIT TSV File</property>
+                    </module>
+                </cell>
+                <cell>
+                    <label>
+                        <content parameter="qnp_spectrast_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="qnp_spectrast_tsv_file" type="fileSelector">
+                        <property name="label">QNP - SpectraST TSV File</property>
+                    </module>
+                </cell>
+            </row>
+        </block>
+
+        <block label="Results: Clean Query + Noise + Predicted Library">
+            <row>
+                <cell>
+                    <label>
+                        <content parameter="cnp_cosine_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="cnp_cosine_tsv_file" type="fileSelector">
+                        <property name="label">CNP - Cosine TSV File</property>
+                    </module>
+                </cell>
+                <cell>
+                    <label>
+                        <content parameter="cnp_cosine1_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="cnp_cosine1_tsv_file" type="fileSelector">
+                        <property name="label">CNP - Projected Cosine TSV File</property>
+                    </module>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                    <label>
+                        <content parameter="cnp_js_divergence_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="cnp_js_divergence_tsv_file" type="fileSelector">
+                        <property name="label">CNP - JS-divergence TSV File</property>
+                    </module>
+                </cell>
+                <cell>
+                    <label>
+                        <content parameter="cnp_entropy_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="cnp_entropy_tsv_file" type="fileSelector">
+                        <property name="label">CNP - EntropyScore TSV File</property>
+                    </module>
+                </cell>
+            </row>
+            <row>
+                <cell>
+                    <label>
+                        <content parameter="cnp_msplit_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="cnp_msplit_tsv_file" type="fileSelector">
+                        <property name="label">CNP - MSPLIT TSV File</property>
+                    </module>
+                </cell>
+                <cell>
+                    <label>
+                        <content parameter="cnp_spectrast_tsv_file" />
+                        <tooltip id="hSpectrumFile" />
+                    </label>
+                </cell>
+                <cell colspan="3">
+                    <module id="cnp_spectrast_tsv_file" type="fileSelector">
+                        <property name="label">CNP - SpectraST TSV File</property>
+                    </module>
+                </cell>
+            </row>
+        </block>
+
+
+        
+
+</interface>

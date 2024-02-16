@@ -1,0 +1,90 @@
+<interface id="bsls_result_summary" version="release_0.0">
+    <download>
+    </download>
+
+    <view group="Overall Views" id="table_view_url" label="Result Summary Table">
+        <blockRef id="main" type="table_block" />
+    </view>
+
+    <!-- <view group="Test group" id="table_view_url2" label="Test Output Table">
+        <blockRef id="main" type="table_block2" />
+    </view> -->
+
+    <!-- <block id="table_block2" type="stream">
+        <data>
+            <source name="log_dir/logging.txt" type="file" />
+            <parsers>
+                <parser contentType="text/html" type="stream" />
+            </parsers>
+        </data>
+    </block> -->
+    
+   <block id="table_block" type="table_ss">  
+    <!-- <block id="table_block" type="table"> -->
+        <data>
+            <source name="new_result_tsv_dir/" type="file" />
+            <parsers>
+                <parser operator="descending" sortBy="Recall@>=99%Precision" type="sortedTabular" />
+               <parser type="SQLite" />    
+               <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <!-- column names: method	scenario	query	library	noise_level	noise_method	use_ambiguous	Recall@>=99%Precision	Recall@>=95%Precision	Ambiguity@>=99%Precision	Ambiguity@>=95%Precision	Precision@>=99%Recall	Precision@>=95%Recall	Precision@>=90%Recall	Precision@>=50%Recall	Score@>=99%Precision	Score@>=95%Precision	#Matches	#Correct	#InRecall -->
+                <column field="method" label="method" type="text" width="10" />
+                <column field="scenario" label="scenario" type="text" width="10" />
+                <column field="query" label="query" type="text" width="10" />
+                <column field="library" label="library" type="text" width="10" />
+                <column field="noise_level" label="noise_level" type="integer" width="3" />
+                <column field="noise_method" label="noise_method" type="text" width="10" /> 
+                <column field="use_ambiguous" label="use_ambiguous" type="integer" width="3" />
+                <column field="Recall@>=99%Precision" label="Recall@>=99%Precision" type="float" precision="4" width="3" />
+                <column field="Recall@>=95%Precision" label="Recall@>=95%Precision" type="float" precision="4" width="3" />
+                <column field="Ambiguity@>=99%Precision" label="Ambiguity@>=99%Precision" type="float" precision="4" width="3" />
+                <column field="Ambiguity@>=95%Precision" label="Ambiguity@>=95%Precision" type="float" precision="4" width="3" />
+                <column field="Precision@>=99%Recall" label="Precision@>=99%Recall" type="float" precision="4" width="3" />
+                <column field="Precision@>=95%Recall" label="Precision@>=95%Recall" type="float" precision="4" width="3" />
+                <column field="Precision@>=90%Recall" label="Precision@>=90%Recall" type="float" precision="4" width="3" />
+                <column field="Precision@>=50%Recall" label="Precision@>=50%Recall" type="float" precision="4" width="3" />
+                <column field="Score@>=99%Precision" label="Score@>=99%Precision" type="float" precision="4" width="3" />
+                <column field="Score@>=95%Precision" label="Score@>=95%Precision" type="float" precision="4" width="3" />
+                <column field="#Matches" label="#Matches" type="integer" width="3" />
+                <column field="#Correct" label="#Correct" type="integer" width="3" />
+                <column field="#InRecall" label="#InRecall" type="integer" width="3" />
+
+
+            </row>
+
+            <!-- <row>
+                <column field="library_idx" label="library_idx" type="integer" width="3" />
+                <column field="original_peptide" label="original_peptide" type="text" width="20" />
+                <column field="shuffled_peptide" label="shuffled_peptide" type="text" width="20" />
+                <column field="#tries" label="#tries" type="integer" width="3" />
+                <column field="charge" label="charge" type="integer" width="1" />
+                <column field="cosine" label="cosine" type="float" precision="4" width="3" />
+                <column field="#peaks" label="#peaks" type="integer" width="3" />
+                <column field="#matched_peaks" label="#matched_peaks" type="integer" width="3" />
+
+
+                <column field="original_spectrum_usi" label="original_spectrum_usi" type="text" width="20" />
+                <column field="shuffled_spectrum_usi" label="shuffled_spectrum_usi" type="text" width="20" />
+                </column>
+                <column label="View original spectrum usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[original_spectrum_usi]" />\
+                    <parameter name="LABEL" value="[original_spectrum_usi]" />\
+                </column>
+                <column label="View shuffled spectrum usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[shuffled_spectrum_usi]" />\
+                    <parameter name="LABEL" value="[shuffled_spectrum_usi]" />\
+                </column>
+
+            </row> -->
+
+           
+        </data>
+    </block>
+	
+	
+</interface>

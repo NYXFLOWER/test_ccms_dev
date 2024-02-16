@@ -1,0 +1,4 @@
+DEBUG      workflow_validator:87 ======================Error List==============================
+DEBUG      workflow_validator:90 Missing path for tool: NetworkQC_Generate_QC
+DEBUG      workflow_validator:90 Missing path for tool: spectrumMatchClassify_1
+DEBUG      workflow_validator:90 Missing path for tool: msplit_1

@@ -1,0 +1,22 @@
+<toolset>
+    <!-- <fetchMethod value="link" /> -->
+    <pathSet base="bsls_result_comparison">
+        <pathVar name="test_script" path="test.py"/> 
+    </pathSet>
+
+    <pathSet base="anaconda3">
+     <toolPath path="bin/python3.5" tool="flower_test_tool" />
+   </pathSet>
+
+    <tool name="flower_test_tool">
+        <require name="test_tsv" type="file" />
+        <produce extension="tsv" name="test_output_tsv" naming="fixed" type="file" value="test_output" />
+
+        <execution argConvention="adhoc" env="binary">
+           <!-- <arg pathRef="dummy.script" />  -->
+            <arg pathRef="test_script" />
+            <arg valueRef="test_tsv" />
+            <arg valueRef="test_output_tsv" />
+        </execution>
+    </tool>
+</toolset>

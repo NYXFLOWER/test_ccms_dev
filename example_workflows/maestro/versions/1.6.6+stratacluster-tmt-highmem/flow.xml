@@ -1,0 +1,826 @@
+<flow name="maestro">
+  <collection name="inputspectra_pre_mass_correction" />
+  <collection name="inputspectra" />
+  <collection name="inputspectra_pre_isobaric_tag_peak_removal" />
+  <collection name="inputspectra_pre_isobaric_tag_peak_removal_ms3" />
+  <object name="isobaric_tag_abundances" />
+  <object name="isobaric_tag_abundances_clusters" />
+  <collection name="inputspectra_pklbin" />
+  <object name="inputspectra_pklbin_filelist" />
+  <collection name="spectra" />
+  <collection name="inputspectra_pre_mass_correction_parallel" />
+  <collection name="toolParameters" />
+  <collection name="stratacluster_representatives_input" />
+  <collection name="stratacluster_representatives" />
+  <collection name="stratacluster_filtered_representatives" />
+  <object name="stratacluster_metadata_input" />
+  <object name="stratacluster_metadata" />
+  <object name="specnetsparam_pre_stratacluster" />
+  <object name="stratacluster_taskid" />
+  <object name="workflowParameters" />
+  <object name="workflowParameters_klfilter" />
+  <object name="specnetsparam" />
+  <object name="clusterinfo" />
+  <object name="tags_file" />
+  <object name="molecularnetworks_parallel_filterpairs_params" />
+  <collection name="molecularnetworks_parallel_filterpairs_parallel_params" />
+  <collection name="molecularnetworks_parallel_filterpairs_results" />
+  <object name="molecularnetworks_parallel_filterpairs_merged" />
+  <object name="clusterinfogroup" />
+  <object name="clusterinfosummarygroup" />
+  <object name="clusterinfosummarygroup_attributes" />
+  <object name="groupmapping" />
+  <object name="groupmapping_converted" />
+  <object name="attributemapping" />
+  <object name="allclustered_spectra_info" />
+  <object name="allclustered_spectra_info_withpath" />
+  <object name="allclustered_spectra_info_withpath_withKL" />
+  <object name="networkedges" />
+  <object name="networkedges_bin" />
+  <object name="networkedges_display" />
+  <object name="networkedges_display_pairs" />
+  <object name="networkedges_selfloop" />
+  <object name="networkedges_selfloop_variant" />
+  <object name="clusterinfosummarygroup_attributes_withIDs_withcomponentID" />
+  <object name="clusterinfosummarygroup_attributes_withIDs_withcomponentID_variant" />
+  <object name="networkcomponents" />
+  <object name="networkcomponents_withpeptide" />
+  <collection name="spectrum" />
+  <object name="variant_networks" />
+  <collection name="sequence" />
+  <collection name="speclibs" />
+  <object name="parameters" />
+  <collection name="concatlibs" />
+  <collection name="mergedLib" />
+  <object name="indexedLib" />
+  <collection name="msplitResult" />
+  <object name="mergedResultMSPLIT" />
+  <object name="finalResultMSPLIT" />
+  <collection name="expl_int_identifications_batched_msplit" />
+  <collection name="expl_int_jobs_msplit" />
+  <collection name="expl_int_identifications_batched_final_msplit" />
+  <object name="finalResultMSPLIT_withDecoys_SVM1Filtered_withExplInt" />
+  <object name="finalResultMSPLIT_larsFdr" />
+  <object name="finalResultMSPLIT_larsFdr_withLibs" />
+  <object name="finalResultMSPLIT_withKL" />
+  <object name="finalResultMSGFPlus_withKL" />
+  <object name="finalResultMODA_withKL" />
+  <object name="finalResultMSGFPlus_larsFdr" />
+  
+  <object name="finalResultMSPLIT_withDecoys" />
+  <object name="finalResultMSPLIT_withDecoys_SVM1Filtered" />
+  <object name="mergedSequence" />
+  <collection name="mergedSequence_msgfplus" />
+  <object name="preparedSequence_msgfplus" />
+  <collection name="mzidResult_msgfplus" />
+  <collection name="msgfPlusResult" />
+  <object name="mergedResult_msgfplus" />
+  <object name="mergedResult_msgfplus_reduced" />
+  <object name="pre_reconconciled_tsv_msgfplus" />
+  <object name="mergedResultMSGFPlusProt" />
+  <object name="finalResultMSGFPlusProt" />
+  <object name="finalResultMSGFPlusMods" />
+  <object name="shuffledSequenceMODA" />
+  <collection name="configMODA" />
+  <collection name="modaResult" />
+  <object name="mergedResultMODA" />
+  
+  <object name="mergedConfigMODA" />
+  <object name="finalResultMODA" />
+  <object name="ptmResultMODA" />
+  <collection name="mgfOutSpec" />
+  <collection name="msplitUnident" />
+  <collection name="msplitMsgfplusUnident" />
+  <collection name="msplitMsgfplusUnident_withChargesPossiblyRemoved" />
+  <object name="categorization_msgf_msplit" />
+  <object name="categorization_moda_msplit" />
+  <object name="categorization_moda_msgf" />
+  <object name="categorization" />
+  <object name="spectrumCounts_specFdr" />
+  <object name="spectrumCounts_specFdr_sepMixtures" />
+  <object name="spectrumCounts_regions" />
+  <object name="spectrumCounts_mergedRegions" />
+  <object name="spectrumCounts_varFdr_proteins" />
+  <object name="spectrumCounts_varFdr_allProteins" />
+  <object name="spectrumCounts_varFdr_clusts_sepMixtures" />
+  <object name="summaryReport_new" />
+  <object name="allClustersOutput" />
+  <object name="rawSpectraIdOnly" />
+  <object name="rawSpectraIdOnly_passingProtFDR" />
+  <collection name="rawSpectraIdOnly_perGroup" />
+  <collection name="rawSpectraIdOnly_perGroup_parallel" />
+  <object name="rawSpectra_withSpecIndex" />
+  <object name="finalResultMSPLITMods" />
+  <object name="finalResultMODAMods" />
+  <object name="finalResultMSPLITProt" />
+  <object name="finalResultMODAProt" />
+  <object name="modaInputDB" />
+  <object name="networkqc_falsepositive_with_offsets" />
+  <object name="pairModificationTable" />
+  <object name="networkqc_curve" />
+  <object name="networkqc_falsepositive" />
+  <object name="networkqc_otheroutput" />
+  <collection name="networkqc_workingdir" />
+  <object name="peptide_ids_variant" />
+  <object name="spectra_cleanup_done" />
+  <object name="msstats_input_isobaric_tag" />
+  <object name="msstats_input_isobaric_tag_unidentified" />
+  <collection name="convertParameters" />
+  <collection name="convertedMzTab" />
+  <collection name="validatedMzTab" />
+  <collection name="cleanedMzTab" />
+  <object name="cleanedMzTab_zip" />
+  <object name="statistics" />
+  <object name="outComputeSpecFdrMSPLIT" />
+  <object name="outComputeSpecFdrMSPLIT2" />
+  <object name="outComputeSpecFdrMSGFPlus" />
+  <object name="outComputeSpecFdrMODA" />
+  <object name="outComputeSpecFdrCombined" />
+  <object name="outComputeSpecFdrCombined_remappedProts" />
+  <collection name="outComputeVarCombined" />
+  <object name="outComputeVarFdrCombined" />
+  <object name="outComputeVarFdrCombined_remappedProts" />
+  <collection name="outComputeRegionsCombined" />
+  <collection name="outComputeMergedRegionsCombined" />
+  <object name="ptmTable" />
+  <object name="KLTable" />
+  <object name="KLTable_merged" />
+  <object name="fdr_filtered_protein_regions" />
+  <object name="KLFilter_params" />
+  <action name="begin">
+    <output collection="inputspectra_pre_mass_correction" port="spec" />
+    <output collection="sequence" port="fasta" />
+    <output collection="speclibs" port="spectrallibrary" />
+    <output object="parameters" port="params" />
+    <output collection="groupmapping" port="groupmapping" />
+    <output object="attributemapping" port="attributemapping" />
+    <output collection="toolParameters" port="toolParams" />
+    <output object="workflowParameters" port="flowParams" />
+    <output collection="inputspectra_pre_mass_correction" port="spectwo" />
+    <output collection="inputspectra_pre_mass_correction" port="specthree" />
+    <output collection="inputspectra_pre_mass_correction" port="specfour" />
+    <output collection="inputspectra_pre_mass_correction" port="specfive" />
+    <output collection="inputspectra_pre_mass_correction" port="specsix" />
+    <output collection="stratacluster_representatives_input" port="stratacluster_representatives" />
+    <output object="stratacluster_metadata_input" port="stratacluster_metadata" />
+  </action>
+  <action name="make_klfilter_params">
+    <input object="parameters" port="workflow_params" />
+    <output object="KLFilter_params" port="out_kl_filter_params" />
+  </action>
+  <action name="kl_filter_p">
+    <input collection="inputspectra_pre_mass_correction" port="spectrum_converted" />
+    <output collection="inputspectra_pre_mass_correction_parallel" port="spectrum_converted_p" />
+  </action>
+  <action multiplicity="multiple" name="kl_filter" type="parallel">
+    <input collection="inputspectra_pre_mass_correction" port="spectra" />
+    <input object="KLFilter_params" port="kl_filter_params" />
+    <input collection="inputspectra_pre_mass_correction_parallel" port="inputSpec" transformation="unfolding" />
+    <input object="parameters" port="params" />
+    <output collection="inputspectra_pre_isobaric_tag_peak_removal" port="massCorrectedInputSpec" />
+    <output collection="inputspectra_pre_isobaric_tag_peak_removal_ms3" port="massCorrectedInputSpec_MS3" />
+    <output object="KLTable" port="outKLTable" />
+  </action>
+  <action name="merge_KLTables">
+    <input collection="KLTable" port="KLTable" />
+    <output object="KLTable_merged" port="KLTable_merged" />
+  </action>
+  <action name="extract_isobaric_tag_peaks">
+    <input collection="inputspectra_pre_isobaric_tag_peak_removal" port="inputspectra" />
+    <input collection="inputspectra_pre_isobaric_tag_peak_removal_ms3" port="inputspectra_ms3" />
+    <input object="KLTable_merged" port="kltable" />
+    <input object="parameters" port="params" />
+    <output collection="inputspectra" port="inputspectra_isobaric_tag_peaks_removed" />
+    <output object="isobaric_tag_abundances" port="isobaric_tag_abundances" />
+  </action>
+  <action name="update_isobaric_tag_peak_abundances_stratacluster">
+    <input object="isobaric_tag_abundances" port="isobaric_tag_abundances" />
+    <input object="clusterinfogroup" port="clusterinfogroup" />
+    <input collection="stratacluster_filtered_representatives" port="stratacluster_filtered_representatives" />
+    <output object="isobaric_tag_abundances_clusters" port="isobaric_tag_abundances_clusters" />
+  </action>
+  <action name="modify_workflow_params">
+    <input collection="inputspectra_pre_mass_correction" port="inputspectra" />
+    <input object="workflowParameters" port="workflowParams" />
+    <input object="inputspectra" port="inputspectra_postklfilter" />
+    <output object="workflowParameters_klfilter" port="out" />
+  </action>
+  <action name="create_pklbin_filelist">
+    <input collection="inputspectra" port="inputspectra_pklbin" />
+    <input object="parameters" port="params" />
+    <input collection="inputspectra_pre_mass_correction" port="inputspectra_preMassCorrection" />
+    <input collection="inputspectra" port="inputspectra" />
+    <output object="inputspectra_pklbin_filelist" port="out" />
+  </action>
+  <action name="specnetsparamsgen">
+    <input collection="inputspectra" port="spec" />
+    <input object="workflowParameters_klfilter" port="flowParams" />
+    <output object="specnetsparam_pre_stratacluster" port="specnetsparam" />
+  </action>
+  <action name="specnetsparamsgen_stratacluster">
+    <input collection="inputspectra" port="inputspectra" />
+    <input object="specnetsparam_pre_stratacluster" port="specnetsparam_in" />
+    <input collection="stratacluster_representatives" port="stratacluster_representatives" />
+    <input collection="stratacluster_metadata" port="stratacluster_metadata" />
+    <input collection="groupmapping" port="groupmapping" />
+    <output object="specnetsparam" port="specnetsparam_out" />
+    <output collection="stratacluster_filtered_representatives" port="stratacluster_filtered_representatives" />
+  </action>
+  <action name="metabolomicspecnets">
+    <input collection="inputspectra" port="spec" />
+    <input object="specnetsparam" port="specnetsparam" />
+    <input collection="stratacluster_filtered_representatives" port="stratacluster_filtered_representatives" />
+    <output collection="spectra" port="spectra" />
+  </action>
+  <action name="run_clustering">
+    <input object="inputspectra_pklbin_filelist" port="inputspectra_pklbin_filelist" />
+    <input collection="stratacluster_filtered_representatives" port="stratacluster_filtered_representatives" />
+    <input object="stratacluster_metadata" port="stratacluster_metadata" />
+    <input object="parameters" port="params" />
+    <input collection="spectra" port="spectra" />
+    <input collection="inputspectra" port="input_spectra" />
+    <input object="groupmapping_converted" port="groupmapping" />
+    <output object="clusterinfo" port="clusterinfo" />
+    <output object="clusterinfogroup" port="clusterinfogroup" />
+    <output object="clusterinfosummarygroup" port="clusterinfosummarygroup" />
+  </action>
+  <action name="run_stratacluster">
+    <input collection="stratacluster_representatives_input" port="stratacluster_representatives_input" />
+    <input collection="stratacluster_metadata_input" port="stratacluster_metadata_input" />
+    <input collection="inputspectra_pre_mass_correction" port="input_unclustered_spectra" />
+    <input object="parameters" port="params" />
+    <output collection="stratacluster_representatives" port="stratacluster_representatives" />
+    <output collection="stratacluster_metadata" port="stratacluster_metadata" />
+    <output object="stratacluster_taskid" port="stratacluster_taskid" />
+  </action>
+  <action name="actionTagFilterPairs">
+    <input object="specnetsparam" port="specnetsparam" />
+    <input collection="spectra" port="spectra" />
+    <output object="tags_file" port="p_tags_file" />
+  </action>
+  <action name="molecularnetworking_prep_params_filterpairs_split">
+    <input object="specnetsparam" port="specnetsparam" />
+    <input collection="spectra" port="spectra" />
+    <output collection="molecularnetworks_parallel_filterpairs_params" port="molecularnetworks_parallel_filterpairs_params" />
+  </action>
+  <action name="molecularnetworking_params_filterpairs_split">
+    <input collection="spectra" port="spectra" />
+    <input object="molecularnetworks_parallel_filterpairs_params" port="molecularnetworks_parallel_filterpairs_params" />
+    <output collection="molecularnetworks_parallel_filterpairs_parallel_params" port="molecularnetworks_parallel_filterpairs_parallel_params" />
+  </action>
+  <action multiplicity="multiple" name="molecularnetworking_params_filterpairs_parallelstep" type="parallel">
+    <input collection="spectra" port="spectra" />
+    <input object="tags_file" port="p_tags_file" />
+    <input collection="molecularnetworks_parallel_filterpairs_parallel_params" port="molecularnetworks_parallel_filterpairs_parallel_params" transformation="unfolding" />
+    <output collection="molecularnetworks_parallel_filterpairs_results" port="molecularnetworks_parallel_filterpairs_results" />
+  </action>
+  <action name="molecularnetworking_params_filterpairs_merge">
+    <input object="molecularnetworks_parallel_filterpairs_params" port="molecularnetworks_parallel_filterpairs_params" />
+    <input collection="spectra" port="spectra" />
+    <input collection="molecularnetworks_parallel_filterpairs_results" port="molecularnetworks_parallel_filterpairs_results" />
+    <output object="molecularnetworks_parallel_filterpairs_merged" port="molecularnetworks_parallel_filterpairs_merged" />
+  </action>
+  <action name="metabolomicgroupmappingconvert">
+    <input object="workflowParameters_klfilter" port="flowParams" />
+    <input collection="groupmapping" port="groupmapping" />
+    <output object="groupmapping_converted" port="groupmapping_converted" />
+  </action>
+  <action name="metabolomicclusterinfogroupaddattribute">
+    <input object="workflowParameters_klfilter" port="flowParams" />
+    <input object="clusterinfosummarygroup" port="clusterinfosummarygroup" />
+    <input object="clusterinfogroup" port="clusterinfogroup" />
+    <output object="clusterinfosummarygroup_attributes" port="clusterinfosummarygroup_attributes" />
+  </action>
+  <action name="metabolomic_create_all_cluster_info">
+    <input object="workflowParameters_klfilter" port="flowParams" />
+    <input object="clusterinfosummarygroup_attributes" port="clusterinfosummarygroup_attributes" />
+    <input object="clusterinfogroup" port="clusterinfogroup" />
+    <output object="allclustered_spectra_info" port="allclustered_spectra_info" />
+  </action>
+  <action name="filter_pairs_networks_level">
+    <input object="specnetsparam" port="specnetsparam" />
+    <input collection="spectra" port="spectra" />
+    <input object="molecularnetworks_parallel_filterpairs_merged" port="inputPairs" />
+    <output object="networkedges" port="outputPairs" />
+    <output object="networkedges_bin" port="outputPairsAsBin" />
+  </action>
+  <action name="metabolomic_create_network_view">
+    <input collection="networkedges" port="networkedges" />
+    <output object="networkedges_display" port="networkedges_display" />
+    <output object="networkedges_display_pairs" port="networkedges_display_pairs" />
+  </action>
+  <action name="metabolomicsmakeselfloop">
+    <input object="workflowParameters_klfilter" port="flowParams" />
+    <input collection="networkedges" port="networkedges" />
+    <input object="clusterinfosummarygroup" port="clusterinfosummarygroup" />
+    <input object="spectrumCounts_varFdr_clusts_sepMixtures" port="spectrumCounts_varFdr_clusts_sepMixtures" />
+    <output object="networkedges_selfloop" port="networkedges_selfloop" />
+  </action>
+  <action name="metabolomic_add_original_filepath_clusterinfo">
+    <input object="workflowParameters_klfilter" port="flowParams" />
+    <input object="allclustered_spectra_info" port="allclustered_spectra_info" />
+    <output object="allclustered_spectra_info_withpath" port="allclustered_spectra_info_withpath" />
+  </action>
+  <action name="add_kl_columns_to_file_rawSpectra">
+    <input object="allclustered_spectra_info_withpath" port="in" />
+    <input object="allclustered_spectra_info_withpath" port="rawSpectra" />
+    <input object="KLTable_merged" port="KLTable" />
+    <input collection="inputspectra_pre_isobaric_tag_peak_removal_ms3" port="MS3_mgfs" />
+    <output object="allclustered_spectra_info_withpath_withKL" port="out" />
+  </action>
+  <action name="metabolomic_add_componentindex_to_summary">
+    <input object="clusterinfosummarygroup_attributes" port="clusterinfosummarygroup_attributes_withIDs" />
+    <input object="networkedges" port="networkedges" />
+    <output object="clusterinfosummarygroup_attributes_withIDs_withcomponentID" port="clusterinfosummarygroup_attributes_withIDs_withcomponentID" />
+    <output object="networkcomponents" port="networkcomponents" />
+  </action>
+  <action name="metabolomic_create_peptide_component">
+    <input object="clusterinfosummarygroup_attributes" port="clusterinfosummarygroup_attributes_withIDs" />
+    <input object="networkedges" port="networkedges" />
+    <input object="spectrumCounts_specFdr" port="spectrum_counts" />
+    <output object="networkcomponents_withpeptide" port="networkcomponents_withpeptide" />
+  </action>
+  <action name="create_variant_networks">
+    <input object="networkedges_selfloop" port="networkedges_selfloop" />
+    <input object="spectrumCounts_mergedRegions" port="spectrumCounts_mergedRegions" />
+    <output object="networkedges_selfloop_variant" port="networkedges_selfloop_variant" />
+    <output object="clusterinfosummarygroup_attributes_withIDs_withcomponentID_variant" port="clusterinfosummarygroup_attributes_withIDs_withcomponentID_variant" />
+    <output object="peptide_ids_variant" port="peptide_ids_variant" />
+    <output object="variant_networks" port="variant_networks" />
+  </action>
+  <action name="extract_mgf">
+    <input collection="spectra" port="in_spec" />
+    <output collection="mgfOutSpec" port="out_spec" />
+  </action>
+  <action name="mergeSequences">
+    <input collection="sequence" port="fasta" />
+    <output collection="mergedSequence" port="out" />
+  </action>
+  <action multiplicity="multiple" name="createDecoyLib" type="parallel">
+    <input collection="speclibs" port="spectrallibrary" transformation="unfolding" />
+    <input object="parameters" port="params" />
+    <output collection="concatlibs" port="concatlibs" />
+  </action>
+  <action name="mergeLib">
+    <input collection="concatlibs" port="concatlibs" />
+    <output object="mergedLib" port="mergedLib" />
+  </action>
+  <action name="indexLib">
+    <input collection="mergedLib" port="mergedLib" />
+    <input object="parameters" port="params" />
+    <output object="indexedLib" port="indexedLib" />
+  </action>
+  <action multiplicity="multiple" name="msplit" type="parallel">
+    <input collection="mgfOutSpec" port="spec" transformation="unfolding" />
+    <input object="indexedLib" port="indexedLib" />
+    <output collection="msplitResult" port="msplitOut" />
+  </action>
+  <action name="merge_msplit">
+    <input collection="msplitResult" port="msplitOut" />
+    <output object="mergedResultMSPLIT" port="mergedResult" />
+  </action>
+  <action name="filter_msplit">
+    <input collection="mergedResultMSPLIT" port="mergedResult" />
+    <output collection="finalResultMSPLIT" port="filteredResult" />
+  </action>
+  <action name="split_ids_for_expl_intensity_msplit">
+    <input collection="mgfOutSpec" port="spectrum" />
+    <input object="finalResultMSPLIT_withDecoys_SVM1Filtered" port="identifications" />
+    <input collection="parameters" port="params" />
+    <output collection="expl_int_identifications_batched_msplit" port="identifications_batched" />
+    <output collection="expl_int_jobs_msplit" port="jobs" />
+  </action>
+  <action multiplicity="multiple" name="generate_explained_intensity_msplit" type="parallel">
+    <input collection="expl_int_jobs_msplit" port="jobs" transformation="unfolding" />
+    <input collection="mgfOutSpec" port="spectrum" />
+    <input collection="expl_int_identifications_batched_msplit" port="identifications_batched" />
+    <output collection="expl_int_identifications_batched_final_msplit" port="identifications_batched_final" />
+  </action>
+  <action name="merge_expl_intensity_tsv_msplit">
+    <input collection="expl_int_identifications_batched_final_msplit" port="identifications_batched_final" />
+    <output object="finalResultMSPLIT_withDecoys_SVM1Filtered_withExplInt" port="identifications_merged" />
+  </action>
+  <action name="map_peptides_to_libraries">
+    <input object="parameters" port="parameters" />
+    <input collection="speclibs" port="speclibs" />
+    <input object="finalResultMSPLIT_larsFdr" port="finalResultMSPLIT" />
+    <output object="finalResultMSPLIT_larsFdr_withLibs" port="finalResultMSPLITWithLibs" />
+  </action>
+  <action name="filter_msplit_outputDecoys">
+    <input collection="mergedResultMSPLIT" port="mergedResult" />
+    <output collection="finalResultMSPLIT_withDecoys" port="filteredResult" />
+  </action>
+  <action name="get_unidentified_msplit">
+    <input collection="mgfOutSpec" port="spec" />
+    <input object="finalResultMSPLIT_larsFdr_withLibs" port="searchResult" />
+    <output collection="msplitUnident" port="spec" />
+  </action>
+  <action name="add_kl_columns_to_file_msplit">
+    <input object="finalResultMSPLIT_larsFdr_withLibs" port="in" />
+    <input object="allclustered_spectra_info_withpath" port="rawSpectra" />
+    <input object="KLTable_merged" port="KLTable" />
+    <input collection="inputspectra_pre_isobaric_tag_peak_removal_ms3" port="MS3_mgfs" />
+    <output object="finalResultMSPLIT_withKL" port="out" />
+  </action>
+  <action name="reassign_proteins_msplit">
+    <input object="finalResultMSPLIT_withKL" port="ptms" />
+    <input collection="mergedSequence" port="db" />
+    <output object="finalResultMSPLITProt" port="out" />
+  </action>
+  <action name="mergeSequences_msgfplus">
+    <input collection="sequence" port="fasta" />
+    <output collection="mergedSequence_msgfplus" port="out" />
+  </action>
+  <action name="buildSA_msgfplus_highMem">
+    <input object="mergedSequence_msgfplus" port="fasta" />
+    <output object="preparedSequence_msgfplus" port="out" />
+  </action>
+  <action multiplicity="multiple" name="msgfPlus4Cores_highMem" type="parallel">
+    <input collection="msplitUnident" port="spec" transformation="unfolding" />
+    <input object="mergedSequence_msgfplus" port="fasta" />
+    <input object="preparedSequence_msgfplus" port="seq" />
+    <input object="parameters" port="params" />
+    <output collection="mzidResult_msgfplus" port="out" />
+  </action>
+  <action multiplicity="multiple" name="msgfPlusConvert" type="parallel">
+    <input collection="mzidResult_msgfplus" port="in" transformation="unfolding" />
+    <output collection="msgfPlusResult" port="out" />
+  </action>
+  <action name="merge_msgfplus">
+    <input collection="msgfPlusResult" port="result" />
+    <output object="mergedResult_msgfplus" port="mergedResult" />
+  </action>
+  <action name="remove_redundant_rows_msgfplus">
+    <input object="mergedResult_msgfplus" port="mergedResult" />
+    <output object="mergedResult_msgfplus_reduced" port="out" />
+  </action>
+  <action name="fdr_msgfplus">
+    <input object="mergedResult_msgfplus_reduced" port="in" />
+    <output object="pre_reconconciled_tsv_msgfplus" port="out" />
+  </action>
+  <action name="reassign_proteins_msgfplus_merged">
+    <input object="mergedResult_msgfplus_reduced" port="ptms" />
+    <input collection="preparedSequence_msgfplus" port="db" />
+    <output object="mergedResultMSGFPlusProt" port="out" />
+  </action>
+  <action name="add_kl_columns_to_file_msgf">
+    <input object="finalResultMSGFPlus_larsFdr" port="in" />
+    <input object="allclustered_spectra_info_withpath" port="rawSpectra" />
+    <input object="KLTable_merged" port="KLTable" />
+    <input collection="inputspectra_pre_isobaric_tag_peak_removal_ms3" port="MS3_mgfs" />
+    <output object="finalResultMSGFPlus_withKL" port="out" />
+  </action>
+  <action name="reassign_proteins_msgfplus">
+    <input object="finalResultMSGFPlus_withKL" port="ptms" />
+    <input collection="mergedSequence_msgfplus" port="db" />
+    <output object="finalResultMSGFPlusProt" port="out" />
+  </action>
+  <action name="get_unidentified_msgfplus">
+    <input collection="msplitUnident" port="spec" />
+    <input object="finalResultMSGFPlus_larsFdr" port="searchResult" />
+    <output collection="msplitMsgfplusUnident" port="spec" />
+  </action>
+  <action name="reset_moda_charges">
+    <input collection="msplitMsgfplusUnident" port="inMGFs" />
+    <output collection="msplitMsgfplusUnident_withChargesPossiblyRemoved" port="out" />
+  </action>
+  <action name="make_moda_input_db">
+    <input object="finalResultMSPLITProt" port="msplitFinalResult" />
+    <input object="mergedResultMSGFPlusProt" port="msgfplusMergedResult" />
+    <input collection="preparedSequence_msgfplus" port="revConcatDB" />
+    <input object="outComputeSpecFdrMSGFPlus" port="msgfSpecFdrWithDecoys" />
+    <output object="modaInputDB" port="output" />
+  </action>
+  <action name="shuffleSequences_moda">
+    <input object="modaInputDB" port="in" />
+    <output object="shuffledSequenceMODA" port="out" />
+  </action>
+  <action multiplicity="multiple" name="createConfig_moda" type="parallel">
+    <input collection="msplitMsgfplusUnident_withChargesPossiblyRemoved" port="spec" transformation="unfolding" />
+    <input object="shuffledSequenceMODA" port="seq" />
+    <input object="parameters" port="params" />
+    <output collection="configMODA" port="cfg" />
+  </action>
+  <action multiplicity="multiple" name="moda" type="parallel">
+    <input collection="configMODA" port="config" transformation="unfolding" />
+    <input collection="msplitMsgfplusUnident_withChargesPossiblyRemoved" port="spec" />
+    <input object="shuffledSequenceMODA" port="seq" />
+    <output collection="modaResult" port="result" />
+  </action>
+  <action name="merge_moda">
+    <input collection="modaResult" port="in" />
+    <output object="mergedResultMODA" port="out" />
+  </action>
+  <action name="mergeConfig_moda">
+    <input collection="configMODA" port="in" />
+    <output object="mergedConfigMODA" port="out" />
+  </action>
+  <action name="fdr_moda">
+    <input object="mergedResultMODA" port="in" />
+    <input object="mergedConfigMODA" port="cfg" />
+    <output object="finalResultMODA" port="out" />
+    <output object="ptmResultMODA" port="ptm" />
+  </action>
+  <action name="add_kl_columns_to_file_moda">
+    <input object="finalResultMODA" port="in" />
+    <input object="allclustered_spectra_info_withpath" port="rawSpectra" />
+    <input object="KLTable_merged" port="KLTable" />
+    <input collection="inputspectra_pre_isobaric_tag_peak_removal_ms3" port="MS3_mgfs" />
+    <output object="finalResultMODA_withKL" port="out" />
+  </action>
+  <action name="reassign_proteins_moda">
+    <input object="finalResultMODA_withKL" port="ptms" />
+    <input collection="modaInputDB" port="db" />
+    <output object="finalResultMODAProt" port="out" />
+  </action>
+  
+  <action name="convert_mods">
+    <input object="parameters" port="params" />
+    <input object="finalResultMSPLITProt" port="msplitSearchResult" />
+    <input object="finalResultMSGFPlusProt" port="msgfplusSearchResult" />
+    <input object="finalResultMODAProt" port="modaSearchResult" />
+    <output object="finalResultMSPLITMods" port="msplitOut" />
+    <output object="finalResultMSGFPlusMods" port="msgfplusOut" />
+    <output object="finalResultMODAMods" port="modaOut" />
+  </action>
+  <action name="categorize_spectra_msgf_msplit">
+    <input object="finalResultMSPLITMods" port="msplitSearchResult" />
+    <input object="finalResultMSGFPlusMods" port="msgfplusSearchResult" />
+    <input object="finalResultMODAMods" port="modaSearchResult" />
+    <output object="categorization_msgf_msplit" port="categories" />
+  </action>
+  <action name="categorize_spectra_moda_msplit">
+    <input object="finalResultMSPLITMods" port="msplitSearchResult" />
+    <input object="finalResultMSGFPlusMods" port="msgfplusSearchResult" />
+    <input object="finalResultMODAMods" port="modaSearchResult" />
+    <output object="categorization_moda_msplit" port="categories" />
+  </action>
+  <action name="categorize_spectra_moda_msgf">
+    <input object="finalResultMSPLITMods" port="msplitSearchResult" />
+    <input object="finalResultMSGFPlusMods" port="msgfplusSearchResult" />
+    <input object="finalResultMODAMods" port="modaSearchResult" />
+    <output object="categorization_moda_msgf" port="categories" />
+  </action>
+  <action name="cat_peptide_pair_files">
+    <input object="categorization_msgf_msplit" port="pepPairsMsgfMsplit" />
+    <input object="categorization_moda_msplit" port="pepPairsModaMsplit" />
+    <input object="categorization_moda_msgf" port="pepPairsModaMsgf" />
+    <output object="categorization" port="pepPairsCombined" />
+  </action>
+  <action name="spectrum_counts">
+    <input object="parameters" port="params" />
+    <input object="finalResultMSPLITMods" port="msplitSearchResult" />
+    <input object="finalResultMSGFPlusMods" port="msgfplusSearchResult" />
+    <input object="finalResultMODAMods" port="modaSearchResult" />
+    <input object="clusterinfosummarygroup_attributes" port="clusterinfosummarygroup_attributes" />
+    <input object="networkedges" port="networkEdges" />
+    <input object="networkedges_display" port="networkEdgesDisp" />
+    <input object="groupmapping_converted" port="groupMapping" />
+    <input object="outComputeSpecFdrCombined_remappedProts" port="outComputeSpecFdrCombined" />
+    <input collection="outComputeVarCombined" port="outComputeVarCombined" />
+    <input collection="outComputeRegionsCombined" port="outComputeRegionsCombined" />
+    <input collection="outComputeMergedRegionsCombined" port="outComputeMergedRegionsCombined" />
+    <input object="isobaric_tag_abundances_clusters" port="isobaric_tag_abundances_filename" />
+    <input object="clusterinfo" port="cluster_info_filename" />
+    <input collection="groupmapping" port="groupmapping_dirname" />
+    <input object="outComputeVarFdrCombined_remappedProts" port="vars_w_decoys" />
+    <input collection="spectra" port="spectra" />
+    <output object="spectrumCounts_specFdr" port="outSpecFdr" />
+    <output object="spectrumCounts_regions" port="outRegions" />
+    <output object="spectrumCounts_mergedRegions" port="outMergedRegions" />
+    <output object="spectrumCounts_specFdr_sepMixtures" port="outSpecFdr_sepMixtures" />
+    <output object="spectrumCounts_varFdr_proteins" port="outProteins" />
+    <output object="spectrumCounts_varFdr_clusts_sepMixtures" port="outSpecsVarFdr" />
+    <output object="spectrumCounts_varFdr_allProteins" port="outAllProteins" />
+  </action>
+  <action name="create_pair_mod_counts">
+    <input object="networkqc_falsepositive" port="networkQcFalse" />
+    <input object="spectrumCounts_specFdr" port="spectrumCounts" />
+    <output object="networkqc_falsepositive_with_offsets" port="outQcFalseWithOffsets" />
+    <output object="pairModificationTable" port="outPairModTable" />
+  </action>
+  <action name="make_msstats_input">
+    <input object="rawSpectraIdOnly" port="ided_spectra" />
+    <output object="msstats_input_isobaric_tag" port="out" />
+  </action>
+  <action name="make_msstats_input_unidentified">
+    <input object="rawSpectra_withSpecIndex" port="ided_spectra" />
+    <output object="msstats_input_isobaric_tag_unidentified" port="out" />
+  </action>
+  <action name="networkqc_generate_qc">
+    <input collection="spectra" port="spectra" />
+    <input object="networkedges_bin" port="aligns" />
+    <input object="spectrumCounts_specFdr" port="spectrum_counts" />
+    <output object="networkqc_falsepositive" port="networkqc_falsepositive" />
+    <output object="networkqc_curve" port="networkqc_curve" />
+    <output object="networkqc_otheroutput" port="networkqc_otheroutput" />
+    <output collection="networkqc_workingdir" port="networkqc_workingdir" />
+  </action>
+  <action name="clean_up_spectra_dir">
+    <input collection="spectra" port="spectra" />
+    <input object="networkqc_curve" port="wait_for_node" />
+    <output object="spectra_cleanup_done" port="out_done" />
+  </action>
+  <action name="filter_file_by_fdr_file_proteinRegions">
+    <input collection="outComputeRegionsCombined" port="in_file" />
+    <input object="spectrumCounts_varFdr_proteins" port="fdr_file" />
+    <output object="fdr_filtered_protein_regions" port="out" />
+  </action>
+  <action name="summary_report">
+    <input object="parameters" port="params" />
+    <input object="clusterinfosummarygroup_attributes" port="clusterInfoSummaryGroupAttr" />
+    <input object="spectrumCounts_specFdr" port="spectrumCounts_specFdr" />
+    <input object="spectrumCounts_mergedRegions" port="spectrumCounts_mergedRegions" />
+    <input object="networkedges_display_pairs" port="networkEdgesDisp" />
+    <input object="networkqc_curve" port="networkQcCurve" />
+    <input object="networkqc_falsepositive" port="networkQcFalse" />
+    <input object="groupmapping_converted" port="groupMapping" />
+    <input object="networkedges" port="networkEdges" />
+    <input object="categorization" port="peptidePairCateg" />
+    <input collection="inputspectra_pre_mass_correction" port="inputSpectra" />
+    <input object="spectrumCounts_regions" port="spectrumCounts_regions" />
+    <input object="spectra_cleanup_done" port="spectra_cleanup_done" />
+    <input object="stratacluster_taskid" port="stratacluster_taskid" />
+    <output object="summaryReport_new" port="summary_report" />
+  </action>
+  <action name="modify_result_files">
+    <input object="parameters" port="params" />
+    <input object="groupmapping_converted" port="groupMapping" />
+    <input object="clusterinfosummarygroup_attributes_withIDs_withcomponentID" port="allClusters" />
+    <input object="allclustered_spectra_info_withpath_withKL" port="rawSpectra" />
+    <input object="spectrumCounts_specFdr_sepMixtures" port="spectrumCounts" />
+    <input object="clusterinfogroup" port="clusterinfo" />
+    <input object="isobaric_tag_abundances" port="isobaric_tag_abundances" />
+    <input object="tags_file" port="tags_file" />
+    <output object="allClustersOutput" port="all_clusters_output" />
+    <output object="rawSpectra_withSpecIndex" port="raw_spectra_output" />
+    <output object="rawSpectraIdOnly" port="raw_spectra_id_only" />
+    <output object="rawSpectraIdOnly_passingProtFDR" port="raw_spectra_id_only_passing_prot_fdr" />
+    <output collection="rawSpectraIdOnly_perGroup" port="raw_spectra_id_only_per_group" />
+  </action>
+  <action name="convertTSVToMzTab">
+    <input collection="rawSpectraIdOnly_passingProtFDR" port="input" />
+    <input object="parameters" port="params" />
+    <output collection="convertParameters" port="config" />
+    <output collection="convertedMzTab" port="mzTab" />
+  </action>
+  <action name="convertTSVToMzTab_perGroup_p">
+    <input collection="rawSpectraIdOnly_perGroup" port="spectrum_converted" />
+    <output collection="rawSpectraIdOnly_perGroup_parallel" port="spectrum_converted_p" />
+  </action>
+  <action multiplicity="multiple" name="convertTSVToMzTab_perGroup" type="parallel">
+    <input collection="rawSpectraIdOnly_perGroup_parallel" port="input_tsv_list" transformation="unfolding" />
+    <input collection="rawSpectraIdOnly_perGroup" port="input_tsvs" />
+    <input object="parameters" port="params" />
+    <output collection="convertParameters" port="config" />
+    <output collection="convertedMzTab" port="mzTab" />
+  </action>
+  <action name="processMzTab">
+    <input object="parameters" port="params" />
+    <input collection="convertedMzTab" port="input" />
+    <input collection="spectrum" port="peak" />
+    <output collection="validatedMzTab" port="validated" />
+    <output collection="cleanedMzTab" port="cleaned" />
+    <output object="statistics" port="summary" />
+  </action>
+  <action name="create_mztab_zip">
+    <input collection="cleanedMzTab" port="in_dir" />
+    <output object="cleanedMzTab_zip" port="out" />
+  </action>
+  <action name="msplit_apply_svm1_filter">
+    <input object="parameters" port="params" />
+    <input object="finalResultMSPLIT_withDecoys" port="finalResultMSPLIT_withDecoys" />
+    <output object="finalResultMSPLIT_withDecoys_SVM1Filtered" port="finalResultMSPLIT_withDecoys_SVM1Filtered" />
+  </action>
+  <action name="bsaap_raven_compute_spec_fdr_msplit">
+    <input object="finalResultMSPLIT_withDecoys_SVM1Filtered" port="mergedResult" />
+    <output object="outComputeSpecFdrMSPLIT" port="outComputeSpecFdrMSPLIT" />
+  </action>
+  <action name="bsaap_raven_compute_spec_fdr_msplit_2">
+    <input object="finalResultMSPLIT_withDecoys_SVM1Filtered" port="mergedResult" />
+    <output object="outComputeSpecFdrMSPLIT2" port="outComputeSpecFdrMSPLIT2" />
+  </action>
+  <action name="bsaap_raven_compute_spec_fdr_msgfplus">
+    <input object="mergedResultMSGFPlusProt" port="mergedResult" />
+    <output object="outComputeSpecFdrMSGFPlus" port="outComputeSpecFdrMSGFPlus" />
+  </action>
+  <action name="bsaap_raven_compute_spec_fdr_moda">
+    <input object="finalResultMODA" port="mergedResult" />
+    <output object="outComputeSpecFdrMODA" port="outComputeSpecFdrMODA" />
+  </action>
+  <action name="filter_result_file_msplit">
+    <input object="finalResultMSPLIT_withDecoys_SVM1Filtered_withExplInt" port="mergedResult" />
+    <input object="finalResultMSPLIT" port="outputFormatResult" />
+    <input object="outComputeSpecFdrMSPLIT" port="outComputeSpecFdrMSPLIT" />
+    <input object="outComputeSpecFdrMSPLIT2" port="outComputeSpecFdrMSPLIT2" />
+    <output object="finalResultMSPLIT_larsFdr" port="out" />
+  </action>
+  <action name="filter_result_file_msgfplus">
+    <input object="pre_reconconciled_tsv_msgfplus" port="mergedResult" />
+    <input object="pre_reconconciled_tsv_msgfplus" port="outputFormatResult" />
+    <input object="outComputeSpecFdrMSGFPlus" port="outComputeSpecFdrMSGFPlus" />
+    <output object="finalResultMSGFPlus_larsFdr" port="out" />
+  </action>
+  
+  <action name="cat_spec_fdr_files">
+    <input object="outComputeSpecFdrMSPLIT" port="specFdrMSPLIT" />
+    <input object="outComputeSpecFdrMSPLIT2" port="specFdrMSPLIT2" />
+    <input object="outComputeSpecFdrMSGFPlus" port="specFdrMSGFPlus" />
+    <input object="outComputeSpecFdrMODA" port="specFdrMODA" />
+    <output object="outComputeSpecFdrCombined" port="specFdrCombined" />
+  </action>
+  <action name="reassign_proteins_spec_fdr">
+    <input object="outComputeSpecFdrCombined" port="ptms" />
+    <input collection="mergedSequence" port="db" />
+    <output object="outComputeSpecFdrCombined_remappedProts" port="out" />
+  </action>
+  <action name="bsaap_raven_compute_var_fdr_combined">
+    <input object="outComputeSpecFdrCombined_remappedProts" port="mergedResult" />
+    <input object="clusterinfosummarygroup" port="clusterinfosummarygroup" />
+    <output collection="outComputeVarCombined" port="outComputeVarCombined" />
+    <output object="outComputeVarFdrCombined" port="outComputeVarFdrCombined" />
+  </action>
+  <action name="reassign_proteins_vars_w_decoys">
+    <input object="outComputeVarFdrCombined" port="ptms" />
+    <input collection="mergedSequence" port="db" />
+    <output object="outComputeVarFdrCombined_remappedProts" port="out" />
+  </action>
+  <action name="bsaap_raven_compute_regions_combined">
+    <input object="outComputeVarFdrCombined" port="outComputeVarFdrCombined" />
+    <input object="mergedSequence" port="sequence" />
+    <output collection="outComputeRegionsCombined" port="outComputeRegionsCombined" />
+  </action>
+  <action name="bsaap_raven_compute_merged_regions_combined">
+    <input collection="outComputeVarCombined" port="outComputeVarCombined" />
+    <input object="outComputeVarFdrCombined" port="outComputeVarFdrCombined" />
+    <input object="mergedSequence" port="sequence" />
+    <output collection="outComputeMergedRegionsCombined" port="outComputeMergedRegionsCombined" />
+  </action>
+  <action name="make_ptm_table">
+    <input object="parameters" port="params" />
+    <input object="spectrumCounts_mergedRegions" port="variants" />
+    <output object="ptmTable" port="out" />
+  </action>
+  <collection name="sqlite" />
+  <action name="convert_tsv_to_sqlite">
+    <input port="rawSpectra_withSpecIndex" object="rawSpectra_withSpecIndex" />
+    <input port="rawSpectraIdOnly" object="rawSpectraIdOnly" />
+    <input port="allClustersOutput" object="allClustersOutput" />
+    <input port="networkedges_selfloop" object="networkedges_selfloop" />
+    <output port="sqlite" collection="sqlite" />
+  </action>
+  <collection name="unidentified_output" />
+  <action name="extract_unidentified_clusters">
+    <input port="mgfOutSpec" collection="mgfOutSpec" />
+    <input port="allClustersOutput" object="allClustersOutput" />
+    <output port="unidentified_output" collection="unidentified_output" />
+  </action>
+  <action name="end">
+    <input port="sqlite" collection="sqlite" />
+    <input object="clusterinfosummarygroup_attributes" port="clusterinfosummarygroup_attributes" />
+    <input object="clusterinfosummarygroup_attributes_withIDs_withcomponentID" port="clusterinfosummarygroup_attributes_withIDs_withcomponentID" />
+    <input object="networkedges_selfloop" port="networkedges_selfloop" />
+    <input collection="spectra" port="spectra" />
+    <input object="networkedges_display_pairs" port="networkedges_display_pairs" />
+    <input object="allclustered_spectra_info_withpath" port="allclustered_spectra_info_withpath" />
+    <input object="rawSpectra_withSpecIndex" port="raw_spectra" />
+    <input object="networkcomponents" port="networkcomponents" />
+    <input object="networkcomponents_withpeptide" port="networkcomponents_withpeptide" />
+    <input object="finalResultMSPLITMods" port="msplitResult" />
+    <input object="finalResultMSGFPlusMods" port="msgfplusResult" />
+    <input object="finalResultMODAMods" port="modaResult" />
+    <input object="ptmResultMODA" port="ptm" />
+    <input object="categorization" port="categories" />
+    <input object="spectrumCounts_regions" port="spectrum_counts_regions" />
+    <input object="spectrumCounts_mergedRegions" port="spectrum_counts_merged_regions" />
+    <input object="spectrumCounts_varFdr_proteins" port="spectrum_counts_var_fdr_proteins" />
+    <input object="spectrumCounts_varFdr_allProteins" port="spectrum_counts_var_fdr_all_proteins" />
+    <input object="spectrumCounts_varFdr_clusts_sepMixtures" port="spectrum_counts_var_fdr_clusters" />
+    <input object="spectrumCounts_specFdr_sepMixtures" port="spectrum_counts_sep_mixtures" />
+    <input object="summaryReport_new" port="summary_report" />
+    <input object="allClustersOutput" port="all_clusters_output" />
+    <input object="rawSpectraIdOnly" port="raw_spectra_id_only" />
+    <input object="networkqc_falsepositive_with_offsets" port="outQcFalseWithOffsets" />
+    <input object="pairModificationTable" port="outPairModTable" />
+    <input object="networkedges_selfloop_variant" port="networkedges_selfloop_variant" />
+    <input object="clusterinfosummarygroup_attributes_withIDs_withcomponentID_variant" port="clusterinfosummarygroup_attributes_withIDs_withcomponentID_variant" />
+    <input object="peptide_ids_variant" port="peptide_ids_variant" />
+    <input object="variant_networks" port="variant_networks" />
+    <input collection="inputspectra_pre_isobaric_tag_peak_removal_ms3" port="inputspectra_pre_isobaric_tag_peak_removal_ms3" />
+    <input collection="cleanedMzTab" port="mzTab" />
+    <input object="cleanedMzTab_zip" port="mzTab_zip" />
+    <input object="statistics" port="statistics" />
+    <input object="fdr_filtered_protein_regions" port="combinedPsmVariantFdrWithRegs" />
+    <input object="ptmTable" port="ptmTable" />
+    <input collection="outComputeVarCombined" port="outComputeVarCombined" />
+    <input collection="outComputeVarFdrCombined" port="outComputeVarFdrCombined" />
+    <input object="clusterinfo" port="clusterinfo" />
+    <input object="isobaric_tag_abundances_clusters" port="isobaric_tag_abundances" />
+    <input object="tags_file" port="tags_file" />
+    <input object="msstats_input_isobaric_tag_unidentified" port="msstats_input_isobaric_tag_unidentified" />
+    <input object="msstats_input_isobaric_tag" port="msstats_input_isobaric_tag" />
+    <input collection="unidentified_output" port="unidentified_output" />
+    <input collection="stratacluster_representatives" port="stratacluster_representatives" />
+    <input collection="stratacluster_metadata" port="stratacluster_metadata" />
+  </action>
+</flow>

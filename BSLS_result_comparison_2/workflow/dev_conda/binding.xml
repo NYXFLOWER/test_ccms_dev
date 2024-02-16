@@ -1,0 +1,33 @@
+<binding>
+        <bind action="begin" type="download">
+                <url value="{livesearch.download}" />
+                <query name="task" valueRef="@task" />
+                <query name="user" valueRef="@user" />
+                <compression type="zip" />
+                <download port="flowParams" type="file">
+                        <query name="resource" value="params" />
+                </download>
+<!--                 <download port="spectrum_port" type="folder"> -->
+                <download port="tsv_collection_port" type="file">
+                        <query name="resource" value="tsv_collection" />
+                </download>
+                <downloadParams>
+                        <query name="resource" value="params" />
+                </downloadParams>
+        </bind>
+
+        <bind action="run_test" tool="flower_test_tool">
+                <inputAsRequirement port="tsv_collection_port" requirement="test_tsv" />
+                <productionToOutput port="output_tsv_port" production="test_output_tsv" />
+        </bind>
+
+        <bind action="end" type="upload">
+                <url value="{livesearch.upload}" />
+                <query name="task" valueRef="@task" />
+                <contentQuery name="content" />
+                <compression type="zip" />
+                <upload port="test_output_tsv" type="folder">
+                        <query name="resource" value="test_output_dir" />
+                </upload>
+        </bind>
+</binding>

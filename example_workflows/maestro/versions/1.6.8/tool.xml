@@ -1,0 +1,1705 @@
+<toolset>
+  <pathSet base="aligngf_specnets_propagation">
+    <pathVar name="isoenvelope.path" path="third/resources" />
+  </pathSet>
+
+  <pathSet base="sps-next/0.0.7/with-pwiz">
+      <toolPath path="main_execmodule" tool="toolSpecnetsTagFilterPairs" />
+      <toolPath path="main_execmodule" tool="MetabolomicParallelFilterPairsMerge_a" />
+      <pathVar name="kl_filter_executable" path="main_execmodule" />
+  </pathSet>
+
+  <pathSet base="/opt/jre1.8.0_162/bin">
+      <pathVar name="java8_path" path="java" />
+  </pathSet>
+
+  <pathSet base="meta_workflow">
+      <pathVar name="batch_login" path="batch_login.txt" />
+  </pathSet>
+
+  <pathSet base="python_ms_utilities/1.0.9/src">
+      <pathVar name="python_ms_utilities_processing" path="processing.py" />
+  </pathSet>
+
+  <pathSet base="metabolomicsnets2test">
+    <toolPath path="add_self_loop_1.py" tool="MetabolomicMakeSelfloop_a" />
+    <toolPath path="groupconvert_2.py" tool="MetabolomicGroupConvert_a" />
+    <toolPath path="AddAttributes.py" tool="MetabolomicClusterInfoGroupAddAttribute_a" />
+    <toolPath path="create_view_all_clusters_2.py" tool="MetabolomicViewAllClusters_a" />
+    <toolPath path="create_network_result_view.py" tool="MetabolomicCreateNetworkView_a" />
+    <toolPath path="add_full_filepath_clusterdetails.py" tool="MetabolomicWriteOriginalFileNameClusterInfo_a" />
+    <toolPath path="Add_Component_Index_moreMemEfficient.py" tool="MetabolomicAddComponentIndexToSummary_a" />
+    <pathVar name="pepnovo.file" path="PepNovo_bin" />
+    <pathVar name="mscluster.file" path="MsCluster_bin" />
+    <toolPath path="molecular_networking_parallel_cosine_prep.py" tool="MetabolomicPrepParallelFilterPairsSplit_a" />
+  </pathSet>
+  <pathSet base="MODa/2022">
+    <toolPath path="moda_2022.jar" tool="MODa_1" />
+    <toolPath path="moda_2022.jar" tool="filterMODa_1" />
+  </pathSet>
+  <pathSet base="metabolomicsnets2">
+    <toolPath path="Create_Library_Peptide_Spectral_Families_julie2.py" tool="MetabolomicCreatePeptideComponent" />
+  </pathSet>
+  <pathSet base="MzTabConverter/1.0+add-passthrough">
+    <pathVar name="ConvertTSVToMzTab_script" path="convert_TSV_to_mzTab.sh" />
+    <toolPath path="convert_TSV_to_mzTab.sh" tool="ConvertTSVToMzTab" />
+    <toolPath path="post_process_mzTabs.sh" tool="PostProcessMzTabs" />
+  </pathSet>
+  <pathSet base="MSPLIT_MSGFPLUS_MODA/2016.0622/1.6.8">
+    <toolPath path="getUnidentified.py" tool="getUnidentified" />
+    <toolPath path="categorize_spectra.py" tool="categorizeSpectraMsgfMsplit" />
+    <toolPath path="categorize_spectra.py" tool="categorizeSpectraModaMsplit" />
+    <toolPath path="categorize_spectra.py" tool="categorizeSpectraModaMsgf" />
+    <toolPath path="compare_search_methods_4.py" tool="searchMethodParallelComparison" />
+    <toolPath path="extractMgf.py" tool="extractMgf" />
+    <pathVar path="spectrumCounts_7.py" name="spectrumCounts_script" />
+    <toolPath path="makeModaInputDB.py" tool="makeModaInputDB" />
+    <toolPath path="convertMods.py" tool="convertMods" />
+    <toolPath path="convertMods_parallel_1.py" tool="convertMods_parallel" />
+    <toolPath path="summaryReport_2.py" tool="summaryReport" />
+    <toolPath path="modify_result_files_6.py" tool="modifyResultFiles" />
+    <toolPath path="proteosafe_generate_stats_2.py" tool="NetworkQC_Generate_QC_a" />
+    <toolPath path="reformat_merged.py" tool="reformatMerged" />
+    <toolPath path="create_pair_mod_counts.py" tool="createPairModCounts" />
+    <toolPath path="cat_files.py" tool="catSpecFdrFiles" />
+    <toolPath path="cat_files.py" tool="catPeptidePairFiles" />
+    <toolPath path="msplit_apply_svm1_filter.py" tool="msplitApplySVM1Filter" />
+    <pathVar name="fdr_script" path="fdr_maestro_wrapper.py" />
+    <toolPath path="main_compute_variants" tool="bsaapRavenComputeRegionsCombined" />
+    <toolPath path="main_compute_variants" tool="bsaapRavenComputeMergedRegionsCombined" />
+    <toolPath path="make_ptm_table.py" tool="makePtmTable" />
+    <toolPath path="run_create_moda_config.py" tool="run_createMODaConfig" />
+    <toolPath path="filter_result_file_2.py" tool="filterResultFileMSPLIT" />
+    <toolPath path="filter_result_file_2.py" tool="filterResultFileMSGFPlus" />
+    <toolPath path="filter_result_file_2.py" tool="filterResultFileMODA" />
+    <toolPath path="add_kl_columns_to_file_3.py" tool="addKlColumnsToFile" />
+    <toolPath path="create_variant_networks_1.py" tool="createVariantNetworks" />
+    <toolPath path="map_peps_to_libs.py" tool="mapPeptidesToLibraries" />
+    <toolPath path="create_pklbin_filelist.py" tool="createPklbinFilelist" />
+    <toolPath path="reset_charges_mgf.py" tool="resetChargesMGF" />
+    <toolPath path="extract_isobaric_tag_peaks_3.py" tool="extractIsobaricTagPeaks" />
+    <toolPath path="run_mztab_conversion.py" tool="ConvertTSVToMzTab_perGroup" />
+    <toolPath path="create_zip_file_from_dir.py" tool="createMzTabZip" />
+    <toolPath path="clean_up_spectra_dir.py" tool="cleanUpSpectraDir" />
+    <toolPath path="convert_maestro_ided_spectra_to_msstats_input.py" tool="makeMsstatsInput" />
+    <toolPath path="filter_file_by_fdr_file.py" tool="filterFileByFdrFile_proteinRegions" />
+    <toolPath path="run_indexLib.py" tool="indexLib" />
+    <toolPath path="run_createDecoyLibMsplit.py" tool="createDecoyLibMsplit" />
+    <pathVar name="MetabolomicClusterinfo_a_bin" path="clusterinfo_1" />
+    <toolPath path="main_execmodule" tool="SpecnetsParamGen_a" />
+    <pathVar name="specnetsparamsgen_stratacluster_script" path="add_stratacluster_to_params.py" />
+    <toolPath path="main_execmodule" tool="MetabolomicParallelFilterPairsSplit_a" />
+    <pathVar name="main_execmodule.file" path="main_execmodule" />
+    <pathVar name="mapPeptidesToProteinsScript" path="map_peptides_to_proteins.py" />
+    <toolPath path="main_specnets" tool="MetabolomicSpecnets_ClusteringOnly" />
+    <toolPath path="run_MetabolomicParallelFilterPairsParallelStep_a.py" tool="MetabolomicParallelFilterPairsParallelStep_a" />
+    <pathVar path="main_execmodule" name="MetabolomicParallelFilterPairsParallelStep_a_path" />
+    <pathVar name="main_execmodule_network_qc.file" path="main_execmodule_network_qc" />
+    <toolPath path="main_execmodule" tool="toolFilterPairs_in_NetworksLevel" />
+    <pathVar name="pspDiseaseAssociatedSites" path="PhosphoSitePlus_DBs/Disease-associated_sites.txt" />
+    <pathVar name="pspRegulatorySites" path="PhosphoSitePlus_DBs/Regulatory_sites.txt" />
+    <pathVar name="pspModSites" path="PhosphoSitePlus_DBs/concat_mod_files.txt" />
+    <pathVar name="pspPTMVarSites" path="PhosphoSitePlus_DBs/PTMVar.txt" />
+    <pathVar name="drugbankDrugsPerAcc" path="drugbank_drugs_per_protein_accession.tsv" />
+    <pathVar name="kl_filter_convert" path="convert_klfilter_2" />
+    <pathVar name="run_clustering_script" path="run_clustering.py" />
+    <pathVar name="run_stratacluster_script" path="run_stratacluster.py" />
+    <pathVar name="extract_unidentified_clusters_script" path="extract_unidentified_clusters.py" />
+    <pathVar name="update_isobaric_tag_peak_abundances_stratacluster_script" path="update_isobaric_tag_peak_abundances_stratacluster.py" />
+    <pathVar name="fix_bad_fastas_script" path="fix_bad_fastas.py" />
+  </pathSet>
+  <pathSet base="anaconda3">
+    <toolPath path="bin/python3.7" tool="mapPeptidesToProteins" />
+    <toolPath path="bin/python3.7" tool="split_ids_for_expl_intensity_msplit" />
+    <toolPath path="bin/python3.7" tool="generate_explained_intensity_msplit" />
+    <toolPath path="bin/python3.7" tool="merge_expl_intensity_tsv_msplit" />
+    <toolPath path="bin/python3.7" tool="run_clustering" />
+    <toolPath path="bin/python3.7" tool="run_stratacluster" />
+    <toolPath path="bin/python3.7" tool="specnetsparamsgen_stratacluster" />
+    <toolPath path="bin/python3.7" tool="update_isobaric_tag_peak_abundances_stratacluster" />
+    <toolPath path="bin/python3.7" tool="extract_unidentified_clusters" />
+    <toolPath path="bin/python3.7" tool="bsaapRavenComputeSpecFdrMSPLIT" />
+    <toolPath path="bin/python3.7" tool="bsaapRavenComputeSpecFdrMSPLIT2" />
+    <toolPath path="bin/python3.7" tool="bsaapRavenComputeSpecFdrMSGFPlus" />
+    <toolPath path="bin/python3.7" tool="bsaapRavenComputeSpecFdrMODA" />
+    <toolPath path="bin/python3.7" tool="bsaapRavenComputeVarFdrCombined" />
+    <toolPath path="bin/python3.7" tool="spectrumCounts" />
+    <toolPath path="bin/python3.7" tool="convert_tsv_to_sqlite" />
+    <toolPath path="bin/python3.7" tool="fix_bad_fastas" />
+  </pathSet>
+  <pathSet base="batch_explained_intensity/make-params-file-optional:1.2.2">
+    <pathVar name="generate_explained_intensity_script" path="generate_explained_intensity.py" />
+    <pathVar name="split_identifications_script" path="split_identifications.py" />
+    <pathVar name="merge_tsv_script" path="merge_tsv_files_efficient.py" />
+  </pathSet>
+  <pathSet base="klfilter">
+    <toolPath path="modify_workflow_params_1.py" tool="modifyWorkflowParams" />
+    <toolPath path="run_kl_filter_4a.py" tool="KLFilter" />
+    <pathVar name="kl_filter_isotope_table" path="isotope_table_4000mz_1000peps_3isotopes.bin" />
+    <toolPath path="parallelize.py" tool="parallelize_20" />
+    <toolPath path="parallelize.py" tool="parallelize_10" />
+    <toolPath path="make_klfilter_params.py" tool="makeKlFilterParams" />
+  </pathSet>
+  <pathSet base="MSPLIT/2012.0319">
+    <toolPath path="spectrumMatchClassify_v09052014_1.pl" tool="spectrumMatchClassify_1_msplit_new" />
+    <toolPath path="spectrumMatchClassify_v09052014_outputDecoys_sepMixtures_1.pl" tool="spectrumMatchClassify_1_msplit_new_outputDecoys" />
+    <pathVar path="DSG011320.jar" name="createDecoyLibMsplit_path" />
+    <pathVar path="MSPLIT_v03062015_massAccurate_chargeGuessOpt.jar" name="indexLib_path" />
+    <toolPath path="MSPLIT_v03062015_massAccurate_chargeGuessOpt.jar" tool="msplit_new_1" />
+  </pathSet>
+  <pathSet base="MSPLIT/pregenerated/2020.08.27">
+    <pathVar path="." name="pregenerated_indexed_libs_path" />
+  </pathSet>
+  <pathSet base="scripts/2021.0113">
+    <toolPath path="CCMSWorkflowUtils.jar" tool="mergeWithHeader" />
+    <toolPath path="CCMSWorkflowUtils.jar" tool="mergeFasta" />
+    <toolPath path="MODaUtils.jar" tool="createMODaConfig" />
+    <toolPath path="CCMSWorkflowUtils.jar" tool="mergeText" />
+    <toolPath path="CCMSWorkflowUtils.jar" tool="selectFirst" />
+    <toolPath path="CCMSWorkflowUtils.jar" tool="shuffleFasta" />
+    <toolPath path="CCMSWorkflowUtils.jar" tool="mergeMGF" />
+    <toolPath path="CCMSWorkflowUtils.jar" tool="removeRedundantRowsMSGFPlus" />
+    <pathVar name="moda_utils_jar" path="MODaUtils_tolUnitsAdded.jar" />
+  </pathSet>
+
+  <valueMap name="instrument">
+    <mapping key="Low-res LCQ/LTQ" value="0" />
+    <mapping key="Orbitrap/FTICR" value="1" />
+    <mapping key="TOF" value="2" />
+    <mapping key="Q-Exactive" value="3" />
+  </valueMap>
+  <valueMap name="fragmentationMethod">
+    <mapping key="None" value="0" />
+    <mapping key="CID" value="1" />
+    <mapping key="ETD" value="2" />
+    <mapping key="HCD" value="3" />
+    <mapping key="Merge" value="4" />
+  </valueMap>
+  <valueMap name="protease">
+    <mapping key="None" value="0" />
+    <mapping key="Trypsin" value="1" />
+    <mapping key="Chymotrypsin" value="2" />
+    <mapping key="Lys-C" value="3" />
+    <mapping key="Lys-N" value="4" />
+    <mapping key="Glu-C" value="5" />
+    <mapping key="Arg-C" value="6" />
+    <mapping key="Asp-N" value="7" />
+  </valueMap>
+  <datatype convention="common prefix" name="msgfDBSeq">
+    <file extension="fasta" />
+    <file extension="canno" />
+    <file extension="cnlcp" />
+    <file extension="csarr" />
+    <file extension="cseq" />
+  </datatype>
+  <datatype convention="suffix set" name="spectrum">
+    <file extension="mzml" />
+    <file extension="mzxml" />
+    <file extension="mgf" />
+    <file extension="dta" />
+    <file extension="pkl" />
+  </datatype>
+  <datatype convention="suffix set" name="fasta">
+    <file extension="fasta" />
+    <file extension="fa" />
+  </datatype>
+  <tool name="toolSpecnetsTagFilterPairs">
+    <require name="specnetsparam" type="file" />
+    <require name="spectra" type="folder" />
+    <produce extension="tags" name="inputTags" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="binary">
+      <arg value="ExecTagFilterPairs" />
+      <arg valueRef="specnetsparam" />
+      <arg option="ll" value="0" />
+      <arg option="autoDEBUG_PARAMS" value="1" />
+      <arg option="autoINPUT_SPECS" value="spectra/specs_ms.pklbin" />
+      <arg option="autoISO_ENV" pathRef="isoenvelope.path" />
+      <arg option="autoTAG_GEN" value="1" />
+      <arg option="autoINPUT_TAGS" valueRef="inputTags" />
+      <arg option="autoWINDOW_FILTER_PER_50MZ" valueRef="@TAG_WINDOW_FILTER" />
+    </execution>
+  </tool>
+  <tool name="MetabolomicPrepParallelFilterPairsSplit_a">
+    <require name="specnetsparam" type="file" />
+    <require name="spectra" type="folder" />
+    <produce extension="params" name="molecularnetworks_parallel_filterpairs_params" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="binary">
+      <arg valueRef="specnetsparam" />
+      <arg valueRef="molecularnetworks_parallel_filterpairs_params" />
+      <arg value="spectra/specs_ms.pklbin" />
+    </execution>
+  </tool>
+  <tool name="MetabolomicSpecnets_ClusteringOnly">
+    <require name="spec" type="folder" />
+    <require name="specnetparams" type="file" />
+    <require name="stratacluster_filtered_representatives" type="folder" />
+    <produce name="spectra" type="folder" />
+    <execution argConvention="adhoc" env="binary">
+      <arg valueRef="specnetparams" />
+      <arg option="ll" value="0" />
+      <arg option="f" value="mscluster" />
+    </execution>
+  </tool>
+  <tool name="specnetsparamsgen_stratacluster">
+    <require name="inputspectra" type="folder" />
+    <require name="stratacluster_representatives" type="folder" />
+    <require name="specnetsparam_in" type="file" />
+    <require name="stratacluster_metadata" type="file" />
+    <require name="groupmapping" type="file" />
+    <produce extension="params" name="specnetsparam_out" naming="explicit" type="file" />
+    <produce name="stratacluster_filtered_representatives" type="folder" />
+    <execution argConvention="adhoc" env="binary">
+      <arg pathRef="specnetsparamsgen_stratacluster_script" />
+      <arg option="-maestro_input_spectra" valueRef="inputspectra" />
+      <arg option="-stratacluster_representatives" valueRef="stratacluster_representatives" />
+      <arg option="-specnetsparam_in" valueRef="specnetsparam_in" />
+      <arg option="-specnetsparam_out" valueRef="specnetsparam_out" />
+      <arg option="-stratacluster_metadata" valueRef="stratacluster_metadata" />
+      <arg option="-groupmapping" valueRef="groupmapping" />
+      <arg option="-stratacluster_filtered_representatives" valueRef="stratacluster_filtered_representatives" />
+      <arg option="-labelling" valueRef="@isobaric_tag" />
+      <arg option="-cluster_min_size" valueRef="@CLUSTER_MIN_SIZE" />
+      <arg option="-cluster_min_biorep" valueRef="@CLUSTER_MIN_REPLICATES" />
+    </execution>
+  </tool>
+
+  <tool name="run_clustering">
+    <require name="stratacluster_filtered_representatives" type="folder" />
+    <require name="stratacluster_metadata" type="file" />
+    <require name="input_unclustered_spectra" type="folder" />
+    <require name="inputspectra_pklbin_filelist" type="file" />
+    <require name="params" type="file" />
+    <require name="groupmapping" type="file" />
+    <require name="spectra" type="folder" />
+    <produce extension="clusterinfo" name="output_clusterinfo" naming="explicit" type="file" />
+    <produce extension="clusterinfo" name="output_clusterinfogroup" naming="explicit" type="file" />
+    <produce extension="clustersummary" name="output_clusterinfosummarygroup" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="binary">
+      <arg pathRef="run_clustering_script" />
+      <arg option="-clusterinfo_bin" pathRef="MetabolomicClusterinfo_a_bin" />
+      <arg option="-stratacluster_representatives" valueRef="stratacluster_filtered_representatives" />
+      <arg option="-stratacluster_metadata" valueRef="stratacluster_metadata" />
+      <arg option="-input_unclustered_spectra" valueRef="input_unclustered_spectra" />
+      <arg option="-inputspectra_pklbin_filelist" valueRef="inputspectra_pklbin_filelist" />
+      <arg option="-params" valueRef="params" />
+      <arg option="-groupmapping" valueRef="groupmapping" />
+      <arg option="-spectra" valueRef="spectra" />
+      <arg option="-clusterinfo" valueRef="output_clusterinfo" />
+      <arg option="-clusterinfogroup" valueRef="output_clusterinfogroup" />
+      <arg option="-clusterinfosummarygroup" valueRef="output_clusterinfosummarygroup" />
+    </execution>
+  </tool>
+
+  <tool name="run_stratacluster">
+    <require name="stratacluster_representatives_input" type="folder" />
+    <require name="stratacluster_metadata_input" type="folder" />
+    <require name="input_unclustered_spectra" type="folder" />
+    <require name="params" type="file" />
+    <produce name="stratacluster_representatives" type="folder" />
+    <produce name="stratacluster_metadata" type="folder" />
+    <produce extension="txt" name="stratacluster_taskid" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="binary">
+      <arg pathRef="run_stratacluster_script" />
+      <arg option="-stratacluster_representatives_input" valueRef="stratacluster_representatives_input" />
+      <arg option="-stratacluster_metadata_input" valueRef="stratacluster_metadata_input" />
+      <arg option="-input_unclustered_spectra" valueRef="input_unclustered_spectra" />
+      <arg option="-params" valueRef="params" />
+      <arg option="-login_info" pathRef="batch_login" />
+      <arg option="-stratacluster_representatives" valueRef="stratacluster_representatives" />
+      <arg option="-stratacluster_metadata" valueRef="stratacluster_metadata" />
+      <arg option="-stratacluster_taskid" valueRef="stratacluster_taskid" />
+    </execution>
+  </tool>
+
+  <tool name="MetabolomicParallelFilterPairsSplit_a">
+    <require name="molecularnetworks_parallel_filterpairs_params" type="file" />
+    <require name="spectra" type="folder" />
+    <produce name="molecularnetworks_parallel_filterpairs_parallel_params" type="folder" />
+    <execution argConvention="adhoc" env="binary">
+      <arg value="ExecFilterPairs" />
+      <arg valueRef="molecularnetworks_parallel_filterpairs_params" />
+      <arg option="ccms" value="1" />
+      <arg option="g" />
+      <arg option="ccms_num_nodes" value="10" />
+      <arg option="ccms_param_dir" valueRef="molecularnetworks_parallel_filterpairs_parallel_params" />
+      <arg option="ccms_results_dir" value="molecularnetworks_parallel_filterpairs_results" />
+    </execution>
+  </tool>
+  <tool name="MetabolomicParallelFilterPairsParallelStep_a">
+    <require name="molecularnetworks_parallel_filterpairs_parallel_params" type="file" />
+    <require name="spectra" type="folder" />
+    <require name="inputTags" type="file" />
+    <produce name="molecularnetworks_parallel_filterpairs_results" type="folder" />
+    <execution argConvention="adhoc" env="python">
+      <arg pathRef="MetabolomicParallelFilterPairsParallelStep_a_path" />
+      <arg value="ExecFilterPairs" />
+      <arg valueRef="molecularnetworks_parallel_filterpairs_parallel_params" />
+      <arg option="t" value="10" />
+      <arg option="ccms_param_dir" valueRef="molecularnetworks_parallel_filterpairs_results" />
+      <arg option="autoINPUT_TAGS" valueRef="inputTags" />
+      <arg option="autoTAG_FILTER" valueRef="@custom_alignment.Tag_Filtering_Pairs" />
+      <arg option="autoMAX_TAG_SIZE" valueRef="@custom_alignment.Max_Tag_Size" />
+    </execution>
+  </tool>
+  <tool name="MetabolomicParallelFilterPairsMerge_a">
+    <require name="molecularnetworks_parallel_filterpairs_params" type="file" />
+    <require name="molecularnetworks_parallel_filterpairs_results" type="folder" />
+    <require name="spectra" type="folder" />
+    <produce extension="bin" name="molecularnetworks_parallel_filterpairs_merged" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="binary">
+      <arg value="ExecFilterPairs" />
+      <arg valueRef="molecularnetworks_parallel_filterpairs_params" />
+      <arg option="z" />
+      <arg option="ccms_num_nodes" value="10" />
+      <arg option="ccms_results_dir" valueRef="molecularnetworks_parallel_filterpairs_results" />
+      <arg option="ccms_output_aligns" valueRef="molecularnetworks_parallel_filterpairs_merged" />
+    </execution>
+  </tool>
+
+  <tool name="SpecnetsParamGen_a">
+    <require name="spec" type="folder" />
+    <require name="flowParams" type="file" />
+    <produce extension="params" name="paramsgen" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="binary">
+      <arg value="ExecCCMSMetabolomicsSpecnetsParams" />
+      <arg valueRef="flowParams" />
+      <arg option="ccms_input_spectradir" valueRef="spec" />
+      <arg option="ccms_results_dir" valueRef="paramsgen" />
+      <arg option="ccms_pepnovo_dir" pathRef="pepnovo.file" />
+      <arg option="ccms_mscluster_dir" pathRef="mscluster.file" />
+      <arg option="ccms_threadedparallelism" value="10" />
+      <arg option="autoDECONV_MS2" valueRef="@custom_preprocess.Deconvolute_MS" />
+      <arg option="autoTAG_FILTER" valueRef="@custom_alignment.Tag_Filtering_Pairs" />
+      <arg option="autoMAX_TAG_SIZE" valueRef="@custom_alignment.Max_Tag_Size" />
+    </execution>
+  </tool>
+  <tool name="MetabolomicGroupConvert_a">
+    <require name="flowParams" type="file" />
+    <require name="groupmapping" type="folder" />
+    <produce extension="group" name="groupmapping_converted" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="binary">
+      <arg valueRef="groupmapping" />
+      <arg valueRef="flowParams" />
+      <arg valueRef="groupmapping_converted" />
+    </execution>
+  </tool>
+  <tool name="MetabolomicClusterInfoGroupAddAttribute_a">
+    <require name="flowParams" type="file" />
+    <require name="clusterinfosummarygroup" type="file" />
+    <require name="clusterinfogroup" type="file" />
+    <produce extension=".out" name="clusterinfosummarygroup_attributes" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="binary">
+      <arg valueRef="flowParams" />
+      <arg valueRef="clusterinfosummarygroup" />
+      <arg valueRef="clusterinfogroup" />
+      <arg valueRef="clusterinfosummarygroup_attributes" />
+      <arg value="http://gnps.ucsd.edu/" />
+    </execution>
+  </tool>
+
+  <tool name="MetabolomicViewAllClusters_a">
+    <require name="flowParams" type="file" />
+    <require name="clusterinfosummarygroup_attributes" type="file" />
+    <require name="clusterinfogroup" type="file" />
+    <produce extension="tsv" name="allclustered_spectra_info" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="binary">
+      <arg valueRef="flowParams" />
+      <arg valueRef="clusterinfosummarygroup_attributes" />
+      <arg valueRef="clusterinfogroup" />
+      <arg valueRef="allclustered_spectra_info" />
+    </execution>
+  </tool>
+  <tool name="MetabolomicCreateNetworkView_a">
+    <require name="networkedges" type="file" />
+    <produce extension="display" name="networkedges_display" naming="explicit" type="file" />
+    <produce extension="displaypairs" name="networkedges_display_pairs" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="binary">
+      <arg valueRef="networkedges" />
+      <arg valueRef="networkedges_display" />
+      <arg valueRef="networkedges_display_pairs" />
+      <arg value="spectra/specs_ms.pklbin" />
+    </execution>
+  </tool>
+  <tool name="MetabolomicMakeSelfloop_a">
+    <require name="flowParams" type="file" />
+    <require name="networkedges" type="file" />
+    <require name="clusterinfosummarygroup" type="file" />
+    <require name="spectrumCounts_varFdr_clusts_sepMixtures" type="file" />
+    <produce extension="pairsinfo" name="networkedges_selfloop" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="binary">
+      <arg valueRef="clusterinfosummarygroup" />
+      <arg valueRef="networkedges" />
+      <arg valueRef="spectrumCounts_varFdr_clusts_sepMixtures" />
+      <arg valueRef="networkedges_selfloop" />
+      <arg valueRef="flowParams" />
+    </execution>
+  </tool>
+  <tool name="MetabolomicWriteOriginalFileNameClusterInfo_a">
+    <require name="flowParams" type="file" />
+    <require name="allclustered_spectra_info" type="file" />
+    <produce extension="tsv" name="allclustered_spectra_info_withpath" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="binary">
+      <arg valueRef="flowParams" />
+      <arg valueRef="allclustered_spectra_info" />
+      <arg valueRef="allclustered_spectra_info_withpath" />
+    </execution>
+  </tool>
+  <tool name="MetabolomicAddComponentIndexToSummary_a">
+    <require name="clusterinfosummarygroup_attributes_withIDs" type="file" />
+    <require name="networkedges" type="file" />
+    <produce extension="tsv" name="clusterinfosummarygroup_attributes_withIDs_withcomponentID" naming="explicit" type="file" />
+    <produce extension="networkcomponent" name="networkcomponents" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="clusterinfosummarygroup_attributes_withIDs" />
+      <arg valueRef="networkedges" />
+      <arg valueRef="clusterinfosummarygroup_attributes_withIDs_withcomponentID" />
+      <arg valueRef="networkcomponents" />
+    </execution>
+  </tool>
+  <tool name="MODa_1">
+    <require datatype="spectrum" name="spectrum" type="file" />
+    <require datatype="fasta" name="sequence" type="file" />
+    <require name="config" type="file" />
+    <produce extension="txt" name="result" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="java">
+      <mainClass name="analysis.MODPlusRelease" />
+      <envArg option="Xmx10000M" />
+      <arg option="i" valueRef="config" />
+      <arg option="dshow" value="1" />
+      <arg option="o" valueRef="result" />
+    </execution>
+  </tool>
+  <tool name="filterMODa_1">
+    <require name="input" type="file" />
+    <require name="config" type="file" />
+    <produce extension="txt" name="result" naming="explicit" type="file" />
+    <produce extension="ptm.txt" name="ptm" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="java">
+      <mainClass name="postprocess.TDAPlus" />
+      <envArg option="Xmx4000M" />
+      <arg option="i" valueRef="input" />
+      <arg option="p" valueRef="config" />
+      <arg option="o" valueRef="result" />
+      <arg option="ptm" valueRef="ptm" />
+      <arg option="fdr" valueRef="@FDR_moda.FDR" />
+      <arg option="d" value="XXX" />
+      <arg option="dshow" value="1" />
+    </execution>
+  </tool>
+  <tool name="MetabolomicCreatePeptideComponent">
+    <require name="clusterinfosummarygroup_attributes_withIDs" type="file" />
+    <require name="networkedges" type="file" />
+    <require name="spectrum_counts" type="file" />
+    <produce extension="networkcomponent" name="networkcomponents_withpeptide" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="binary">
+      <arg valueRef="clusterinfosummarygroup_attributes_withIDs" />
+      <arg valueRef="networkedges" />
+      <arg valueRef="spectrum_counts" />
+      <arg valueRef="networkcomponents_withpeptide" />
+    </execution>
+  </tool>
+  <tool name="getUnidentified">
+    <require name="specs" type="folder" />
+    <require name="searchResult" type="file" />
+    <produce name="output" type="folder" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="specs" />
+      <arg valueRef="searchResult" />
+      <arg valueRef="output" />
+    </execution>
+  </tool>
+  <tool name="categorizeSpectraMsgfMsplit">
+    <require name="msplitSearchResult" type="file" />
+    <require name="msgfdbSearchResult" type="file" />
+    <require name="modaSearchResult" type="file" />
+    <produce extension="txt" name="output" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="msplitSearchResult" />
+      <arg valueRef="msgfdbSearchResult" />
+      <arg valueRef="modaSearchResult" />
+      <arg value="1" />
+      <arg value="0" />
+      <arg valueRef="output" />
+    </execution>
+  </tool>
+  <tool name="categorizeSpectraModaMsplit">
+    <require name="msplitSearchResult" type="file" />
+    <require name="msgfdbSearchResult" type="file" />
+    <require name="modaSearchResult" type="file" />
+    <produce extension="txt" name="output" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="msplitSearchResult" />
+      <arg valueRef="msgfdbSearchResult" />
+      <arg valueRef="modaSearchResult" />
+      <arg value="2" />
+      <arg value="0" />
+      <arg valueRef="output" />
+    </execution>
+  </tool>
+  <tool name="categorizeSpectraModaMsgf">
+    <require name="msplitSearchResult" type="file" />
+    <require name="msgfdbSearchResult" type="file" />
+    <require name="modaSearchResult" type="file" />
+    <produce extension="txt" name="output" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="msplitSearchResult" />
+      <arg valueRef="msgfdbSearchResult" />
+      <arg valueRef="modaSearchResult" />
+      <arg value="2" />
+      <arg value="1" />
+      <arg valueRef="output" />
+    </execution>
+  </tool>
+  <tool name="makeModaInputDB">
+    <require name="msplitFinalResult" type="file" />
+    <require name="msgfdbMergedResult" type="file" />
+    <require name="revConcatDB" type="folder" />
+    <require name="msgfSpecFdrWithDecoys" type="file" />
+    <produce extension="fasta" name="output" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="msplitFinalResult" />
+      <arg valueRef="msgfdbMergedResult" />
+      <arg valueRef="revConcatDB" />
+      <arg valueRef="msgfSpecFdrWithDecoys" />
+      <arg valueRef="output" />
+    </execution>
+  </tool>
+  <tool name="extractMgf">
+    <require name="spectra" type="folder" />
+    <produce name="output" type="folder" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="spectra" />
+      <arg valueRef="output" />
+      <arg valueRef="@PARALLELISM" />
+    </execution>
+  </tool>
+  <tool name="searchMethodParallelComparison">
+    <require name="params" type="file" />
+    <require name="msplitSearchResult" type="file" />
+    <require name="msgfdbSearchResult" type="file" />
+    <require name="modaSearchResult" type="file" />
+    <produce extension="txt" name="outputTable" naming="explicit" type="file" />
+    <produce extension="html" name="outputCounts" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="params" />
+      <arg valueRef="msplitSearchResult" />
+      <arg valueRef="msgfdbSearchResult" />
+      <arg valueRef="modaSearchResult" />
+      <arg valueRef="outputTable" />
+      <arg valueRef="outputCounts" />
+    </execution>
+  </tool>
+  <tool name="convertMods">
+    <require name="params" type="file" />
+    <require name="msplitSearchResult" type="file" />
+    <require name="msgfdbSearchResult" type="file" />
+    <require name="modaSearchResult" type="file" />
+    <produce extension="tsv" name="msplitOut" naming="explicit" type="file" />
+    <produce extension="tsv" name="msgfdbOut" naming="explicit" type="file" />
+    <produce extension="tsv" name="modaOut" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="params" />
+      <arg valueRef="msplitSearchResult" />
+      <arg valueRef="msgfdbSearchResult" />
+      <arg valueRef="modaSearchResult" />
+      <arg valueRef="msplitOut" />
+      <arg valueRef="msgfdbOut" />
+      <arg valueRef="modaOut" />
+    </execution>
+  </tool>
+  <tool name="convertMods_parallel">
+    <require name="params" type="file" />
+    <require name="msplitSearchResult" type="file" />
+    <require name="msgfdbSearchResult" type="file" />
+    <require name="modaSearchResult" type="file" />
+    <produce extension="tsv" name="msplitOut" naming="explicit" type="file" />
+    <produce extension="tsv" name="msgfdbOut" naming="explicit" type="file" />
+    <produce extension="tsv" name="modaOut" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="params" />
+      <arg valueRef="msplitSearchResult" />
+      <arg valueRef="msgfdbSearchResult" />
+      <arg valueRef="modaSearchResult" />
+      <arg valueRef="msplitOut" />
+      <arg valueRef="msgfdbOut" />
+      <arg valueRef="modaOut" />
+    </execution>
+  </tool>
+  <tool name="spectrumCounts">
+    <require name="params" type="file" />
+    <require name="msplitSearchResult" type="file" />
+    <require name="msgfdbSearchResult" type="file" />
+    <require name="modaSearchResult" type="file" />
+    <require name="clusterInfo" type="file" />
+    <require name="networkEdges" type="file" />
+    <require name="networkEdgesDisp" type="file" />
+    <require name="groupMapping" type="file" />
+    <require name="outComputeSpecFdrCombined" type="file" />
+    <require name="outComputeVarCombined" type="folder" />
+    <require name="outComputeRegionsCombined" type="folder" />
+    <require name="outComputeMergedRegionsCombined" type="folder" />
+    <require name="isobaric_tag_abundances_filename" type="file" />
+    <require name="cluster_info_filename" type="file" />
+    <require name="groupmapping_dirname" type="folder" />
+    <require name="vars_w_decoys" type="file" />
+    <require name="spectra" type="folder" />
+    <produce extension="txt" name="outSpecFdr" naming="explicit" type="file" />
+    <produce extension="txt" name="outRegions" naming="explicit" type="file" />
+    <produce extension="txt" name="outMergedRegions" naming="explicit" type="file" />
+    <produce extension="txt" name="outSpecFdr_sepMixtures" naming="explicit" type="file" />
+    <produce extension="txt" name="outProteins" naming="explicit" type="file" />
+    <produce extension="txt" name="outSpecsVarFdr" naming="explicit" type="file" />
+    <produce extension="txt" name="outAllProteins" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="binary">
+      <arg pathRef="spectrumCounts_script" />
+      <arg valueRef="params" />
+      <arg valueRef="msplitSearchResult" />
+      <arg valueRef="msgfdbSearchResult" />
+      <arg valueRef="modaSearchResult" />
+      <arg valueRef="clusterInfo" />
+      <arg valueRef="networkEdges" />
+      <arg valueRef="networkEdgesDisp" />
+      <arg valueRef="groupMapping" />
+      <arg valueRef="outComputeSpecFdrCombined" />
+      <arg value="outComputeVarCombined/spectrum_fdr_psm_with_variants.txt" />
+      <arg value="outComputeRegionsCombined/fdr_filtered.txt" />
+      <arg value="outComputeMergedRegionsCombined/dupes_merged.txt" />
+      <arg pathRef="pspDiseaseAssociatedSites" />
+      <arg pathRef="pspRegulatorySites" />
+      <arg pathRef="pspModSites" />
+      <arg pathRef="pspPTMVarSites" />
+      <arg pathRef="drugbankDrugsPerAcc" />
+      <arg valueRef="isobaric_tag_abundances_filename" />
+      <arg valueRef="cluster_info_filename" />
+      <arg valueRef="groupmapping_dirname" />
+      <arg valueRef="vars_w_decoys" />
+      <arg pathRef="python_ms_utilities_processing" />
+      <arg valueRef="outSpecFdr" />
+      <arg valueRef="outRegions" />
+      <arg valueRef="outMergedRegions" />
+      <arg valueRef="outSpecFdr_sepMixtures" />
+      <arg valueRef="outProteins" />
+      <arg valueRef="outSpecsVarFdr" />
+      <arg valueRef="outAllProteins" />
+    </execution>
+  </tool>
+  <tool name="summaryReport">
+    <require name="params" type="file" />
+    <require name="clusterInfo" type="file" />
+    <require name="spectrumCounts_specFdr" type="file" />
+    <require name="spectrumCounts_mergedRegions" type="file" />
+    <require name="networkEdgesDisp" type="file" />
+    <require name="networkQcCurve" type="file" />
+    <require name="networkQcFalse" type="file" />
+    <require name="groupMapping" type="file" />
+    <require name="networkEdges" type="file" />
+    <require name="peptidePairCateg" type="file" />
+    <require name="inputSpectra" type="folder" />
+    <require name="spectrumCounts_regions" type="file" />
+    <require name="spectra_cleanup_done" type="file" />
+    <require name="stratacluster_taskid" type="file" />
+    <produce extension="html" name="output" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="params" />
+      <arg valueRef="clusterInfo" />
+      <arg valueRef="spectrumCounts_specFdr" />
+      <arg valueRef="spectrumCounts_mergedRegions" />
+      <arg valueRef="networkEdgesDisp" />
+      <arg valueRef="networkQcCurve" />
+      <arg valueRef="networkQcFalse" />
+      <arg valueRef="groupMapping" />
+      <arg valueRef="networkEdges" />
+      <arg valueRef="peptidePairCateg" />
+      <arg valueRef="inputSpectra" />
+      <arg valueRef="spectrumCounts_regions" />
+      <arg valueRef="stratacluster_taskid" />
+      <arg valueRef="output" />
+    </execution>
+  </tool>
+  <tool name="modifyResultFiles">
+    <require name="params" type="file" />
+    <require name="groupMapping" type="file" />
+    <require name="allClusters" type="file" />
+    <require name="rawSpectra" type="file" />
+    <require name="spectrumCounts" type="file" />
+    <require name="clusterinfo" type="file" />
+    <require name="isobaric_tag_abundances" type="file" />
+    <require name="tags_file" type="file" />
+    <produce extension="txt" name="allClustersOutput" naming="explicit" type="file" />
+    <produce extension="tsv" name="rawSpectraOutput" naming="explicit" type="file" />
+    <produce name="rawSpectraIdOnly" naming="fixed" type="file" value="All_groups.tsv" />
+    <produce name="rawSpectraIdOnly_passingProtFDR" naming="fixed" type="file" value="All_groups.tsv" />
+    <produce name="rawSpectraIdOnly_perGroup" type="folder" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="params" />
+      <arg valueRef="groupMapping" />
+      <arg valueRef="allClusters" />
+      <arg valueRef="rawSpectra" />
+      <arg valueRef="spectrumCounts" />
+      <arg valueRef="clusterinfo" />
+      <arg valueRef="isobaric_tag_abundances" />
+      <arg valueRef="tags_file" />
+      <arg valueRef="allClustersOutput" />
+      <arg valueRef="rawSpectraOutput" />
+      <arg valueRef="rawSpectraIdOnly" />
+      <arg valueRef="rawSpectraIdOnly_passingProtFDR" />
+      <arg valueRef="rawSpectraIdOnly_perGroup" />
+      <arg valueRef="@mztab.skip" />
+    </execution>
+  </tool>
+  <tool name="NetworkQC_Generate_QC">
+    <require name="spectrum_counts" type="file" />
+    <require name="spectra" type="folder" />
+    <require name="aligns" type="folder" />
+    <produce extension="out" name="networkqc_curve" naming="explicit" type="file" />
+    <produce extension="out" name="networkqc_falsepositive" naming="explicit" type="file" />
+    <produce extension="out" name="networkqc_otheroutput" naming="explicit" type="file" />
+    <produce name="networkqc_workingdir" type="folder" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="spectrum_counts" />
+      <arg value="aligns/pairs_cosine.bin" />
+      <arg valueRef="networkqc_falsepositive" />
+      <arg valueRef="networkqc_otheroutput" />
+      <arg valueRef="networkqc_curve" />
+      <arg valueRef="networkqc_workingdir" />
+      <arg pathRef="main_execmodule.file" />
+    </execution>
+  </tool>
+  <tool name="NetworkQC_Generate_QC_a">
+    <require name="spectrum_counts" type="file" />
+    <require name="spectra" type="folder" />
+    <require name="aligns" type="file" />
+    <produce extension="out" name="networkqc_curve" naming="explicit" type="file" />
+    <produce extension="out" name="networkqc_falsepositive" naming="explicit" type="file" />
+    <produce extension="out" name="networkqc_otheroutput" naming="explicit" type="file" />
+    <produce name="networkqc_workingdir" type="folder" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="spectrum_counts" />
+      <arg valueRef="aligns" />
+      <arg valueRef="networkqc_falsepositive" />
+      <arg valueRef="networkqc_otheroutput" />
+      <arg valueRef="networkqc_curve" />
+      <arg valueRef="networkqc_workingdir" />
+      <arg pathRef="main_execmodule_network_qc.file" />
+    </execution>
+  </tool>
+  <tool name="createPairModCounts">
+    <require name="networkQcFalse" type="file" />
+    <require name="spectrumCounts" type="file" />
+    <produce extension="txt" name="outQcFalseWithOffsets" naming="explicit" type="file" />
+    <produce extension="txt" name="outPairModTable" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="networkQcFalse" />
+      <arg valueRef="spectrumCounts" />
+      <arg valueRef="outQcFalseWithOffsets" />
+      <arg valueRef="outPairModTable" />
+    </execution>
+  </tool>
+  <tool name="catSpecFdrFiles">
+    <require name="specFdrMSPLIT" type="file" />
+    <require name="specFdrMSPLIT2" type="file" />
+    <require name="specFdrMSGFDB" type="file" />
+    <require name="specFdrMODA" type="file" />
+    <produce extension="txt" name="specFdrCombined" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="specFdrCombined" />
+      <arg value="1" />
+      <arg valueRef="specFdrMSPLIT" />
+      <arg valueRef="specFdrMSPLIT2" />
+      <arg valueRef="specFdrMSGFDB" />
+      <arg valueRef="specFdrMODA" />
+    </execution>
+  </tool>
+  <tool name="catPeptidePairFiles">
+    <require name="pepPairsMsgfMsplit" type="file" />
+    <require name="pepPairsModaMsplit" type="file" />
+    <require name="pepPairsModaMsgf" type="file" />
+    <produce extension="txt" name="pepPairsCombined" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="pepPairsCombined" />
+      <arg value="0" />
+      <arg valueRef="pepPairsMsgfMsplit" />
+      <arg valueRef="pepPairsModaMsplit" />
+      <arg valueRef="pepPairsModaMsgf" />
+    </execution>
+  </tool>
+  <tool name="msplitApplySVM1Filter">
+    <require name="params" type="file" />
+    <require name="finalResultMSPLIT_withDecoys" type="file" />
+    <produce extension="txt" name="finalResultMSPLIT_withDecoys_SVM1Filtered" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="params" />
+      <arg valueRef="finalResultMSPLIT_withDecoys" />
+      <arg valueRef="finalResultMSPLIT_withDecoys_SVM1Filtered" />
+    </execution>
+  </tool>
+  <tool name="reformatMerged">
+    <require name="mergedResultMODA" type="file" />
+    <produce extension="txt" name="mergedResultMODAReformatted" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="mergedResultMODA" />
+      <arg valueRef="mergedResultMODAReformatted" />
+    </execution>
+  </tool>
+  <tool name="spectrumMatchClassify_1">
+    <require name="input" type="file" />
+    <produce extension="out" name="output" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="perl">
+      <arg valueRef="input" />
+      <arg valueRef="output" />
+      <arg valueRef="@FDR_msplit.FDR" />
+    </execution>
+  </tool>
+  <tool name="spectrumMatchClassify_1_msplit_new">
+    <require name="input" type="file" />
+    <produce extension="out" name="output" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="perl">
+      <arg valueRef="input" />
+      <arg valueRef="output" />
+      <arg valueRef="@FDR_msplit.FDR" />
+    </execution>
+  </tool>
+  <tool name="spectrumMatchClassify_1_msplit_new_outputDecoys">
+    <require name="input" type="file" />
+    <produce extension="out" name="output" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="perl">
+      <arg valueRef="input" />
+      <arg valueRef="output" />
+      <arg valueRef="@FDR_msplit.FDR" />
+    </execution>
+  </tool>
+  <tool name="msplit_1">
+    <require datatype="spectrum" name="spectrum" type="file" />
+    <require name="library" type="file" />
+    <produce extension="out" name="result" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="java">
+      <mainClass name="SpectrumLib" />
+      <envArg option="Xmx2000M" />
+      <arg valueRef="library" />
+      <arg valueRef="spectrum" />
+      <arg valueRef="@tolerance_msplit.PM_tolerance" />
+      <arg valueRef="result" />
+    </execution>
+  </tool>
+  <tool name="msplit_new_1">
+    <require datatype="spectrum" name="spectrum" type="file" />
+    <require name="library" type="file" />
+    <produce extension="out" name="result" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="java">
+      <mainClass name="Spectrum.SpectrumLib" />
+      <envArg option="Xmx2000M" />
+      <envArg option="Xss50M" />
+      <arg valueRef="library" />
+      <arg valueRef="spectrum" />
+      <arg valueRef="@tolerance_msplit.PM_tolerance" />
+      <arg valueRef="@tolerance_msplit.Ion_tolerance" />
+      <arg valueRef="result" />
+      <arg option="guessCharges" valueRef="@MSPLIT_GUESS_CHARGE" />
+    </execution>
+  </tool>
+  <tool name="createDecoyLibMsplit">
+    <require name="speclib" type="file" />
+    <require name="params" type="file" />
+    <produce extension="mgf" name="concatlib" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg value="java" />
+      <arg value="-Xmx5000M" />
+      <arg option="cp" pathRef="createDecoyLibMsplit_path" />
+      <arg value="org.Spectrums.DecoySpectrumGenerator" />
+      <arg valueRef="speclib" />
+      <arg valueRef="concatlib" />
+      <arg value="0.5" />
+      <arg option="params" valueRef="params" />
+      <arg option="pregenerated_indexed_libs_path" pathRef="pregenerated_indexed_libs_path" />
+    </execution>
+  </tool>
+  <tool name="indexLib">
+    <require name="mergedLib" type="file" />
+    <require name="params" type="file" />
+    <produce extension="map" name="indexedLib" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg value="java" />
+      <arg value="-Xmx65000M" />
+      <arg option="cp" pathRef="indexLib_path" />
+      <arg value="Spectrum.CandidateSpectrumGenerator" />
+      <arg valueRef="mergedLib" />
+      <arg valueRef="indexedLib" />
+      <arg valueRef="@tolerance_msplit.Ion_tolerance" />
+      <arg option="params" valueRef="params" />
+      <arg option="pregenerated_indexed_libs_path" pathRef="pregenerated_indexed_libs_path" />
+    </execution>
+  </tool>
+  <tool name="mergeWithHeader">
+    <require name="input" type="folder" />
+    <produce name="output" naming="explicit" type="file" />
+    <execution argConvention="gnu" env="java">
+      <mainClass name="edu.ucsd.workflow.Merge" />
+      <envArg option="Xmx512M" />
+      <arg option="input" valueRef="input" />
+      <arg option="output" valueRef="output" />
+      <arg option="header" />
+    </execution>
+  </tool>
+  <tool name="mergeFasta">
+    <require name="input" type="folder" />
+    <produce extension="fasta" name="output" naming="explicit" type="file" />
+    <execution argConvention="gnu" env="java">
+      <mainClass name="edu.ucsd.workflow.Merge" />
+      <envArg option="Xmx512M" />
+      <arg option="input" valueRef="input" />
+      <arg value="-removeStartBlankLines" />
+      <arg option="output" valueRef="output" />
+    </execution>
+  </tool>
+  <tool name="selectFirst">
+    <require name="input" type="folder" />
+    <produce name="output" naming="explicit" type="file" />
+    <execution argConvention="gnu" env="java">
+      <mainClass name="edu.ucsd.workflow.SelectFirst" />
+      <envArg option="Xmx512M" />
+      <arg option="input" valueRef="input" />
+      <arg option="output" valueRef="output" />
+    </execution>
+  </tool>
+  <tool name="shuffleFasta">
+    <require name="input" type="file" />
+    <produce extension="fasta" name="output" naming="explicit" type="file" />
+    <execution argConvention="gnu" env="java">
+      <mainClass name="edu.ucsd.workflow.ShuffleFASTA" />
+      <envArg option="Xmx512M" />
+      <arg option="input" valueRef="input" />
+      <arg option="output" valueRef="output" />
+    </execution>
+  </tool>
+  <tool name="createMODaConfig">
+    <require datatype="spectrum" name="spectrum" type="file" />
+    <require datatype="fasta" name="sequence" type="file" />
+    <require name="params" type="file" />
+    <produce name="config" type="folder" />
+    <execution argConvention="gnu" env="java">
+      <mainClass name="edu.ucsd.moda.MODaConfigGenerator" />
+      <envArg option="Xmx512M" />
+      <arg option="spectrum" valueRef="spectrum" />
+      <arg option="fasta" valueRef="sequence" />
+      <arg option="param" valueRef="params" />
+      <arg option="output" valueRef="config" />
+      <arg option="ParentMassCorrection" value="0" />
+    </execution>
+  </tool>
+  <tool name="run_createMODaConfig">
+    <require datatype="spectrum" name="spectrum" type="file" />
+    <require datatype="fasta" name="sequence" type="file" />
+    <require name="params" type="file" />
+    <produce name="config" type="folder" />
+    <execution argConvention="adhoc" env="python">
+      <arg pathRef="java8_path" />
+      <arg pathRef="moda_utils_jar" />
+      <arg valueRef="spectrum" />
+      <arg valueRef="sequence" />
+      <arg valueRef="params" />
+      <arg valueRef="config" />
+    </execution>
+  </tool>
+  <tool name="addKlColumnsToFile">
+    <require name="in" type="file" />
+    <require name="rawSpectra" type="file" />
+    <require name="KLTable" type="file" />
+    <require name="MS3_mgfs" type="folder" />
+    <produce extension="txt" name="out" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="in" />
+      <arg valueRef="rawSpectra" />
+      <arg valueRef="KLTable" />
+      <arg valueRef="MS3_mgfs" />
+      <arg valueRef="out" />
+    </execution>
+  </tool>
+  <tool name="filterResultFileMSPLIT">
+    <require name="mergedResult" type="file" />
+    <require name="outputFormatResult" type="file" />
+    <require name="outComputeSpecFdrMSPLIT" type="file" />
+    <require name="outComputeSpecFdrMSPLIT2" type="file" />
+    <produce extension="txt" name="out" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="mergedResult" />
+      <arg valueRef="outputFormatResult" />
+      <arg option="intensity" valueRef="@expl_intensity_thresh_msplit" />
+      <arg valueRef="out" />
+      <arg valueRef="outComputeSpecFdrMSPLIT" />
+      <arg valueRef="outComputeSpecFdrMSPLIT2" />
+    </execution>
+  </tool>
+  <tool name="filterResultFileMSGFPlus">
+    <require name="mergedResult" type="file" />
+    <require name="outputFormatResult" type="file" />
+    <require name="outComputeSpecFdrMSGFPlus" type="file" />
+    <produce extension="txt" name="out" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="mergedResult" />
+      <arg valueRef="outputFormatResult" />
+      <arg valueRef="out" />
+      <arg valueRef="outComputeSpecFdrMSGFPlus" />
+    </execution>
+  </tool>
+  <tool name="filterResultFileMODA">
+    <require name="mergedResult" type="file" />
+    <require name="outputFormatResult" type="file" />
+    <require name="outComputeSpecFdrMODA" type="file" />
+    <produce extension="txt" name="out" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="mergedResult" />
+      <arg valueRef="outputFormatResult" />
+      <arg valueRef="out" />
+      <arg valueRef="outComputeSpecFdrMODA" />
+    </execution>
+  </tool>
+  <tool name="mergeMGF">
+    <require name="input" type="folder" />
+    <produce name="output" type="folder" />
+    <execution argConvention="gnu" env="java">
+      <mainClass name="edu.ucsd.workflow.Merge" />
+      <envArg option="Xmx512M" />
+      <arg option="input" valueRef="input" />
+      <arg option="output" value="mergedLib/mergedLib.mgf" />
+    </execution>
+  </tool>
+  <tool name="mergeText">
+    <require name="input" type="folder" />
+    <produce extension="txt" name="output" naming="explicit" type="file" />
+    <execution argConvention="gnu" env="java">
+      <mainClass name="edu.ucsd.workflow.Merge" />
+      <envArg option="Xmx512M" />
+      <arg option="input" valueRef="input" />
+      <arg option="output" valueRef="output" />
+    </execution>
+  </tool>
+  <pathSet base="conversion_for_workflows/1">
+    <pathVar name="msconvert.path" path="msconvert" />
+    <toolPath path="convert_spectra.py" tool="convert_spectra" />
+  </pathSet>
+  <tool name="convert_spectra">
+    <require name="spectrum" type="folder" />
+    <produce name="ccms_converted_spectrum" type="folder" />
+    <execution argConvention="posix" env="python">
+      <arg valueRef="spectrum" />
+      <arg valueRef="ccms_converted_spectrum" />
+      <arg pathRef="msconvert.path" />
+      <arg value="1" />
+      <arg value="mzXML:mzML" />
+      <arg value="mzML:mzML" />
+      <arg value="mgf:mgf" />
+      <arg value="MGF:MGF" />
+      <arg value="gz:mzML" />
+    </execution>
+  </tool>
+
+  <pathSet base="/opt/jre1.8.0_162/bin">
+    <pathVar name="java8_path" path="java" />
+    <toolPath path="java" tool="MSGFPlus_BuildSA" />
+    <toolPath path="java" tool="MSGFPlus_ConvertToTSV" />
+  </pathSet>
+
+  <pathSet base="MSGFPlus/v20220418">
+    <pathVar name="MSGFPlus_jar_path" path="MSGFPlus.jar" />
+    <toolPath tool="MSGFPlus4Cores" path="MSGFPlus.py" />
+  </pathSet>
+
+  <pathSet base="MSGFPlus/10089">
+    <toolPath path="MSGFPlus_ComputeFDR.py" tool="MSGFPlus_ComputeFDR" />
+  </pathSet>
+
+  <tool name="MSGFPlus_BuildSA">
+    <require datatype="fasta" name="input" type="file" />
+    <produce datatype="msgfDBSeq" name="output" type="file" />
+    <execution argConvention="adhoc" env="binary">
+      <arg value="-Xmx30000M" />
+      <arg option="cp" pathRef="MSGFPlus_jar_path" />
+      <arg value="edu.ucsd.msjava.msdbsearch.BuildSA" />
+      <arg option="d" valueRef="input" />
+      <arg option="o" valueRef="output" />
+      <arg option="tda" value="1" />
+    </execution>
+  </tool>
+  <tool name="MSGFPlus4Cores">
+    <require datatype="spectrum" name="spectrum" type="file" />
+    <require datatype="fasta" name="sequence" type="file" />
+    <require datatype="msgfDBSeq" name="preparedSequence" type="file" />
+    <require name="parameters" type="file" />
+    <produce extension="mzid" name="output" naming="explicit" type="file" />
+    <execution argConvention="posix" env="python">
+      <arg value="-Xmx30000M" />
+      <arg value="-Xss100M" />
+      <arg option="s" valueRef="spectrum" />
+      <arg option="d" valueRef="sequence" />
+      <arg option="dd" valueRef="preparedSequence" />
+      <arg option="o" valueRef="output" />
+      <arg option="t" valueRef="@tolerance_msgfdb.PM_tolerance_tolerance_unit_msgfdb.PM_unit" />
+      <arg option="tda" value="1" />
+      <arg mapAgainst="fragmentationMethod" option="m" valueRef="@fragmentation.fragmentation" />
+      <arg mapAgainst="instrument" option="inst" valueRef="@instrument_msgfplus.instrument" />
+      <arg mapAgainst="protease" option="e" valueRef="@cysteine_protease.protease" />
+      <arg option="ti" valueRef="@c13_nnet.msgfPlusC13" />
+      <arg option="ntt" valueRef="@c13_nnet.msgfPlusNnet" />
+      <arg option="mod" valueRef="parameters" />
+      <arg option="numMods" valueRef="@ptm.mods" />
+      <arg option="thread" value="4" />
+    </execution>
+  </tool>
+  <tool name="MSGFPlus_ConvertToTSV">
+    <require name="input" type="file" />
+    <produce extension="tsv" name="output" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="binary">
+      <arg value="-Xmx50000M" />
+      <arg option="cp" pathRef="MSGFPlus_jar_path" />
+      <arg value="edu.ucsd.msjava.ui.MzIDToTsv" />
+      <arg option="i" valueRef="input" />
+      <arg option="o" valueRef="output" />
+      <arg option="showQValue" value="0" />
+      <arg option="showDecoy" value="1" />
+      <arg option="unroll" value="1" />
+    </execution>
+  </tool>
+  <tool name="MSGFPlus_ComputeFDR">
+    <require name="input" type="file" />
+    <produce extension="tsv" name="output" naming="explicit" type="file" />
+    <execution argConvention="posix" env="python">
+      <arg value="-Xmx10000M" />
+      <arg option="f" valueRef="input" />
+      <arg value="XXX" />
+      <arg option="o" valueRef="output" />
+      <arg ifEmpty="skip" option="fdr" valueRef="@FDR_msgfdb.FDR" />
+      <arg ifEmpty="skip" option="pepfdr" valueRef="@PepFDR.PepFDR" />
+      <arg option="s" value="0" />
+    </execution>
+  </tool>
+  <tool name="ConvertTSVToMzTab">
+    <require name="input" type="file" />
+    <require name="params" type="file" />
+    <produce name="config" type="folder" />
+    <produce name="mzTab" type="folder" />
+    <execution argConvention="gnu" env="shell">
+      <arg option="config_Xmx" value="2G" />
+      <arg option="convert_Xmx" value="60G" />
+      <arg option="tsv" valueRef="input" />
+      <arg option="params" valueRef="params" />
+      <arg option="config_directory" valueRef="config" />
+      <arg option="raw_mzTab_directory" valueRef="mzTab" />
+      <arg option="header_line" value="true" />
+      <arg option="filename" value="ProteosafeFilePath" />
+      <arg option="fixed_mod" value="UNIMOD:4|(C,57.021464)" />
+      <arg option="fixed_mod" value="UNIMOD:6|(C,58.005479)" />
+      <arg option="fixed_mod" value="UNIMOD:17|(C,99.068414)" />
+      <arg option="variable_mod" value="UNIMOD:28|^(Q,-17.026549)" />
+      <arg option="variable_mod" value="UNIMOD:35|(M,15.994915)" />
+      <arg option="variable_mod" value="UNIMOD:35|(M,15.995)" />
+      <arg option="variable_mod" value="UNIMOD:214|(K,144.102)" />
+      <arg option="variable_mod" value="UNIMOD:1|^[42.011]*" />
+      <arg option="variable_mod" value="UNIMOD:214|^[144.102]*" />
+      <arg option="modified_sequence" value="Peptide" />
+      <arg option="mod_pattern" value="(*,#)" />
+      <arg option="mod_pattern" value="^{#}*" />
+      <arg option="mod_pattern" value="^[#]*" />
+      <arg option="fixed_mods_reported" value="true" />
+      <arg option="spectrum_id_type" value="scan" />
+      <arg option="match_mass_precision" value="3" />
+      <arg option="scan" value="ScanNumber" />
+      <arg option="accession" value="Top_protein" />
+      <arg option="charge" value="PrecursorCharge" />
+      <arg option="skip" valueRef="@mztab.skip" />
+    </execution>
+  </tool>
+  <tool name="ConvertTSVToMzTab_perGroup">
+    <require name="input_tsv_list" type="file" />
+    <require name="input_tsvs" type="folder" />
+    <require name="params" type="file" />
+    <produce name="config" type="folder" />
+    <produce name="mzTab" type="folder" />
+    <execution argConvention="adhoc" env="python">
+      <arg pathRef="ConvertTSVToMzTab_script" />
+      <arg option="config_Xmx" value="2G" />
+      <arg option="convert_Xmx" value="60G" />
+      <arg option="input_tsv_list" valueRef="input_tsv_list" />
+      <arg option="params" valueRef="params" />
+      <arg option="config_directory" valueRef="config" />
+      <arg option="raw_mzTab_directory" valueRef="mzTab" />
+      <arg option="header_line" value="true" />
+      <arg option="filename" value="ProteosafeFilePath" />
+      <arg option="fixed_mod" value="UNIMOD:4|(C,57.021464)" />
+      <arg option="fixed_mod" value="UNIMOD:6|(C,58.005479)" />
+      <arg option="fixed_mod" value="UNIMOD:17|(C,99.068414)" />
+      <arg option="variable_mod" value="UNIMOD:28|^(Q,-17.026549)" />
+      <arg option="variable_mod" value="UNIMOD:35|(M,15.994915)" />
+      <arg option="variable_mod" value="UNIMOD:35|(M,15.995)" />
+      <arg option="variable_mod" value="UNIMOD:214|(K,144.102)" />
+      <arg option="variable_mod" value="UNIMOD:1|^[42.011]*" />
+      <arg option="variable_mod" value="UNIMOD:214|^[144.102]*" />
+      <arg option="modified_sequence" value="Peptide" />
+      <arg option="mod_pattern" value="(*,#)" />
+      <arg option="mod_pattern" value="^{#}*" />
+      <arg option="mod_pattern" value="^[#]*" />
+      <arg option="fixed_mods_reported" value="true" />
+      <arg option="spectrum_id_type" value="scan" />
+      <arg option="match_mass_precision" value="3" />
+      <arg option="scan" value="ScanNumber" />
+      <arg option="accession" value="Top_protein" />
+      <arg option="charge" value="PrecursorCharge" />
+    </execution>
+  </tool>
+  <tool name="PostProcessMzTabs">
+    <require name="params" type="file" />
+    <require name="input" type="folder" />
+    <require name="peak" type="folder" />
+    <produce name="validated" type="folder" />
+    <produce name="cleaned" type="folder" />
+    <produce name="summary" type="file" />
+    <execution argConvention="gnu" env="shell">
+      <arg option="validate_Xmx" value="8000M" />
+      <arg option="clean_Xmx" value="8000M" />
+      <arg option="summarize_Xmx" value="8000M" />
+      <arg option="params" valueRef="params" />
+      <arg option="raw_mzTab_directory" valueRef="input" />
+      <arg option="validated_mzTab_directory" valueRef="validated" />
+      <arg option="cleaned_mzTab_directory" valueRef="cleaned" />
+      <arg option="summary_file" value="statistics/statistics.tsv" />
+      <arg option="mzTab_path" value="mzTab" />
+      <arg option="peak_directory" valueRef="peak" />
+      <arg option="peak_path" value="spec" />
+      <arg option="peak_collection" value="spec_on_server" />
+      <arg option="invalid_threshold" value="101" />
+      <arg option="psm_qvalue" value="opt_global_FDR" />
+    </execution>
+  </tool>
+  <tool name="bsaapRavenComputeSpecFdrMSPLIT">
+    <require name="mergedResult" type="file" />
+    <produce extension="txt" name="outComputeSpecFdrMSPLIT" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="binary">
+      <arg pathRef="fdr_script" />
+      <arg valueRef="mergedResult" />
+      <arg valueRef="@FDR_msplit.FDR" />
+      <arg value="msplit" />
+      <arg pathRef="python_ms_utilities_processing" />
+      <arg valueRef="outComputeSpecFdrMSPLIT" />
+    </execution>
+  </tool>
+  <tool name="bsaapRavenComputeSpecFdrMSPLIT2">
+    <require name="mergedResult" type="file" />
+    <produce extension="txt" name="outComputeSpecFdrMSPLIT2" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="binary">
+      <arg pathRef="fdr_script" />
+      <arg valueRef="mergedResult" />
+      <arg valueRef="@FDR_msplit.FDR" />
+      <arg value="msplit2" />
+      <arg pathRef="python_ms_utilities_processing" />
+      <arg valueRef="outComputeSpecFdrMSPLIT2" />
+    </execution>
+  </tool>
+  <tool name="bsaapRavenComputeSpecFdrMSGFPlus">
+    <require name="mergedResult" type="file" />
+    <produce extension="txt" name="outComputeSpecFdrMSGFPlus" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="binary">
+      <arg pathRef="fdr_script" />
+      <arg valueRef="mergedResult" />
+      <arg valueRef="@FDR_msgfdb.FDR" />
+      <arg value="msgfplus" />
+      <arg pathRef="python_ms_utilities_processing" />
+      <arg valueRef="outComputeSpecFdrMSGFPlus" />
+    </execution>
+  </tool>
+  <tool name="bsaapRavenComputeSpecFdrMODA">
+    <require name="mergedResult" type="file" />
+    <produce extension="txt" name="outComputeSpecFdrMODA" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="binary">
+      <arg pathRef="fdr_script" />
+      <arg valueRef="mergedResult" />
+      <arg valueRef="@FDR_moda.FDR" />
+      <arg value="moda" />
+      <arg pathRef="python_ms_utilities_processing" />
+      <arg valueRef="outComputeSpecFdrMODA" />
+    </execution>
+  </tool>
+ <tool name="bsaapRavenComputeVarFdrCombined">
+    <require name="mergedResult" type="file" />
+    <require name="clusterinfosummarygroup" type="file" />
+    <produce name="outComputeVarCombined" type="folder" />
+    <produce extension="txt" name="outComputeVarFdrCombined" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="binary">
+      <arg pathRef="fdr_script" />
+      <arg valueRef="mergedResult" />
+      <arg valueRef="@FDR_moda.FDR" />
+      <arg value="variants_input" />
+      <arg pathRef="python_ms_utilities_processing" />
+      <arg valueRef="outComputeVarCombined" />
+      <arg valueRef="clusterinfosummarygroup" />&gt;
+      <arg valueRef="@tolerance_variant.PM_tolerance" />
+      <arg valueRef="@tolerance_unit_variant.PM_unit" />
+      <arg valueRef="@var_FDR_combined.FDR" />
+      <arg valueRef="outComputeVarFdrCombined" />
+    </execution>
+  </tool>
+  <tool name="bsaapRavenComputeRegionsCombined">
+    <require name="outComputeVarFdrCombined" type="file" />
+    <require name="sequence" type="file" />
+    <produce name="outComputeRegionsCombined" type="folder" />
+    <execution argConvention="adhoc" env="binary">
+      <arg valueRef="outComputeVarFdrCombined" />
+      <arg valueRef="sequence" />
+      <arg value="fdr_filtered.txt" />
+      <arg value="peptide_regions.txt" />
+      <arg value="peptide_vars.txt" />
+      <arg option="outdir" valueRef="outComputeRegionsCombined" />
+      <arg option="variants" valueRef="outComputeVarFdrCombined" />
+      <arg value="-novar" />
+      <arg value="-forcevars" />
+    </execution>
+  </tool>
+  <tool name="bsaapRavenComputeMergedRegionsCombined">
+    <require name="outComputeVarCombined" type="folder" />
+    <require name="outComputeVarFdrCombined" type="file" />
+    <require name="sequence" type="file" />
+    <produce name="outComputeMergedRegionsCombined" type="folder" />
+    <execution argConvention="adhoc" env="binary">
+      <arg valueRef="outComputeVarFdrCombined" />
+      <arg valueRef="sequence" />
+      <arg value="fdr_filtered.txt" />
+      <arg value="peptide_regions.txt" />
+      <arg value="peptide_vars.txt" />
+      <arg option="outdir" valueRef="outComputeMergedRegionsCombined" />
+      <arg option="variants" valueRef="outComputeVarFdrCombined" />
+      <arg option="mergedupe" value="dupes_merged.txt" />
+      <arg ifEmpty="skip" option="pmtol" valueRef="@tolerance_variant.PM_tolerance" />
+      <arg option="pmtolunits" valueRef="@tolerance_unit_variant.PM_unit" />
+      <arg value="-forcevars" />
+    </execution>
+  </tool>
+  <tool name="makePtmTable">
+    <require name="params" type="file" />
+    <require name="variants" type="file" />
+    <produce extension="tsv" name="out" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="params" />
+      <arg valueRef="variants" />
+      <arg valueRef="out" />
+    </execution>
+  </tool>
+    <tool name="makeKlFilterParams">
+        <require name="workflow_params" type="file" />
+        <produce name="out_kl_filter_params" value="KLFilterParams.txt" naming="fixed" type="file" />
+        <execution argConvention="adhoc" env="python">
+            <arg valueRef="workflow_params" />
+            <arg valueRef="out_kl_filter_params" />
+        </execution>
+    </tool>
+  <tool name="KLFilter">
+    <require name="spectra" type="folder" />
+    <require name="kl_filter_params" type="file" />
+    <require name="inputSpec" type="file" />
+    <require name="params" type="file" />
+    <produce name="massCorrectedInputSpec" type="folder" />
+    <produce name="massCorrectedInputSpec_MS3" type="folder" />
+    <produce extension="txt" name="outKLTable" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg pathRef="kl_filter_executable" />
+      <arg valueRef="kl_filter_params" />
+      <arg pathRef="kl_filter_isotope_table" />
+      <arg valueRef="inputSpec" />
+      <arg valueRef="@KL_FILTER" />
+      <arg pathRef="kl_filter_convert" />
+      <arg valueRef="params" />
+      <arg valueRef="massCorrectedInputSpec" />
+      <arg valueRef="massCorrectedInputSpec_MS3" />
+      <arg valueRef="outKLTable" />
+    </execution>
+  </tool>
+  <tool name="modifyWorkflowParams">
+    <require name="workflowParams" type="file" />
+    <require name="inputspectra" type="folder" />
+    <require name="inputspectra_postklfilter" type="folder" />
+    <produce extension="xml" name="out" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="workflowParams" />
+      <arg valueRef="inputspectra" />
+      <arg valueRef="inputspectra_postklfilter" />
+      <arg valueRef="out" />
+    </execution>
+  </tool>
+  <tool name="toolFilterPairs_in_NetworksLevel">
+    <require name="specnetsparam" type="file" />
+    <require name="spectra" type="folder" />
+    <require name="inputPairs" type="file" />
+    <produce extension="pairsinfo" name="outputPairs" naming="explicit" type="file" />
+    <produce extension="bin" name="outputPairsAsBin" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="binary">
+      <arg value="ExecFilterAligns" />
+      <arg valueRef="specnetsparam" />
+      <arg option="ll" value="0" />
+      <arg option="autoDEBUG_PARAMS" value="1" />
+      <arg option="autoINPUT_SPECTRA" value="spectra/specs_ms.pklbin" />
+      <arg option="autoINPUT_ALIGNS" valueRef="inputPairs" />
+      <arg option="autoTXT_OUTPUT_ALIGNS" valueRef="outputPairs" />
+      <arg option="autoALIGNGF" value="1" />
+      <arg option="autoMAX_COMPONENT_SIZE" value="0" />
+      <arg option="autoMAX_UNIQUE_MASS_NUMBER" value="50" />
+      <arg option="autoOUTPUT_ALIGNS" valueRef="outputPairsAsBin" />
+    </execution>
+  </tool>
+  <tool name="createVariantNetworks">
+    <require name="networkedges_selfloop" type="file" />
+    <require name="spectrumCounts_mergedRegions" type="file" />
+    <produce extension="pairsinfo" name="networkedges_selfloop_variant" naming="explicit" type="file" />
+    <produce extension="tsv" name="clusterinfosummarygroup_attributes_withIDs_withcomponentID_variant" naming="explicit" type="file" />
+    <produce name="peptide_ids_variant" naming="explicit" type="file" />
+    <produce name="variant_networks" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="networkedges_selfloop" />
+      <arg valueRef="spectrumCounts_mergedRegions" />
+      <arg valueRef="networkedges_selfloop_variant" />
+      <arg valueRef="clusterinfosummarygroup_attributes_withIDs_withcomponentID_variant" />
+      <arg valueRef="peptide_ids_variant" />
+      <arg valueRef="variant_networks" />
+    </execution>
+  </tool>
+  <tool name="mapPeptidesToLibraries">
+    <require name="parameters" type="file" />
+    <require name="speclibs" type="folder" />
+    <require name="finalResultMSPLIT" type="file" />
+    <produce name="finalResultMSPLITWithLibs" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="parameters" />
+      <arg valueRef="speclibs" />
+      <arg valueRef="finalResultMSPLIT" />
+      <arg valueRef="finalResultMSPLITWithLibs" />
+      <arg valueRef="outComputeVarMSPLIT2" />
+      <arg valueRef="outComputeVarMSGFPlus" />
+      <arg valueRef="outComputeVarMODA" />
+    </execution>
+  </tool>
+  <tool name="resetChargesMGF">
+    <require name="inMGFs" type="folder" />
+    <produce name="out" type="folder" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="inMGFs" />
+      <arg valueRef="out" />
+      <arg valueRef="@RESET_MODA_CHARGES" />
+    </execution>
+  </tool>
+  <tool name="parallelize_20">
+    <require name="input_folder" type="folder" />
+    <produce name="output_lists" type="folder" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="input_folder" />
+      <arg valueRef="output_lists" />
+      <arg value="20" />
+    </execution>
+  </tool>
+  <tool name="parallelize_10">
+    <require name="input_folder" type="folder" />
+    <produce name="output_lists" type="folder" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="input_folder" />
+      <arg valueRef="output_lists" />
+      <arg value="10" />
+    </execution>
+  </tool>
+  <tool name="createPklbinFilelist">
+    <require name="inputspectra_pklbin" type="folder" />
+    <require name="params" type="file" />
+    <require name="inputspectra_preMassCorrection" type="folder" />
+    <require name="inputspectra" type="folder" />
+    <produce name="out" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="inputspectra_pklbin" />
+      <arg valueRef="params" />
+      <arg valueRef="inputspectra_preMassCorrection" />
+      <arg valueRef="inputspectra" />
+      <arg valueRef="@IGNORE_BAD_FILES" />
+      <arg valueRef="out" />
+    </execution>
+  </tool>
+  <tool name="mapPeptidesToProteins">
+    <require name="db" type="folder" />
+    <require name="ptms" type="file" />
+    <produce extension="txt" name="out" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="binary">
+      <arg pathRef="mapPeptidesToProteinsScript" />
+      <arg valueRef="db" />
+      <arg valueRef="ptms" />
+      <arg pathRef="python_ms_utilities_processing" />
+      <arg valueRef="out" />
+    </execution>
+  </tool>
+  <tool name="extractIsobaricTagPeaks">
+    <require name="inputspectra" type="folder" />
+    <require name="inputspectra_ms3" type="folder" />
+    <require name="kltable" type="file" />
+    <require name="params" type="file" />
+    <produce name="inputspectra_isobaric_tag_peaks_removed" type="folder" />
+    <produce extension="txt" name="isobaric_tag_abundances" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="inputspectra" />
+      <arg valueRef="inputspectra_ms3" />
+      <arg valueRef="kltable" />
+      <arg valueRef="params" />
+      <arg valueRef="inputspectra_isobaric_tag_peaks_removed" />
+      <arg valueRef="isobaric_tag_abundances" />
+    </execution>
+  </tool>
+  <tool name="update_isobaric_tag_peak_abundances_stratacluster">
+    <require name="isobaric_tag_abundances" type="file" />
+    <require name="clusterinfogroup" type="file" />
+    <require name="stratacluster_filtered_representatives" type="folder" />
+    <produce extension="txt" name="isobaric_tag_abundances_clusters" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="binary">
+      <arg pathRef="update_isobaric_tag_peak_abundances_stratacluster_script" />
+      <arg option="-tmt_abundances_in" valueRef="isobaric_tag_abundances" />
+      <arg option="-tmt_abundances_out" valueRef="isobaric_tag_abundances_clusters" />
+      <arg option="-stratacluster_representatives" valueRef="stratacluster_filtered_representatives" />
+      <arg option="-clusterinfo" valueRef="clusterinfogroup" />
+    </execution>
+  </tool>
+  <tool name="removeRedundantRowsMSGFPlus">
+    <require name="mergedResult" type="file" />
+    <produce extension="txt" name="out" naming="explicit" type="file" />
+    <execution argConvention="gnu" env="java">
+      <mainClass name="edu.ucsd.workflow.RemoveRedundantTSVRows" />
+      <envArg option="Xmx5000M" />
+      <arg option="input" valueRef="mergedResult" />
+      <arg option="output" valueRef="out" />
+      <arg option="columns" value="ScanNum" />
+    </execution>
+  </tool>
+  <tool name="createMzTabZip">
+    <require name="in_dir" type="folder" />
+    <produce name="out" naming="fixed" type="file" value="mzTab_files.zip" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="in_dir" />
+      <arg valueRef="out" />
+    </execution>
+  </tool>
+  <tool name="cleanUpSpectraDir">
+    <require name="spectra" type="folder" />
+    <require name="wait_for_node" type="file" />
+    <produce name="out_done" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="spectra" />
+      <arg value="/data/beta-proteomics2/tasks" />
+      <arg valueRef="out_done" />
+    </execution>
+  </tool>
+  <tool name="split_ids_for_expl_intensity_msplit">
+    <require name="identifications" type="file" />
+    <require name="spectrum" type="folder" />
+    <require name="parameters" type="file" />
+    <produce name="jobs" type="folder" />
+    <produce name="identifications_batched" type="folder" />
+    <execution argConvention="adhoc" env="binary">
+      <arg pathRef="split_identifications_script" />
+      <arg valueRef="identifications" />
+      <arg value="NONE" />
+      <arg valueRef="identifications_batched" />
+      <arg valueRef="spectrum" />
+      <arg valueRef="jobs" />
+      <arg value="#SpectrumFile" />
+      <arg value="40" />
+    </execution>
+  </tool>
+  <tool name="generate_explained_intensity_msplit">
+    <require name="jobs" type="file" />
+    <require name="spectrum" type="folder" />
+    <require name="i" type="file" />
+    <require name="identifications_batched" type="folder" />
+    <produce name="identifications_batched_final" type="folder" />
+    <execution argConvention="adhoc" env="binary">
+      <arg pathRef="generate_explained_intensity_script" />
+      <arg valueRef="jobs" />
+      <arg valueRef="identifications_batched_final" />
+      <arg value="#SpectrumFile" />
+      <arg value="Scan#" />
+      <arg value="Annotation1" />
+      <arg value="Annotation2" />
+      <arg value="Charge1" />
+      <arg value="Charge2" />
+      <arg value="Type" />
+      <arg value="Intensity" />
+      <arg value="0" />
+      <arg value="0" />
+      <arg value="No" />
+      <arg valueRef="@tolerance_msplit.Ion_tolerance" />
+    </execution>
+  </tool>
+  <tool name="merge_expl_intensity_tsv_msplit">
+    <require name="identifications_batched_final" type="folder" />
+    <produce extension="tsv" name="identifications_merged" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="binary">
+      <arg pathRef="merge_tsv_script" />
+      <arg valueRef="identifications_batched_final" />
+      <arg valueRef="identifications_merged" />
+    </execution>
+  </tool>
+  <tool name="makeMsstatsInput">
+    <require name="ided_spectra" type="file" />
+    <produce extension="tsv" name="out" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg valueRef="ided_spectra" />
+      <arg valueRef="out" />
+    </execution>
+  </tool>
+
+  <tool name="filterFileByFdrFile_proteinRegions">
+    <require name="in_file" type="folder" />
+    <require name="fdr_file" type="file" />
+    <produce name="out" naming="explicit" type="file" />
+    <execution argConvention="adhoc" env="python">
+      <arg value="outComputeRegionsCombined/peptide_regions.txt" />
+      <arg valueRef="fdr_file" />
+      <arg value="Protein" />
+      <arg value="Protein" />
+      <arg value="Protein_FDR" />
+      <arg valueRef="@protein_FDR.FDR" />
+      <arg valueRef="out" />
+    </execution>
+  </tool>
+
+  <tool name="extract_unidentified_clusters">
+    <require name="mgfOutSpec" type="folder" />
+    <require name="allClustersOutput" type="file" />
+    <produce name="unidentified_output" type="folder" />
+    <execution argConvention="adhoc" env="binary">
+      <arg pathRef="extract_unidentified_clusters_script" />
+      <arg option="-cluster_mgf_folder" valueRef="mgfOutSpec" />
+      <arg option="-all_clusters" valueRef="allClustersOutput" />
+      <arg option="-output_folder" valueRef="unidentified_output" />
+      <arg option="-bypass" valueRef="@output.noid_nonetwork" />
+    </execution>
+  </tool>
+
+  <pathSet base="generate_sqlite_result/0.3">
+    <pathVar name="convert_tsv_to_sqlite.script" path="convert_tsv_to_sqlite.py" />
+  </pathSet>
+  
+  <tool name="convert_tsv_to_sqlite">
+      <require name="rawSpectra_withSpecIndex" type="file" />
+      <require name="rawSpectraIdOnly" type="file" />
+      <require name="allClustersOutput" type="file" />
+      <require name="networkedges_selfloop" type="file" />
+      <produce name="sqlite" type="folder" />
+      <execution env="binary" argConvention="adhoc">
+          <arg pathRef="convert_tsv_to_sqlite.script" />
+          <arg valueRef="sqlite" />
+          <arg option="view_raw_spectra:cluster index,Peptide,Peptide+PrecursorCharge" valueRef="rawSpectra_withSpecIndex" />
+          <arg option="view_raw_spectra:cluster index,Peptide,Peptide+PrecursorCharge" valueRef="rawSpectraIdOnly" />
+          <arg option="cluster_info_sliced:componentindex" valueRef="allClustersOutput" />
+          <arg option="network_pairs_specnets_componentsliced:componentindex" valueRef="networkedges_selfloop" />
+      </execution>
+  </tool>
+
+  <tool name="fix_bad_fastas">
+      <require name="in_fasta" type="file" />
+      <produce name="out_fixed_fasta" type="file" naming="explicit" extension="fasta" />
+      <execution env="binary" argConvention="adhoc">
+          <arg pathRef="fix_bad_fastas_script" />
+          <arg valueRef="in_fasta" />
+          <arg valueRef="out_fixed_fasta" />
+      </execution>
+  </tool>
+
+</toolset>

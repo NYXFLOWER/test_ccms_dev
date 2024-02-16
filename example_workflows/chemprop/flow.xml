@@ -1,0 +1,17 @@
+<flow name="chemprop">
+	<object name="workflowParameters" />
+
+	<action name="begin">
+		<output object="workflowParameters" port="flowParams" />
+	</action>
+
+	<collection name="output_folder" />
+	<action name="calculate_chemdir">
+        <input object="workflowParameters" port="workflowParameters" />
+		<output collection="output_folder" port="output_folder" />
+    </action>
+
+	<action name="end">
+		<input collection="output_folder" port="output_folder" />
+	</action>
+</flow>

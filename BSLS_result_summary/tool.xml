@@ -1,0 +1,17 @@
+<toolset>
+    <pathSet base="library_matching_benchmark">
+        <toolPath path="library_matching_benchmark" tool="library_matching_benchmark_tool" />
+    </pathSet>	
+
+    <tool name="library_matching_benchmark_tool">
+        <require name="query_spectrum_file" type="file" />
+        <produce extension="txt" name="logging_txt" naming="fixed" type="file" value="logging" />
+
+        <execution argConvention="gnu" env="binary">
+           <!-- <arg pathRef="dummy.script" />  -->
+            <arg valueRef="logging_txt" />
+            <arg valueRef="query_spectrum_file" />
+        </execution>
+    </tool>
+
+</toolset>

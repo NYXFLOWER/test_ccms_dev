@@ -1,0 +1,24 @@
+<flow name="bsls_result_analysis">
+        <object name="workflowParameters" />
+
+        <!-- begin action -->
+        <action name="begin">
+                <output object="workflowParameters" port="flowParams" />
+                <output object="query_clean_mgf_0" port="query_clean_mgf_port" />
+        </action>
+
+        <!-- objects -->
+        <object name="query_clean_mgf_0" />
+        <object name="output_logs" />
+
+        <!-- middle actions -->
+        <action name="run_benchmark">
+                <input object="query_clean_mgf_0" port="query_clean_mgf_port" />
+                <output object="output_logs" port="output_logs_port" />
+        </action>
+        
+        <!-- end action -->
+        <action name="end">
+                <input object="output_logs" port="output_logs_port" />
+        </action>
+</flow>

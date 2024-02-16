@@ -1,0 +1,171 @@
+<interface id="bsls_result_comparison2" version="release_0.0">
+    <download>
+    </download>
+
+    <view group="Test group" id="table_view_url" label="Result Comparison Table">
+        <blockRef id="main" type="table_block" />
+    </view>
+
+    <view group="Test group" id="table_view_url2" label="Test Output Table">
+        <blockRef id="main" type="table_block2" />
+    </view>
+
+    <block id="table_block2" type="stream">
+        <data>
+            <source name="log_dir/logging.txt" type="file" />
+            <parsers>
+                <parser contentType="text/html" type="stream" />
+            </parsers>
+        </data>
+    </block>
+    
+   <block id="table_block" type="table_ss">  
+    <!-- <block id="table_block" type="table"> -->
+        <data>
+            <source name="result_comparison_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+               <parser type="SQLite" />    
+               <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <column field="query_scan" label="index" type="integer" width="3" />
+                <column field="query_charge" label="charge" type="integer" width="1" />
+                <column field="query_seq" label="sequence" type="text" width="20" />
+                <!-- <column field="query_usi" label="original USI" type="text" width="20" /> -->
+                <column field="in_recall" label="is_in_recall" type="integer" width="1" />
+                
+                <!-- score 1 -->
+                <column field="R1_matching_score_1" label="R1_score1" type="float" precision="4" width="3" /> 
+                <column field="R2_matching_score_1" label="R2_score1" type="float" precision="4" width="3" /> 
+                <column field="R1_is_correct_1" label="R1_is_correct1" type="integer" width="1" /> 
+                <column field="R2_is_correct_1" label="R2_is_correct1" type="integer" width="1" />
+                <column field="R1_precision" label="R1_precision" type="float" precision="4" width="3" />
+                <column field="R2_precision" label="R2_precision" type="float" precision="4" width="3" />
+                <column field="R1_recall" label="R1_recall" type="float" precision="4" width="3" />
+                <column field="R2_recall" label="R2_recall" type="float" precision="4" width="3" />
+                <column field="R1_library_seq_1" label="R2_library_seq_1" type="text" width="20" /> 
+                <column field="R2_library_seq_1" label="R2_library_seq_1" type="text" width="20" />
+
+                
+                <!-- score 2 -->
+                <column field="R1_matching_score_2" label="R1_score2" type="float" precision="4" width="3" />
+                <column field="R2_matching_score_2" label="R2_score2" type="float" precision="4" width="3" />
+                <column field="R1_is_correct_2" label="R1_is_correct2" type="integer" width="1" />
+                <column field="R2_is_correct_2" label="R2_is_correct2" type="integer" width="1" />
+                <column field="R1_precision_ambiguous" label="R1_precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="R2_precision_ambiguous" label="R2_precision_ambiguous" type="float" precision="4" width="3" />
+                <column field="R1_recall_ambiguous" label="R1_recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="R2_recall_ambiguous" label="R2_recall_ambiguous" type="float" precision="4" width="3" />
+                <column field="R1_library_seq_2" label="R1_library_seq_2" type="text" width="20" />
+                <column field="R2_library_seq_2" label="R2_library_seq_2" type="text" width="20" />
+
+                <column field="R1_is_correct_ambiguous" label="R1_is_correct_ambiguous" type="integer" width="1"/>
+                <column field="R2_is_correct_ambiguous" label="R2_is_correct_ambiguous" type="integer" width="1"/>
+
+                
+                <!-- usi -->
+                <column label="original USI" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_usi]" />\
+                    <parameter name="LABEL" value="[query_usi]" />\
+                </column>
+
+
+ 
+                <!-- library #matched peak 1 -->
+                <column field="R1_library_#match_peaks_1" label="R1_library_#match_peaks_1" type="integer" width="3" />
+                <column field="R2_library_#match_peaks_1" label="R2_library_#match_peaks_1" type="integer" width="3" />
+                <column field="R1_library_#match_peaks_2" label="R1_library_#match_peaks_2" type="integer" width="3" />
+                <column field="R2_library_#match_peaks_2" label="R2_library_#match_peaks_2" type="integer" width="3" />
+                
+
+            </row>
+
+            <!-- <row>
+                <column field="library_idx" label="library_idx" type="integer" width="3" />
+                <column field="original_peptide" label="original_peptide" type="text" width="20" />
+                <column field="shuffled_peptide" label="shuffled_peptide" type="text" width="20" />
+                <column field="#tries" label="#tries" type="integer" width="3" />
+                <column field="charge" label="charge" type="integer" width="1" />
+                <column field="cosine" label="cosine" type="float" precision="4" width="3" />
+                <column field="#peaks" label="#peaks" type="integer" width="3" />
+                <column field="#matched_peaks" label="#matched_peaks" type="integer" width="3" />
+
+
+                <column field="original_spectrum_usi" label="original_spectrum_usi" type="text" width="20" />
+                <column field="shuffled_spectrum_usi" label="shuffled_spectrum_usi" type="text" width="20" />
+                </column>
+                <column label="View original spectrum usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[original_spectrum_usi]" />\
+                    <parameter name="LABEL" value="[original_spectrum_usi]" />\
+                </column>
+                <column label="View shuffled spectrum usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[shuffled_spectrum_usi]" />\
+                    <parameter name="LABEL" value="[shuffled_spectrum_usi]" />\
+                </column>
+
+            </row> -->
+
+            <row expander="image">
+                <column colspan="5" height="500" title="query 1" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename1]" name="file" />
+                    <parameter name="scan" value="[query_scan]" />
+                    <parameter name="peptide" value="[query_seq]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.05" />
+                    <parameter name="trim" value="true" />
+                </column>
+                <column colspan="5" height="500" title="query 2" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename2]" name="file" />
+                    <parameter name="scan" value="[query_scan]" />
+                    <parameter name="peptide" value="[query_seq]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.05" />
+                    <parameter name="trim" value="true" />
+                </column>
+            </row>
+            <row expander="image">
+                <column colspan="5" height="500" title="1st matched library 1" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename5]" name="file" />
+                    <parameter name="scan" value="[R1_library_scan_1]" />
+                    <parameter name="peptide" value="[R1_library_seq_1]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.05" />
+                    <parameter name="trim" value="true" />
+                </column>
+                <column colspan="5" height="500" title="1st matched library 1" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename6]" name="file" />
+                    <parameter name="scan" value="[R2_library_scan_1]" />
+                    <parameter name="peptide" value="[R2_library_seq_1]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.05" />
+                    <parameter name="trim" value="true" />
+                </column>
+            </row>
+            <row expander="image">
+                <column colspan="5" height="500" title="2nd matched library 1" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename5]" name="file" />
+                    <parameter name="scan" value="[R1_library_scan_2]" />
+                    <parameter name="peptide" value="[R1_library_seq_2]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.05" />
+                    <parameter name="trim" value="true" />
+                </column>
+                <column colspan="5" height="500" title="2nd matched library 2" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename6]" name="file" />
+                    <parameter name="scan" value="[R2_library_scan_2]" />
+                    <parameter name="peptide" value="[R2_library_seq_2]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.05" />
+                    <parameter name="trim" value="true" />
+                </column>
+            </row>
+        </data>
+    </block>
+	
+	
+</interface>

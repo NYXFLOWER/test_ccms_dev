@@ -1,0 +1,1124 @@
+<interface id="maestro" version="1.3.9+fix_psms_w_both_nterm_and_labile_mods">
+	<workflow-id>MAESTRO</workflow-id>
+	<workflow-label>Maestro</workflow-label>
+	
+	
+	<parameters>
+
+		
+		<parameter label="Description" name="desc">
+			<validator maximum="1000" type="length" />
+		</parameter>
+		<parameter label="Email" name="email">
+			<validator type="email" />
+		</parameter>
+		
+
+		
+ 		<parameter label="Spectrum Files G1 (Required)" name="spec_on_server">
+            		<validator type="required" />
+            		<fileGenerator purpose="spectrum" target="spec" type="upload" />
+        	</parameter>
+
+		<parameter label="Spectrum Files G2" name="spec_on_server_group2">
+            		<fileGenerator purpose="parameters" target="spectwo" type="upload" />
+       		</parameter>
+        
+        	<parameter label="Spectrum Files G3" name="spec_on_server_group3">
+            		<fileGenerator purpose="parameters" target="specthree" type="upload" />
+       		</parameter>
+        
+		<parameter label="Spectrum Files G4" name="spec_on_server_group4">
+		    <fileGenerator purpose="parameters" target="specfour" type="upload" />
+		</parameter>
+		
+		<parameter label="Spectrum Files G5" name="spec_on_server_group5">
+		    <fileGenerator purpose="parameters" target="specfive" type="upload" />
+		</parameter>
+		
+		<parameter label="Spectrum Files G6" name="spec_on_server_group6">
+		    <fileGenerator purpose="parameters" target="specsix" type="upload" />
+		</parameter>
+
+		<parameter label="Group Mapping" name="groupmapping">
+           		<fileGenerator purpose="parameters" target="groupmapping" type="upload" />
+        	</parameter>	
+
+		<parameter label="Attribute Mapping" name="attributemapping">
+            		<fileGenerator purpose="parameters" target="attributemapping" type="upload" />
+        	</parameter>
+
+                <parameter label="Spectral Library (Required)" name="lib_on_server">
+                        <fileGenerator purpose="spectral library" target="spectrallibrary" type="upload" />
+            		<validator type="required" />
+                </parameter>
+
+		<parameter label="Sequence Database (Required)" name="seq_on_server">
+			<fileGenerator purpose="sequence" target="fasta" type="upload" />
+            		<validator type="required" />
+		</parameter>
+                <parameter label="Include Common Contaminants" name="db.contaminants">
+                        <options>
+                                <option value="on" />
+                                <option value="off" />
+                        </options>
+                        <default value="on" />
+                        <validator type="set" />
+                </parameter>
+
+		
+
+		<parameter label="MS-GF+ Instrument" name="instrument_msgfplus.instrument">
+			<options>
+				<option value="ESI-ION-TRAP" />
+				<option value="QTOF" />
+				<option label="High accuracy LTQ" value="FT-HYBRID" />
+			</options>
+			<validator type="set" />
+		</parameter>
+		<parameter label="MODa Instrument" name="instrument.instrument">
+			<options>
+				<option value="ESI-ION-TRAP" />
+				<option value="QTOF" />
+			</options>
+			<validator type="set" />
+		</parameter>
+		<parameter label="Fragmentation Method" name="fragmentation.fragmentation">
+			<options>
+				<option label="Specified in spectrum file" value="None" />
+				<option value="CID" />
+				<option value="ETD" />
+				<option value="HCD" />
+				<option label="Merge spectra from the same precursor" value="Merge" />
+			</options>
+			<validator type="set" />
+		</parameter>
+		<parameter label="Cysteine Protecting Group" name="cysteine_protease.cysteine">
+			<options>
+				<option label="Carbamidomethylation (+57)" value="c57" />
+				<option label="Carboxymethylation (+58)" value="c58" />
+				<option label="NIPIA/NIPCAM (+99)" value="c99" />
+				<option value="None" />
+			</options>
+			<validator type="set" />
+		</parameter>
+		<parameter label="Protease" name="cysteine_protease.protease">
+			<options>
+				<option value="Trypsin" />
+				<option value="Chymotrypsin" />
+				<option value="Lys-C" />
+				<option value="Lys-N" />
+				<option value="Arg-C" />
+				<option value="Glu-C" />
+				<option value="Asp-N" />
+				<option value="None" />
+			</options>
+			<validator type="set" />
+		</parameter>
+		<parameter label="Number of Allowed 13C" name="c13_nnet.c13">
+			<options>
+				<option value="0" />
+				<option value="1" />
+				<option value="2" />
+			</options>
+			<default value="1" />
+			<validator type="set" />
+		</parameter>
+		<parameter label="Number of Allowed Non-Enzymatic Termini" name="c13_nnet.nnet">
+			<options>
+				<option value="0" />
+				<option value="1" />
+				<option value="2" />
+			</options>
+			<default value="1" />
+			<validator type="set" />
+		</parameter>
+
+		<parameter label="M-SPLIT Parent Mass Tolerance" name="tolerance_msplit.PM_tolerance">
+			<default value=".05" />
+			<validator maximum="2.5" minimum="0" type="float" />
+		</parameter>
+
+		<parameter label="MS-GF+ Parent Mass Tolerance" name="tolerance_msgfdb.PM_tolerance">
+			<default value="50" />
+			<processor suffix="tolerance_unit_msgfdb.PM_unit" type="concatenate" />
+		</parameter>
+		<parameter label="MS-GF+ Parent Mass Tolerance Units" name="tolerance_unit_msgfdb.PM_unit">
+			<options>
+				<option value="Da" />
+				<option value="ppm" />
+			</options>
+			<default value="ppm" />
+			<validator type="set" />
+		</parameter>
+		
+		<parameter label="MODa Parent Mass Tolerance" name="tolerance.PM_tolerance">
+			<default value=".05" />
+			<validator maximum="2.5" minimum="0" type="float" />
+			<processor suffix="tolerance_unit.PM_unit" type="concatenate" />
+		</parameter>
+		<parameter label="MODa Parent Mass Tolerance Units" name="tolerance_unit.PM_unit">
+			<options>
+				<option value="Da" />
+			</options>
+			<default value="Da" />
+			<validator type="set" />
+		</parameter>
+		<parameter label="Variant Parent Mass Tolerance" name="tolerance_variant.PM_tolerance">
+			<default value=".05" />
+			<validator minimum="0" type="float" />
+		</parameter>
+		<parameter label="Variant Parent Mass Tolerance Units" name="tolerance_unit_variant.PM_unit">
+			<options>
+				<option value="Da" />
+				<option value="ppm" />
+			</options>
+			<default value="Da" />
+			<validator type="set" />
+		</parameter>
+
+		<parameter label="Min M-SPLIT Explained Intensity" name="expl_intensity_thresh_msplit">
+			<default value="0.3" />
+			<validator maximum="1" minimum="0" type="float" />
+		</parameter>
+	
+
+		<parameter label="General ion tolerance" name="tolerance.Ion_tolerance">
+			<default value=".05" />
+			<validator maximumExclusive="1" minimumExclusive="0" type="float" />
+		</parameter>
+		<parameter label="M-SPLIT ion tolerance" name="tolerance_msplit.Ion_tolerance">
+			<default value=".05" />
+			<validator maximum="1" minimumExclusive="0" type="float" />
+		</parameter>
+
+		<parameter label="Minimum Pair Cosine" name="PAIRS_MIN_COSINE">
+            		<default value="0.6" />
+           		<validator maximum="1" minimumExclusive="0" type="float" />
+        	</parameter>
+
+		<parameter label="Minimum Matched Peaks" name="MIN_MATCHED_PEAKS">
+		    	<default value="8" />
+		    	<validator maximum="500" minimumExclusive="0" type="integer" />
+		</parameter>
+
+		
+
+		<parameter label="Minimum Cluster Size" name="CLUSTER_MIN_SIZE">
+		    	<default value="1" />
+		</parameter>
+
+		<parameter label="Search Parallelism" name="PARALLELISM">
+		        <default value="40" />
+		    	<validator maximum="200" minimum="1" type="integer" />
+		</parameter>
+		
+		<parameter label="Maximum Connected Component Size" name="MAX_COMPONENT_SIZE">
+		    	<default value="50" />
+		    	<validator maximum="100000" minimumExclusive="-1" type="integer" />
+		</parameter>
+	
+		<parameter label="Minimum Peak Intensity" name="MIN_PEAK_INT">
+		    	<default value="0" />
+		</parameter>
+	
+		<parameter label="Standard Deviation for Peak Filtering" name="FILTER_STDDEV_PEAK_INT">
+		    	<default value="0" />
+		</parameter>
+
+                <parameter label="Clustering on/off" name="RUN_MSCLUSTER">
+                        <options>
+                                <option value="on" />
+                                <option value="off" />
+                        </options>
+                        <default value="on" />
+                        <validator type="set" />
+                </parameter>
+		
+		<parameter label="Filter Precursor Window" name="FILTER_PRECURSOR_WINDOW">
+		    	<options>
+		            	<option label="Filter" value="1" />
+		            	<option label="Don't Filter" value="0" />
+		    	</options>
+		    	<validator type="set" />
+		</parameter>
+		
+		<parameter label="Filter Library" name="FILTER_LIBRARY">
+		    	<options>
+		            	<option label="Don't Filter Library" value="0" />
+		            	<option label="Filter Library" value="1" />
+		    	</options>
+		</parameter>
+		
+		<parameter label="Filter peaks in 50Da Window" name="WINDOW_FILTER">
+		    	<options>
+		            	<option label="Don't Filter" value="0" />
+		            	<option label="Filter" value="1" />
+		    	</options>
+		    	<validator type="set" />
+		</parameter>
+
+		<parameter label="Ignore improper files" name="IGNORE_BAD_FILES">
+		    	<options>
+		            	<option label="No" value="0" />
+		            	<option label="Yes" value="1" />
+		    	</options>
+		    	<default value="1" />
+		    	<validator type="set" />
+		</parameter>
+		
+		<parameter label="Reset MODa charges" name="RESET_MODA_CHARGES">
+		    	<options>
+		            	<option label="No" value="0" />
+		            	<option label="Yes" value="1" />
+		    	</options>
+		    	<default value="1" />
+		    	<validator type="set" />
+		</parameter>
+
+		<parameter label="M-SPLIT SVM1 threshold" name="SVM1_THRESHOLD">
+                        <default value="0" />
+                        <validator type="float" />
+		</parameter>
+
+                <parameter label="Allow M-SPLIT Charge Guessing" name="MSPLIT_GUESS_CHARGE">
+                        <options>
+                                <option label="Yes" value="1" />
+                                <option label="No" value="0" />
+                        </options>
+                        <validator type="set" />
+                        <default value="1" />
+                </parameter>
+
+		<parameter label="KL Filtering Threshold" name="KL_FILTER">
+                        <default value="0" />
+                        <validator minimum="0" type="float" />
+		</parameter>
+
+		<parameter label="Score Threshold" name="SCORE_THRESHOLD">
+		    	<default value="0.5" />
+		</parameter>
+		
+		<parameter label="Library Search Min Matched Peaks" name="MIN_MATCHED_PEAKS_SEARCH">
+		    	<default value="6" />
+		</parameter>
+	
+		
+		<parameter label="Maximum Number of PTMs per Peptide" name="ptm.mods">
+			<default value="1" />
+			<validator minimum="0" type="integer" />
+		</parameter>
+	
+		
+		<parameter label="Blind Mode" name="moda.blindmode">
+			<options>
+				<option value="1" />
+				<option value="2" />
+			</options>
+			<default value="1" />
+			<validator type="set" />
+		</parameter>
+		<parameter label="Minimum Modification Mass" name="msalign.minmodmass">
+			<default value="-130" />
+		</parameter>
+		<parameter label="Maximum Modification Mass" name="msalign.maxmodmass">
+			<default value="350" />
+		</parameter>
+
+		<parameter label="M-SPLIT PSM-Level FDR" name="FDR_msplit.FDR">
+			<default value="0.01" />
+			<validator maximum="1" minimum="0" type="float" />
+		</parameter>
+		<parameter label="M-SPLIT Variant-Level FDR" name="var_FDR_msplit.FDR">
+		    	<default value="0.01" />
+			<validator maximum="1" minimum="0" type="float" />
+		</parameter>
+
+		<parameter label="MS-GF+ PSM-Level FDR" name="FDR_msgfdb.FDR">
+			<default value="0.01" />
+			<validator maximum="1" minimum="0" type="float" />
+		</parameter>
+
+		<parameter label="MS-GF+ Variant-Level FDR" name="var_FDR_msgfdb.FDR">
+		    	<default value="0.01" />
+			<validator maximum="1" minimum="0" type="float" />
+		</parameter>
+
+		<parameter label="MODa PSM-Level FDR" name="FDR_moda.FDR">
+			<default value="0.01" />
+			<validator maximum="1" minimum="0" type="float" />
+		</parameter>
+		<parameter label="MODa Variant-Level FDR" name="var_FDR_moda.FDR">
+		    	<default value="0.01" />
+			<validator maximum="1" minimum="0" type="float" />
+		</parameter>
+
+		<parameter label="Overall Variant-Level FDR" name="var_FDR_combined.FDR">
+		    	<default value="0.01" />
+			<validator maximum="1" minimum="0" type="float" />
+		</parameter>
+		
+		<parameter label="Deconvolute MS/MS" name="custom_preprocess.Deconvolute_MS">
+			<options>
+				<option value="yes" />
+				<option value="no" />
+			</options>
+			<default value="yes" />
+			<validator type="set" />
+		</parameter>
+		<parameter label="Apply Tag-Based Pair Filter" name="custom_alignment.Tag_Filtering_Pairs">
+			<options>
+				<option value="yes" />
+				<option value="no" />
+			</options>
+			<default value="yes" />
+			<validator type="set" />
+		</parameter>
+		<parameter label="Number of Tags per Spectrum" name="custom_alignment.Max_Tag_Size">
+			<default value="50" />
+		</parameter>
+		<parameter label="Isobaric Tag Type" name="isobaric_tag">
+			<options>
+				<option value="None" />
+				<option value="TMT 2-plex" />
+				<option value="TMT 6-plex" />
+				<option value="TMT 10-plex" />
+				<option value="TMT 11-plex" />
+				<option value="iTRAQ 4-plex" />
+				<option value="iTRAQ 8-plex" />
+			</options>
+			<default value="None" />
+			<validator type="set" />
+		</parameter>
+	</parameters>
+
+	
+	<processors>
+		<processor type="sequence" />
+		<processor type="msAlign" />
+		<processor type="ptm">
+			<property name="customize">DEAMIDATION</property>
+			<property name="customize">ITRAQ_8PLEX_K</property>
+			<property name="customize">ITRAQ_8PLEX_NTERM</property>
+			<property name="customize">TMT_K</property>
+			<property name="customize">TMT_NTERM</property>
+		</processor>
+		<processor type="msgfPlus" />
+	</processors>
+ 
+          <block label="Workflow Description"><row>
+            <cell align="center" colspan="4">
+              <label prefix="false">
+                <content>&lt;div style="padding:15px;text-align:left"&gt;&lt;p&gt;Maestro is a composite workflow that runs &lt;u style="color:blue"&gt;&lt;a style="color:blue;font-weight:bold" target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/20348588"&gt;M-SPLIT&lt;/a&gt;&lt;/u&gt; spectral library search, &lt;u style="color:blue"&gt;&lt;a style="color:blue;font-weight:bold" target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/25358478"&gt;MS-GF+&lt;/a&gt;&lt;/u&gt; database search, &lt;u style="color:blue"&gt;&lt;a style="color:blue;font-weight:bold" target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/22186716"&gt;MODa&lt;/a&gt;&lt;/u&gt; blind PTM search, and &lt;u style="color:blue"&gt;&lt;a style="color:blue;font-weight:bold" target="_blank" href="https://www.ncbi.nlm.nih.gov/pubmed/22586093"&gt;molecular networking&lt;/a&gt;&lt;/u&gt; on a set of MS/MS spectra.&lt;/p&gt;&lt;p&gt;To use this workflow, just upload your spectra, as well as spectral library and database files for your organism of interest (or use the predefined files in the CCMS_SpectralLibraries and CCMS_ProteomeDatabases directories in the Select Input Files window). Optional parameters may be specified, as well. Mouse over any parameter to learn more about it.&lt;/p&gt;&lt;p&gt;Once you submit your search, the search will run on a computing cluster, and you will receive an email when the search is completed, containing a link to the results. Maestro produces several result views that display and analyze the spectra, peptides, and proteins in your dataset.&lt;/p&gt;&lt;/div&gt;</content>
+
+                </label>
+              </cell>
+            </row></block>
+
+	
+	<block label="Basic Options">
+                <row>
+                        <cell>
+                                <label>
+                                        <content parameter="lib_on_server" />
+                                        <tooltip id="lib_on_server_tooltip">Spectral library to search query spectra against during M-SPLIT search. A spectral library file may be uploaded, or one may be selected from the CCMS_SpectralLibraries directory in the Select Input Files window.</tooltip>
+                                </label>
+                        </cell>
+                        <cell colspan="2">
+                                <module id="lib_on_server" type="fileSelector">
+                                        <property name="label">Spectral Library</property>
+                                </module>
+                        </cell>
+                 </row>
+
+		 <row>
+		    <cell>
+		        <label>
+		            <content parameter="spec_on_server" />
+		            <tooltip id="spec_on_server_tooltip">Spectra to identify/ analyze. Accepts mzXML, mzML, and MGF files. Files may be uploaded to various groups (G1 through G6), in which case group-specific results and statistics will be produced. Grouping is useful for datasets with different experimental conditions, etc. If you need more than 6 groups, you may upload a group mapping file instead of/ along with using default groups. Group and attribute file mapping format here: https://bix-lab.ucsd.edu/display/Public/Molecular+Networking+Group+Attribute+Formats</tooltip>
+		        </label>
+		    </cell>
+		    <cell colspan="3">
+		        <module id="spec_on_server" type="fileSelector">
+		            <property name="label">Spectrum Files G1</property>
+		        </module>
+		    </cell>
+		</row>
+		
+		<row>
+		    <cell>
+		        <label>
+		            <content parameter="spec_on_server_group2" />
+		            <tooltip id="spec_on_server_tooltip">Spectra to identify/ analyze. Accepts mzXML, mzML, and MGF files. Files may be uploaded to various groups (G1 through G6), in which case group-specific results and statistics will be produced. Grouping is useful for datasets with different experimental conditions, etc. If you need more than 6 groups, you may upload a group mapping file instead of/ along with using default groups. Group and attribute file mapping format here: https://bix-lab.ucsd.edu/display/Public/Molecular+Networking+Group+Attribute+Formats</tooltip>
+		        </label>
+		    </cell>
+		    <cell colspan="3">
+		        <module id="spec_on_server_group2" type="fileSelector">
+		            <property name="label">Spectrum Files G2</property>
+		        </module>
+		    </cell>
+		</row>
+		<row>
+		    <cell>
+		        <label>
+		            <content parameter="spec_on_server_group3" />
+		            <tooltip id="spec_on_server_tooltip">Spectra to identify/ analyze. Accepts mzXML, mzML, and MGF files. Files may be uploaded to various groups (G1 through G6), in which case group-specific results and statistics will be produced. Grouping is useful for datasets with different experimental conditions, etc. If you need more than 6 groups, you may upload a group mapping file instead of/ along with using default groups. Group and attribute file mapping format here: https://bix-lab.ucsd.edu/display/Public/Molecular+Networking+Group+Attribute+Formats</tooltip>
+		        </label>
+		    </cell>
+		    <cell colspan="3">
+		        <module id="spec_on_server_group3" type="fileSelector">
+		            <property name="label">Spectrum Files G3</property>
+		        </module>
+		    </cell>
+		</row>
+		<row>
+		    <cell>
+		        <label>
+		            <content parameter="spec_on_server_group4" />
+		            <tooltip id="spec_on_server_tooltip">Spectra to identify/ analyze. Accepts mzXML, mzML, and MGF files. Files may be uploaded to various groups (G1 through G6), in which case group-specific results and statistics will be produced. Grouping is useful for datasets with different experimental conditions, etc. If you need more than 6 groups, you may upload a group mapping file instead of/ along with using default groups. Group and attribute file mapping format here: https://bix-lab.ucsd.edu/display/Public/Molecular+Networking+Group+Attribute+Formats</tooltip>
+		        </label>
+		    </cell>
+		    <cell colspan="3">
+		        <module id="spec_on_server_group4" type="fileSelector">
+		            <property name="label">Spectrum Files G4</property>
+		        </module>
+		    </cell>
+		</row>
+		<row>
+		    <cell>
+		        <label>
+		            <content parameter="spec_on_server_group5" />
+		            <tooltip id="spec_on_server_tooltip">Spectra to identify/ analyze. Accepts mzXML, mzML, and MGF files. Files may be uploaded to various groups (G1 through G6), in which case group-specific results and statistics will be produced. Grouping is useful for datasets with different experimental conditions, etc. If you need more than 6 groups, you may upload a group mapping file instead of/ along with using default groups. Group and attribute file mapping format here: https://bix-lab.ucsd.edu/display/Public/Molecular+Networking+Group+Attribute+Formats</tooltip>
+		        </label>
+		    </cell>
+		    <cell colspan="3">
+		        <module id="spec_on_server_group5" type="fileSelector">
+		            <property name="label">Spectrum Files G5</property>
+		        </module>
+		    </cell>
+		</row>
+		<row>
+		    <cell>
+		        <label>
+		            <content parameter="spec_on_server_group6" />
+		            <tooltip id="spec_on_server_tooltip">Spectra to identify/ analyze. Accepts mzXML, mzML, and MGF files. Files may be uploaded to various groups (G1 through G6), in which case group-specific results and statistics will be produced. Grouping is useful for datasets with different experimental conditions, etc. If you need more than 6 groups, you may upload a group mapping file instead of/ along with using default groups. Group and attribute file mapping format here: https://bix-lab.ucsd.edu/display/Public/Molecular+Networking+Group+Attribute+Formats</tooltip>
+		        </label>
+		    </cell>
+		    <cell colspan="3">
+		        <module id="spec_on_server_group6" type="fileSelector">
+		            <property name="label">Spectrum Files G6</property>
+		        </module>
+		    </cell>
+		</row>
+		<row>
+			<cell>
+				<label>
+					<content parameter="seq_on_server" />
+					<tooltip id="seq_on_server_tooltip">Protein sequence database to search query spectra against. A sequence database file may be uploaded, or one may be selected from the CCMS_ProteomeDatabases directory in the Select Input Files window.</tooltip>
+				</label>
+			</cell>
+			<cell colspan="2">
+				<module id="seq_on_server" type="fileSelector">
+					<property name="label">Protein Sequence Database</property>
+				</module>
+			</cell>
+                </row>
+
+		<row>
+		    <cell>
+		        <label>
+		            <content parameter="groupmapping" />
+		            <tooltip id="groupmapping_tooltip">Input text file(s) organizing input files into groups. This must be in one of two possible formats. One format is a CSV file with the headers Run, Condition, BioReplicate, and Experiment. The Run column should contain the filename. Files will be grouped based on their combination of Condition, BioReplicate, and Experiment. The other format is described here: https://bix-lab.ucsd.edu/pages/viewpage.action?pageId=18972677#MolecularNetworkingDocumentation-AttributeandGROUPMapping</tooltip>
+		        </label>
+		    </cell>
+		    <cell colspan="3">
+		        <module id="groupmapping" type="fileSelector">
+		            <property name="label">Group Mapping</property>
+		        </module>
+		    </cell>
+		</row>
+
+		<row>
+		    <cell>
+		        <label>
+		            <content parameter="attributemapping" />
+		            <tooltip id="attribute_mapping_tooltip">Input text file organizing groups into attributes. These attributes are columns in the output. Format here: https://bix-lab.ucsd.edu/pages/viewpage.action?pageId=18972677#MolecularNetworkingDocumentation-AttributeandGROUPMapping</tooltip>
+		        </label>
+		    </cell>
+		    <cell>
+		        <module id="attributemapping" type="fileSelector">
+		            <property name="label">Attribute Mapping</property>
+		        </module>
+		    </cell>
+			<cell>
+				<label>
+					<content parameter="fragmentation.fragmentation" />
+					<tooltip id="fragmentation_tooltip">Method used to induce ion fragmentation.</tooltip>
+				</label>
+			</cell>
+			<cell>
+				<input parameter="fragmentation.fragmentation" type="select" />
+			</cell>
+		</row>
+		<row>
+			<cell>
+				<label>
+					<content parameter="instrument_msgfplus.instrument" />
+					<tooltip id="hInstrument" />
+				</label>
+			</cell>
+			<cell>
+				<input parameter="instrument_msgfplus.instrument" type="select" />
+			</cell>
+		</row>
+		<row>
+			<cell>
+				<label>
+					<content parameter="instrument.instrument" />
+					<tooltip id="hInstrument" />
+				</label>
+			</cell>
+			<cell>
+				<input parameter="instrument.instrument" type="select" />
+			</cell>
+			<cell>
+				<label>
+					<content parameter="cysteine_protease.protease" />
+					<tooltip id="protease_tooltip">Enzyme used to digest protein samples. Matches with non-enzymatic termini are penalized.</tooltip>
+				</label>
+			</cell>
+			<cell>
+				<input parameter="cysteine_protease.protease" type="select" />
+			</cell>
+		</row>
+		<row>
+			<cell>
+				<label>
+					<content parameter="cysteine_protease.cysteine" />
+					<tooltip id="hCysteine" />
+				</label>
+			</cell>
+			<cell>
+				<input parameter="cysteine_protease.cysteine" type="select" />
+			</cell>
+			<cell>
+				<label>
+					<content parameter="c13_nnet.nnet" />
+					<tooltip id="c13_nnet_tooltip">Maximum number of termini that do not match the cleavage specificity of the selected enzyme.</tooltip>
+				</label>
+			</cell>
+			<cell>
+				<input parameter="c13_nnet.nnet" type="select" />
+			</cell>
+		</row>
+		<row>
+			<cell>
+				<label>
+					<content>
+						Number of Allowed &lt;sup&gt;13&lt;/sup&gt;C
+					</content>
+					<tooltip id="c13_tooltip">The number of mass units by which the molecular ion peak can be shifted. Carbon-13 (a naturally-occurring isotope) shifts the molecular ion peak one mass unit higher.</tooltip>
+				</label>
+			</cell>
+			<cell>
+				<input parameter="c13_nnet.c13" type="select" />
+			</cell>
+			<cell>
+				<label>
+					<content parameter="tolerance.Ion_tolerance" />
+					<tooltip id="ion_tol_tooltip">The amount that b and y peaks can be shifted from their expected masses.</tooltip>
+				</label>
+			</cell>
+			<cell>
+				<input parameter="tolerance.Ion_tolerance" type="text">
+					<attribute name="size" value="3" />
+				</input>
+				<label><content>Da</content></label>
+			</cell>
+		</row>
+
+		<row>
+			<cell colspan="1">
+				<label>
+					<content parameter="tolerance_msplit.PM_tolerance" />
+					<tooltip id="msplit_tol_tooltip">Amount that spectrum mass may differ from expected mass in order for a peptide to be considered as a possible identification of a spectrum.</tooltip>
+				</label>
+			</cell>
+			<cell colspan="1">
+				<input parameter="tolerance_msplit.PM_tolerance" type="text" />
+				<label><content>Da</content></label>
+			</cell>
+			<cell>
+				<label>
+					<content parameter="tolerance_msplit.Ion_tolerance" />
+					<tooltip id="ion_tol_tooltip">The amount that b and y peaks can be shifted from their expected masses.</tooltip>
+				</label>
+			</cell>
+			<cell>
+				<input parameter="tolerance_msplit.Ion_tolerance" type="text">
+					<attribute name="size" value="3" />
+				</input>
+				<label><content>Da</content></label>
+			</cell>
+		</row>
+
+		<row>
+			<cell>
+				<label>
+					<content parameter="tolerance_msgfdb.PM_tolerance" />
+					<tooltip id="msgfplus_tol_tooltip">Amount that spectrum mass may differ from expected mass in order for a peptide to be considered as a possible identification of a spectrum.</tooltip>
+				</label>
+			</cell>
+			<cell colspan="1">
+				<input parameter="tolerance_msgfdb.PM_tolerance" type="text">
+					<attribute name="size" value="3" />
+				</input>
+				<input parameter="tolerance_unit_msgfdb.PM_unit" type="select" />
+			</cell>
+                        <cell>
+                                <label>
+				    <content parameter="RUN_MSCLUSTER" />
+				    <tooltip id="RUN_MSCLUSTER">If turned on, similar spectra are clustered together (via the MS-Cluster algorithm) at the start of the workflow. Further workflow steps will be run on clusters, rather than individual spectra.</tooltip>
+                                </label>
+                        </cell>
+                        <cell>
+                                <input parameter="RUN_MSCLUSTER" type="select" />
+                        </cell>
+		</row>
+		<row>
+			
+			<cell>
+				<label>
+					<content parameter="tolerance.PM_tolerance" />
+					<tooltip id="moda_tol_tooltip">Amount that spectrum mass may differ from expected mass in order for a peptide to be considered as a possible identification of a spectrum.</tooltip>
+				</label>
+			</cell>
+			<cell colspan="1">
+				<input parameter="tolerance.PM_tolerance" type="text">
+					<attribute name="size" value="3" />
+				</input>
+				<input parameter="tolerance_unit.PM_unit" type="select" />
+			</cell>
+		    <cell>
+		        <label>
+		            <content parameter="CLUSTER_MIN_SIZE" />
+		            <tooltip id="min_cluster_size_tooltip">Clusters which contain fewer spectra than this are discarded.</tooltip>
+		        </label>
+		    </cell>
+		    <cell>
+			<input parameter="CLUSTER_MIN_SIZE" type="text">
+		            <attribute name="size" value="3" />
+		        </input>
+		    </cell>
+			</row>
+			<row>
+			<cell>
+				<label>
+					<content parameter="tolerance_variant.PM_tolerance" />
+					<tooltip id="hParentMass" />
+				</label>
+			</cell>
+			<cell>
+				<input parameter="tolerance_variant.PM_tolerance" type="text">
+					<attribute name="size" value="3" />
+				</input>
+				<input parameter="tolerance_unit_variant.PM_unit" type="select" />
+			</cell>
+		    <cell>
+		        <label>
+		            <content parameter="PARALLELISM" />
+		            <tooltip id="paralellism_tooltip">Parallelism during search algorithms. Range of 1 to 200.</tooltip>
+		        </label>
+		    </cell>
+		    <cell>
+			<input parameter="PARALLELISM" type="text">
+		            <attribute name="size" value="3" />
+		        </input>
+		    </cell>
+		    </row>
+		    <row>
+		     	<cell colspan="2" />
+                        <cell>
+                                <label>
+                                        <content parameter="db.contaminants" />
+                                        <tooltip id="hContaminant" />
+                                </label>
+                        </cell>
+                        <cell>
+                                <input parameter="db.contaminants" type="select" />
+                        </cell>
+		</row>
+	</block>
+
+	<block label="Advanced Spectral Network Options">
+		<row>
+		  <cell>
+		        <label>
+		            <content parameter="PAIRS_MIN_COSINE" />
+		            <tooltip id="min_pair_cosine_tooltip">The score threshold in order for a spectrum pair to be accepted in the network.</tooltip>
+		        </label>
+		    </cell>
+		    <cell>
+		        <input parameter="PAIRS_MIN_COSINE" type="text">
+		            <attribute name="size" value="3" />
+		        </input>
+		    </cell>
+		    
+		    <cell>
+		        <label>
+		            <content parameter="MIN_MATCHED_PEAKS" />
+		            <tooltip id="min_matched_peaks_gnps_tooltip">The minimum number of common peaks between two spectra for inclusion in the network.</tooltip>
+		        </label>
+		    </cell>
+		    <cell>
+		        <input parameter="MIN_MATCHED_PEAKS" type="text">
+		            <attribute name="size" value="3" />
+		        </input>
+		    </cell>
+		    <cell>
+		        <label>
+		            <content parameter="MAX_COMPONENT_SIZE" />
+		            <tooltip id="max_component_size_gnps" />
+		        </label>
+		    </cell>
+		    <cell>
+		        <input parameter="MAX_COMPONENT_SIZE" type="text">
+		            <attribute name="size" value="3" />
+		        </input>
+		    </cell>
+		</row>
+	
+		<row>
+		      
+		</row>
+			
+		
+		<row>
+		    <cell>
+			<label>
+				<content parameter="custom_preprocess.Deconvolute_MS" />
+				<tooltip id="ms2_deconv_tooltip">Convert multiply-charged peaks to a charge state of 1.</tooltip>
+			</label>
+		    </cell>
+		    <cell>
+			<input parameter="custom_preprocess.Deconvolute_MS" type="select" />
+		    </cell>
+		    <cell>
+			<label>
+				<content parameter="custom_alignment.Tag_Filtering_Pairs" />
+				<tooltip id="tag_filter_pairs">Use tags to filter network pairs.</tooltip>
+			</label>
+		    </cell>
+		    <cell>
+			<input parameter="custom_alignment.Tag_Filtering_Pairs" type="select" />
+		    </cell>
+		    <cell>
+			<label>
+				<content parameter="custom_alignment.Max_Tag_Size" />
+				<tooltip id="max_tag_size">Maximum tag size to use for tag-based network pair filter.</tooltip>
+			</label>
+		    </cell>
+		    <cell>
+			<input parameter="custom_alignment.Max_Tag_Size" type="text">
+				<attribute name="size" value="4" />
+			</input>
+		    </cell>	
+		</row>
+        </block>
+	<block label="Advanced Filtering Options">
+       		<row>
+                    <cell>
+                        <label>
+                            <content parameter="FDR_msplit.FDR" />
+                            <tooltip id="msplit_fdr_tooltip">PSM-level false discovery rate used to filter M-SPLIT results.</tooltip>
+                        </label>
+                    </cell>
+
+                    <cell>
+                        <input parameter="FDR_msplit.FDR" type="text">
+                            <attribute name="size" value="3" />
+                        </input>
+                    </cell>
+                    <cell>
+                        <label>
+                            <content parameter="FDR_msgfdb.FDR" />
+                            <tooltip id="msgf_fdr_tooltip">PSM-level false discovery rate used to filter MS-GF+ results.</tooltip>
+                        </label>
+                    </cell>
+
+                    <cell>
+                        <input parameter="FDR_msgfdb.FDR" type="text">
+                            <attribute name="size" value="3" />
+                        </input>
+                    </cell>
+                    <cell>
+                        <label>
+                            <content parameter="FDR_moda.FDR" />
+                            <tooltip id="moda_fdr_tooltip">PSM-level false discovery rate used to filter MODa results.</tooltip>
+                        </label>
+                    </cell>
+
+                    <cell>
+                        <input parameter="FDR_moda.FDR" type="text">
+                            <attribute name="size" value="3" />
+                        </input>
+                    </cell>
+                </row>
+
+       		<row>
+		    <cell>
+		        <label>
+		            <content parameter="var_FDR_msplit.FDR" />
+                            <tooltip id="msplit_var_fdr_tooltip">Variant-level false discovery rate used to filter M-SPLIT results.</tooltip>
+		        </label>
+		    </cell>
+		    
+		    <cell>
+			<input parameter="var_FDR_msplit.FDR" type="text">
+		            <attribute name="size" value="3" />
+		        </input>
+		    </cell>
+		    <cell>
+		        <label>
+		            <content parameter="var_FDR_msgfdb.FDR" />
+                            <tooltip id="msgf_var_fdr_tooltip">Variant-level false discovery rate used to filter MS-GF+ results.</tooltip>
+		        </label>
+		    </cell>
+		    
+		    <cell>
+			<input parameter="var_FDR_msgfdb.FDR" type="text">
+		            <attribute name="size" value="3" />
+		        </input>
+		    </cell>
+		    <cell>
+		        <label>
+		            <content parameter="var_FDR_moda.FDR" />
+                            <tooltip id="moda_var_fdr_tooltip">Variant-level false discovery rate used to filter MODa results.</tooltip>
+		        </label>
+		    </cell>
+		    
+		    <cell>
+			<input parameter="var_FDR_moda.FDR" type="text">
+		            <attribute name="size" value="3" />
+		        </input>
+		    </cell>
+                </row>
+
+		<row>
+		    <cell>
+		        <label>
+		            <content parameter="var_FDR_combined.FDR" />
+		            <tooltip id="combined_var_fdr_tooltip">Variant-level FDR used to filter combined results from all three algorithms.</tooltip>
+		        </label>
+		    </cell>
+		    
+		    <cell>
+			<input parameter="var_FDR_combined.FDR" type="text">
+		            <attribute name="size" value="3" />
+		        </input>
+		    </cell>
+                </row>
+
+		<row>
+		    <cell>
+		        <label>
+		            <content parameter="FILTER_STDDEV_PEAK_INT" />
+		            <tooltip id="filterstd_gnps" />
+		        </label>
+		    </cell>
+		    
+		    <cell>
+			<input parameter="FILTER_STDDEV_PEAK_INT" type="text">
+		            <attribute name="size" value="3" />
+		        </input>
+		    </cell>
+		    
+		    <cell>
+		        <label>
+		            <content parameter="MIN_PEAK_INT" />
+		            <tooltip id="filterint_gnps" />
+		        </label>
+		    </cell>
+		    
+		    <cell>
+			<input parameter="MIN_PEAK_INT" type="text">
+		            <attribute name="size" value="3" />
+		        </input>
+		    </cell>
+		    <cell>
+		        <label>
+		            <content parameter="FILTER_PRECURSOR_WINDOW" />
+		            <tooltip id="filter_prec_window_tooltip">All peaks +/- 3Da around precursor mass are deleted.</tooltip>
+		        </label>
+		    </cell>
+		    
+		    <cell>
+		        <input parameter="FILTER_PRECURSOR_WINDOW" type="select">
+		        </input>
+		    </cell>
+		</row>
+		
+		<row>
+		    <cell>
+		        <label>
+		            <content parameter="WINDOW_FILTER" />
+		            <tooltip id="filterpeakwindow_gnps" />
+		        </label>
+		    </cell>
+		    
+		    <cell>
+		        <input parameter="WINDOW_FILTER" type="select">
+		        </input>
+		    </cell>
+		    <cell>
+		        <label>
+		            <content parameter="KL_FILTER" />
+		            <tooltip id="kl_filter_thresh_tooltip">Spectra with a Kullback-Leibler divergence above this value will be filtered out. If threshold is set to 0, no spectra are filtered out.</tooltip>
+		        </label>
+		    </cell>
+		    
+		    <cell>
+                        <input parameter="KL_FILTER" type="text">
+                            <attribute name="size" value="3" />
+                        </input>
+		    </cell>
+		<cell>
+	                        <label>
+	                            <content parameter="expl_intensity_thresh_msplit" />
+	                            <tooltip id="expl_intensity_thresh_msplit_tooltip">M-SPLIT PSMs with explained intensity below this threshold will be filtered out prior to FDR calculation. Must be between 0 and 1.</tooltip>
+	                        </label>
+	                    </cell>
+	                    <cell>
+	                        <input parameter="expl_intensity_thresh_msplit" type="text">
+	                            <attribute name="size" value="3" />
+	                        </input>
+	        </cell>
+
+		</row>
+		<row>
+		    <cell>
+		        <label>
+		            <content parameter="SVM1_THRESHOLD" />
+		            <tooltip id="svm1_threshold">M-SPLIT PSMs with SVM1 scores below this threshold will be filtered out prior to FDR calculation.</tooltip>
+		        </label>
+		    </cell>
+		    
+		    <cell>
+                        <input parameter="SVM1_THRESHOLD" type="text">
+                            <attribute name="size" value="3" />
+                        </input>
+		    </cell>
+                   <cell>
+                        <label>
+                            <content parameter="MSPLIT_GUESS_CHARGE" />
+                            <tooltip id="msplit_guess_charge_tooltip">Allow M-SPLIT to guess PSM charges. If turned off, M-SPLIT will only match query clusters to library spectra that have the same charge as the cluster.</tooltip>
+                        </label>
+                    </cell>
+
+                    <cell>
+                        <input parameter="MSPLIT_GUESS_CHARGE" type="select">
+                        </input>
+                    </cell>
+
+		</row>
+		<row>
+		    <cell>
+		        <label>
+		            <content parameter="IGNORE_BAD_FILES" />
+		            <tooltip id="ignore_bad_files_tooltip">Ignore empty or malformatted files, usually due to conversion errors. If "No" is selected and improper files exist, workflow will fail and output names of improper files.</tooltip>
+		        </label>
+		    </cell>
+		    
+		    <cell>
+		        <input parameter="IGNORE_BAD_FILES" type="select">
+		        </input>
+		    </cell>
+
+		    <cell>
+		        <label>
+		            <content parameter="RESET_MODA_CHARGES" />
+		            <tooltip id="reset_moda_charges_tooltip">Remove spectrum charges prior to running MODa. MODa will infer charges.</tooltip>
+		        </label>
+		    </cell>
+		    
+		    <cell>
+		        <input parameter="RESET_MODA_CHARGES" type="select">
+		        </input>
+		    </cell>
+		</row>
+	</block>
+
+	<block label="Allowed Post-Translational Modifications">
+		<row>
+			<cell align="center">
+				<label>
+					<content>
+						MODa Blind Mode
+					</content>
+					<tooltip id="mods_per_peptide_tooltip">Number of modifications per peptide to allow during MODa. Blind mode only permits one modification, whereas multi-blind mode permits multiple modifications.</tooltip>
+				</label>
+				<input parameter="moda.blindmode" type="radio" value="1" />
+				<label><content>Blind</content></label>
+				<input parameter="moda.blindmode" type="radio" value="2" />
+				<label><content>Multi-blind</content></label>
+			</cell>
+		</row>
+		<row>
+			<cell align="center">
+				<label>
+					<content parameter="msalign.minmodmass" />
+					<tooltip id="min_mod_mass_tooltip">Minimum modification mass to consider during MODa.</tooltip>
+				</label>
+				<input parameter="msalign.minmodmass" type="text">
+					<attribute name="size" value="4" />
+				</input>
+				<label><content>Da</content></label>
+			</cell>
+		</row>
+		<row>
+			<cell align="center">
+				<label>
+					<content parameter="msalign.maxmodmass" />
+					<tooltip id="max_mod_mass_tooltip">Maximum modification mass to consider during MODa.</tooltip>
+				</label>
+				<input parameter="msalign.maxmodmass" type="text">
+					<attribute name="size" value="4" />
+				</input>
+				<label><content>Da</content></label>
+			</cell>
+		</row>
+		<row>
+			<cell align="center">
+				<label>
+					<content parameter="ptm.mods" />
+					<tooltip id="hMods" />
+				</label>
+				<input parameter="ptm.mods" type="text">
+					<attribute name="size" value="3" />
+				</input>
+			</cell>
+		</row>
+		<row>
+			<cell>
+				<module id="ptm" type="ptmTable">
+					<property name="types">fix,opt,fix_nterm,opt_nterm</property>
+					<property name="defaultType">opt</property>
+				</module>
+			</cell>
+		</row>
+	</block>
+
+	<block label="Advanced Quantification Options">
+		<row>
+			<cell>
+				<label>
+					<content parameter="isobaric_tag" />
+					<tooltip id="isobaric_tag_tooltip">Isobaric tags used for quantification.</tooltip>
+				</label>
+			</cell>
+			<cell>
+				<input parameter="isobaric_tag" type="select" />
+			</cell>
+		</row>
+	</block>
+</interface>

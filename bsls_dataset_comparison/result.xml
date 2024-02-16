@@ -1,0 +1,153 @@
+<interface id="bsls_dataset_comparison" version="release_0.0">
+    <download>
+    </download>
+
+    <view group="Dataset Info and Comparison" id="table_view_url" label="Query + Noise Sets">
+        <blockRef id="main" type="query_block" />
+    </view>
+
+    <view group="Dataset Info and Comparison" id="table_view_url2" label="Library Sets">
+        <blockRef id="main" type="library_block" />
+    </view>
+
+    <block id="library_block" type="table_ss">
+        <data>
+            <source name="library_info_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="scan" type="sortedTabular" />
+               <parser type="SQLite" />    
+               <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <column field="scan" label="scan" type="integer" width="3" />
+                <column field="charge" label="charge" type="integer" width="1" />
+                <column field="seq" label="sequence" type="text" width="20" />
+
+
+                <column label="library_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[usi]" />\
+                    <parameter name="LABEL" value="[usi]" />\
+                </column>
+            </row>
+
+            <row expander="image">
+                <column colspan="5" height="500" title="Original spectrum" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename1]" name="file" />
+                    <parameter name="scan" value="[scan]" />
+                    <parameter name="peptide" value="[seq]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.05" />
+                    <parameter name="trim" value="true" />
+                </column>
+            </row>
+            <row expander="image">
+                <column colspan="5" height="500" title="Original spectrum" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename2]" name="file" />
+                    <parameter name="scan" value="[scan]" />
+                    <parameter name="peptide" value="[seq]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.05" />
+                    <parameter name="trim" value="true" />
+                </column>
+            </row>
+            <row expander="image">
+                <column colspan="5" height="500" title="Original spectrum" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename3]" name="file" />
+                    <parameter name="scan" value="[scan]" />
+                    <parameter name="peptide" value="[seq]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.05" />
+                    <parameter name="trim" value="true" />
+                </column>
+            </row>
+            
+        </data>
+    </block>
+    
+   <block id="query_block" type="table_ss">  
+    <!-- <block id="table_block" type="table"> -->
+        <data>
+            <source name="query_info_tsv/" type="file" />
+            <parsers>
+                <parser operator="ascending" sortBy="query_scan" type="sortedTabular" />
+               <parser type="SQLite" />    
+               <!-- ADDED for server-side results views -->
+            </parsers>
+
+            <row>
+                <column field="query_scan" label="query_scan" type="integer" width="3" />
+                <column field="in_recall" label="in_recall" type="integer" width="3" />
+                <column field="query_charge" label="query_charge" type="integer" width="1" />
+                <column field="query_seq" label="query_seq" type="text" width="20" />
+                <column field="noise_charge" label="noise_charge" type="integer" width="1" />
+                <column field="noise_seq" label="noise_seq" type="text" width="20" />
+                <column field="query_noise_cosine" label="query_noise_cosine" type="float" precision="4" width="3" />
+                <column field="#added_noise_peaks" label="#added_noise_peaks" type="text" width="20" />
+
+
+                <column label="query_original_usi" type="genericurlgenerator" width="12"> \
+                    <parameter name="URLBASE" value="/ProteoSAFe/usi.jsp" />\
+                    <parameter name="REQUESTPARAMETER=usi" value="[query_original_usi]" />\
+                    <parameter name="LABEL" value="[query_original_usi]" />\
+                </column>
+            </row>
+
+            <row expander="image">
+                <column colspan="5" height="500" title="Original spectrum" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename1]" name="file" />
+                    <parameter name="scan" value="[query_scan]" />
+                    <parameter name="peptide" value="[query_seq]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.05" />
+                    <parameter name="trim" value="true" />
+                </column>
+                <column colspan="5" height="500" title="Original spectrum" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename2]" name="file" />
+                    <parameter name="scan" value="[query_scan]" />
+                    <parameter name="peptide" value="[query_seq]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.05" />
+                    <parameter name="trim" value="true" />
+                </column>
+                <column colspan="5" height="500" title="Original spectrum" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename2]" name="file" />
+                    <parameter name="scan" value="[query_scan]" />
+                    <parameter name="peptide" value="[noise_seq]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.05" />
+                    <parameter name="trim" value="true" />
+                </column>
+            </row>
+            <row expander="image">
+                <column colspan="5" height="500" title="Original spectrum" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename3]" name="file" />
+                    <parameter name="scan" value="[query_scan]" />
+                    <parameter name="peptide" value="[query_seq]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.05" />
+                    <parameter name="trim" value="true" />
+                </column>
+                <column colspan="5" height="500" title="Original spectrum" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename4]" name="file" />
+                    <parameter name="scan" value="[query_scan]" />
+                    <parameter name="peptide" value="[query_seq]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.05" />
+                    <parameter name="trim" value="true" />
+                </column>
+                <column colspan="5" height="500" title="Original spectrum" type="jscolumnspectrumviewer" width="600">
+                    <parameter file="[InternalFilename4]" name="file" />
+                    <parameter name="scan" value="[query_scan]" />
+                    <parameter name="peptide" value="[noise_seq]" />
+                    <parameter name="modformat" value="inspect" />
+                    <parameter name="tolerance" value="0.05" />
+                    <parameter name="trim" value="true" />
+                </column>
+            </row>
+        </data>
+    </block>
+	
+	
+</interface>

@@ -1,0 +1,25 @@
+<flow name="flower_python_test">
+        <object name="workflowParameters" />
+
+
+        <action name="begin">
+                <output object="workflowParameters" port="flowParams" />
+                <output object="tsv_collection" port="tsv_collection_port" />
+        </action>
+
+        <object name="tsv_collection" />
+
+        <object name="output_tsv" />
+
+        <action name="run_test">
+                <input object="tsv_collection" port="tsv_collection_port" />
+                <output object="output_tsv" port="output_tsv_port" />
+        </action>
+
+<!--        <collection name="spectrum_collection" />  -->
+        <!-- <object name="query_mgf_1" /> -->
+
+        <action name="end">
+                <input object="output_tsv" port="output_tsv_port" />
+        </action>
+</flow>
